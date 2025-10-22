@@ -1,11 +1,9 @@
-import CategoryBar from "@/components/CategoryBar";
-import GridExample from "@/components/GridExample";
-
+ 
+import CategorySlider from "@/components/CategorySlider"; 
 export default function Home() {
   return (
     <>
-      <CategoryBar />
-      <GridExample />
+      <CategorySlider /> 
     </>
   );
 }
