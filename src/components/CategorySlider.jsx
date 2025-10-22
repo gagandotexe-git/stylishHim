@@ -107,7 +107,7 @@ const CategorySlider = () => {
       <div className="lg:hidden">
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto gap-4 px-4 scrollbar-hide snap-x snap-mandatory"
+          className="mt-2 flex overflow-x-auto gap-4 px-4 scrollbar-hide snap-x snap-mandatory"
           style={{
             scrollBehavior: "smooth",
             WebkitOverflowScrolling: "touch",
