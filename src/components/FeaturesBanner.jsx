@@ -38,7 +38,7 @@ export default function FeaturesBanner() {
         </div>
 
         {/* Social Links Row */}
-        <div className="flex flex-col items-center md:flex-row md:justify-end gap-4">
+        <div className="flex flex-col items-center md:flex-row md:justify-center gap-4">
           <p className="text-black font-medium text-sm whitespace-nowrap text-center md:text-left">
             Show us some love ❤️ on social media
           </p>
