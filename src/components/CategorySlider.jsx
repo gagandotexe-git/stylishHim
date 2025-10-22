@@ -82,7 +82,7 @@ const CategorySlider = () => {
   ];
 
   return (
-    <div className="w-full bg-white pt-[120px] md:pt-[70px]">
+    <div className="w-full bg-white pt-[85px] md:pt-[65px]">
       {/* Desktop View - Text Navigation */}
       <div className="hidden lg:block">
         <div className="container mx-auto px-4">

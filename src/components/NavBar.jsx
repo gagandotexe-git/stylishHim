@@ -43,16 +43,16 @@ const NavBar = () => {
       <input
         type="text"
         placeholder="Search on StylishHim"
-        className="w-full pl-12 pr-4 py-1.5 text-[14px] border border-gray-300 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-[#AD9682] focus:border-transparent"
+        className="w-full pl-12 pr-4 py-1.5 text-[14px] border border-gray-300 rounded-[20px] focus:outline-none focus:ring-2 focus:ring-[#AD9682] focus:border-transparent"
       />
     </div>
   );
 
   return (
-    <nav className="bg-[#FFFFFF] border-b border-gray-200">
+    <nav className="bg-[#FFFFFF] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mobile */}
-        <div className="flex md:hidden justify-between items-center h-12 mb-3">
+        <div className="flex md:hidden justify-between items-center h-12">
           {Logo} {Icons}
         </div>
         <div className="flex md:hidden mb-4 w-full">{SearchBar}</div>
