@@ -1,4 +1,3 @@
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +52,7 @@ const CategorySlider = () => {
       <div className="lg:hidden">
         <div
           ref={scrollContainerRef}
-          className="mt-2 flex overflow-x-auto gap-4 px-4 scrollbar-hide snap-x snap-mandatory"
+          className="mt-2 flex overflow-x-auto gap-2 px-4 scrollbar-hide snap-x snap-mandatory"
           style={{
             scrollBehavior: "smooth",
             WebkitOverflowScrolling: "touch",
@@ -64,19 +63,19 @@ const CategorySlider = () => {
               key={index}
               href={category.link}
               className="flex-shrink-0 snap-start"
-              style={{ width: "calc(20% - 12.8px)" }}
+              style={{ width: "calc(30% - 6.4px)" }}
             >
               <div className="flex flex-col items-center gap-2">
-                <div className="relative w-full aspect-square rounded-full overflow-hidden   hover:shadow-lg transition-shadow duration-300">
+                <div className="relative w-full aspect-square rounded-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   <Image
                     src={category.image}
                     alt={category.name}
                     fill
                     className="object-cover"
-                    sizes="40vw"
+                    sizes="20vw"
+                    priority
                   />
                 </div>
-              
               </div>
             </Link>
           ))}
