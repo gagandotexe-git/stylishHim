@@ -73,7 +73,7 @@ const CategorySlider = () => {
                     alt={category.name}
                     fill
                     className="object-cover"
-                    sizes="20vw"
+                    sizes="40vw"
                   />
                 </div>
               
