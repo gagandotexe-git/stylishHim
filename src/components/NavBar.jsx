@@ -24,14 +24,14 @@ const NavBar = () => {
 
   const Icons = (
     <div className="flex items-center space-x-3">
-      <Link href="/profile" className="p-2 text-primary hover:text-secondary transition-colors">
+      <Link href="/profile" className="p-2 text-black hover:text-[#AD9682] transition-colors">
         <User className="h-5 w-5" />
       </Link>
-      <Link href="/cart" className="relative p-2 text-primary hover:text-secondary transition-colors">
+      <Link href="/cart" className="relative p-2 text-black hover:text-[#AD9682] transition-colors">
         <ShoppingBag className="h-5 w-5" />
         <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
       </Link>
-      <button className="p-2 text-gray-700 md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <button className="p-2 text-black md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
     </div>
@@ -62,7 +62,7 @@ const NavBar = () => {
           {Logo}
           <div className="flex items-center space-x-8">
             {navItems.map(({ href, label }) => (
-              <Link key={href} href={href} className="text-[14px] font-medium text-primary hover:text-secondary transition-colors">
+              <Link key={href} href={href} className="text-[14px] font-[500] text-black hover:text-[#AD9682] transition-colors">
                 {label}
               </Link>
             ))}
@@ -75,7 +75,7 @@ const NavBar = () => {
         {isMenuOpen && (
           <div className="md:hidden pb-4 space-y-2">
             {navItems.map(({ href, label }) => (
-              <Link key={href} href={href} className="text-[14px] font-medium block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">
+              <Link key={href} href={href} className="text-[14px] font-[500] block px-3 py-2 text-black hover:bg-gray-100 rounded">
                 {label}
               </Link>
             ))}
