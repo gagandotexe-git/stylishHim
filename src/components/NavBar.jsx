@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+ // testing
   const navItems = [
     { href: "/products", label: "Products" },
     { href: "/about", label: "About" },
