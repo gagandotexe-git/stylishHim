@@ -193,14 +193,14 @@ const CarouselBanner = () => {
 
         {/* Carousel Container */}
         <div 
-          className="relative overflow-hidden md:rounded-2xl"
+          className="relative overflow-hidden rounded-2xl mx-4 md:mx-0"
           onTouchStart={isMobile ? handleTouchStart : null}
           onTouchMove={isMobile ? handleTouchMove : null}
           onTouchEnd={isMobile ? handleTouchEnd : null}
         >
           {/* Carousel Wrapper */}
           <div
-            className="flex transition-transform duration-500 ease-in-out h-[500px] md:h-96 lg:h-[420px]"
+            className="flex transition-transform duration-500 ease-in-out h-[400px] md:h-96 lg:h-[420px]"
             style={{
               transform: isMobile 
                 ? `translateX(-${currentIndex * 100}%)`
@@ -211,22 +211,22 @@ const CarouselBanner = () => {
             {banners.map((banner) => (
               <div
                 key={banner.id}
-                className="flex-shrink-0 w-full md:w-[calc(50%-8px)] lg:w-[calc(33.333%-12px)] h-[500px] md:h-96 lg:h-[420px] relative group"
+                className="flex-shrink-0 w-full md:w-[calc(50%-8px)] lg:w-[calc(33.333%-12px)] h-[400px] md:h-96 lg:h-[420px] relative group"
               >
                 <a href={banner.link} className="block w-full h-full relative">
                   <img
                     src={banner.src}
                     alt={banner.alt}
-                    className="object-cover md:rounded-2xl w-full h-full"
+                    className="object-cover rounded-2xl w-full h-full"
                   />
                   
                   {/* Overlay for better text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl" />
                   
                   {/* Content Overlay - Mobile Only */}
                   {isMobile && (
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <button className="bg-white text-pink-600 px-6 py-2 rounded-full font-semibold hover:bg-pink-50 transition-colors inline-flex items-center gap-2">
+                      <button className="bg-[#F6CBB0] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#f4b899] transition-colors inline-flex items-center gap-2">
                         {banner.buttonText}
                         <span>→</span>
                       </button>
@@ -235,7 +235,7 @@ const CarouselBanner = () => {
                   
                   {/* Hover Effect - Desktop Only */}
                   {!isMobile && (
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 md:rounded-2xl" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 rounded-2xl" />
                   )}
                 </a>
               </div>
