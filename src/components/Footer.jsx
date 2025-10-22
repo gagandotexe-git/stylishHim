@@ -10,35 +10,35 @@ export default function Footer() {
     {
       title: "Who are we?",
       items: [
-        { label: "Authenticity", href: "/about/authenticity" },
-        { label: "Sustainability", href: "/about/sustainability" }
+        { label: "Authenticity", href: "#" },
+        { label: "Sustainability", href: "#" }
       ]
     },
     {
       title: "Help",
       items: [
-        { label: "Contact Us", href: "/help/contact" },
-        { label: "FAQ", href: "/help/faq" },
-        { label: "Cancellation & Return", href: "/help/returns" },
-        { label: "Shipping & Delivery", href: "/help/shipping" }
+        { label: "Contact Us", href: "#" },
+        { label: "FAQ", href: "#" },
+        { label: "Cancellation & Return", href:"#" },
+        { label: "Shipping & Delivery", href: "#"}
       ]
     },
     {
       title: "Quick Links",
       items: [
-        { label: "Offer Zone", href: "/offers" },
-        { label: "New Launches", href: "/new-launches" }
+        { label: "Offer Zone", href: "#"},
+        { label: "New Launches", href:"#" }
       ]
     },
     {
       title: "Top Categories",
       items: [
-        { label: "Makeup", href: "/makeup" },
-        { label: "Skin", href: "/skin" },
-        { label: "Hair", href: "/hair" },
-        { label: "Appliances", href: "/appliances" },
-        { label: "Bath & Body", href: "/bathandbody" },
-        { label: "Fragrance", href: "/fragrance" }
+        { label: "Makeup", href: "#" },
+        { label: "Skin", href: "#"},
+        { label: "Hair", href: "#" },
+        { label: "Appliances", href: "#" },
+        { label: "Bath & Body", href:"#" },
+        { label: "Fragrance", href: "#" }
       ]
     }
   ];

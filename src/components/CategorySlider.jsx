@@ -18,12 +18,12 @@ const CategorySlider = () => {
   }, []);
 
   const categories = [
-    { name: "Makeup", image: "/images/categoryImage/gifting.png", link: "/gifting" },
-    { name: "Skin", image: "/images/categoryImage/skin.png", link: "/skin" },
-    { name: "Hair", image: "/images/categoryImage/hair.png", link: "/hair" },
-    { name: "Appliances", image: "/images/categoryImage/glow.png", link: "/glow" },
-    { name: "Bath & Body", image: "/images/categoryImage/bathbody.png", link: "/bath-body" },
-    { name: "Fragrance", image: "/images/categoryImage/glow.png", link: "/fragrance" },
+    { name: "Makeup", image: "/images/categoryImage/gifting.png", link: "/" },
+    { name: "Skin", image: "/images/categoryImage/skin.png", link: "/" },
+    { name: "Hair", image: "/images/categoryImage/hair.png", link: "/" },
+    { name: "Appliances", image: "/images/categoryImage/glow.png", link: "/" },
+    { name: "Bath & Body", image: "/images/categoryImage/bathbody.png", link: "/" },
+    { name: "Fragrance", image: "/images/categoryImage/glow.png", link: "/" },
   ];
 
   return (

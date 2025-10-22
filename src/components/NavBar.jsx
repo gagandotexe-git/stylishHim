@@ -7,11 +7,11 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/products", label: "Products" },
-    { href: "/about", label: "About" },
-    { href: "/fashion", label: "StylishHim Fashion" },
-    { href: "/advice", label: "Style Advice" },
-    { href: "/help", label: "Help" },
+    { href: "/", label: "Products" },
+    { href: "/", label: "About" },
+    { href: "/", label: "StylishHim Fashion" },
+    { href: "/", label: "Style Advice" },
+    { href: "/", label: "Help" },
   ];
 
   const Logo = (
@@ -24,10 +24,10 @@ const NavBar = () => {
 
   const Icons = (
     <div className="flex items-center space-x-3">
-      <Link href="/profile" className="p-2 text-black hover:text-[#AD9682] transition-colors">
+      <Link href="/" className="p-2 text-black hover:text-[#AD9682] transition-colors">
         <User className="h-5 w-5" />
       </Link>
-      <Link href="/cart" className="relative p-2 text-black hover:text-[#AD9682] transition-colors">
+      <Link href="/" className="relative p-2 text-black hover:text-[#AD9682] transition-colors">
         <ShoppingBag className="h-5 w-5" />
         <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
       </Link>

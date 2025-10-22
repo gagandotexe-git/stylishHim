@@ -15,7 +15,7 @@ const CarouselBanner = () => {
       id: 1,
       src: '/bannerImages/stylishhimbanner8.png',
       alt: 'Nykaa Diwali Dhamaka Sale',
-      link: '/sale',
+      link: '#',
       title: 'Nykaa Diwali Dhamaka Sale',
       subtitle: 'Up to 50% Off',
       buttonText: 'Know More'
@@ -23,7 +23,7 @@ const CarouselBanner = () => {
     {
       id: 2,
        src: '/bannerImages/stylishhimbanner10.png', alt: 'Get Glowing',
-      link: '/get-glowing',
+      link: '#',
       title: 'Only At Nykaa',
       subtitle: 'Up to 10% Off',
       buttonText: 'Know More'
@@ -31,7 +31,7 @@ const CarouselBanner = () => {
     {
       id: 3,
        src: '/bannerImages/stylishhimbanner14.png', alt: 'Foxtale Offer',
-      link: '/foxtale',
+      link: '#',
       title: 'Up To 30% Off',
       subtitle: 'Free Gift on ₹599+',
       buttonText: 'Know More'
@@ -39,7 +39,7 @@ const CarouselBanner = () => {
     {
       id: 4,
        src: '/bannerImages/stylishhimbanner10.png',alt: 'Festive Gift Store',
-      link: '/gift-store',
+      link: '#',
       title: 'Festive Gift Store',
       subtitle: 'Perfect Gifts for Everyone',
       buttonText: 'Know More'
