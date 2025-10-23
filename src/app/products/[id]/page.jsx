@@ -138,7 +138,7 @@ export default function ProductDetailPage({ params }) {
                     </button>
                 </div>
 
-                <button className="w-auto bg-[#AD9682] hover:bg-[#d16d4f] text-white text-base font-medium py-3 rounded-md transition-all duration-200 shadow-sm mb-6">
+                <button className="w-[280px] bg-[#AD9682] hover:bg-[#d16d4f] text-white text-base font-medium py-3 rounded-md transition-all duration-200 shadow-sm mb-6">
                     Buy it now
                 </button>
 

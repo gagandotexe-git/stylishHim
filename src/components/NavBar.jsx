@@ -7,7 +7,7 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/", label: "Products" },
+    { href: "/products/0", label: "Products" },
     { href: "/", label: "About" },
     { href: "/", label: "StylishHim Fashion" },
     { href: "/", label: "Style Advice" },

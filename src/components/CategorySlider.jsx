@@ -29,7 +29,7 @@ const CategorySlider = () => {
   return (
     <div className="w-full bg-white pt-[85px] md:pt-[65px]">
       {/* Desktop View - Text Navigation */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:block mb-[15px]">
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-center gap-8 flex-wrap">
             {categories.map((category, index) => (

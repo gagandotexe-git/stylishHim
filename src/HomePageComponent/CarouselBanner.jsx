@@ -177,7 +177,7 @@ const CarouselBanner = () => {
     <div className="relative w-full">
       {/* Desktop Background with Animated Stars */}
       {!isMobile && (
-        <div className="absolute inset-0 bg-[#FFDFC6]   via-purple-50 to-orange-50">
+        <div className="absolute inset-0 bg-[#ffeee2]   via-purple-50 to-orange-50">
           <AnimatedStars />
         </div>
       )}
@@ -186,7 +186,7 @@ const CarouselBanner = () => {
       <div className="relative w-full max-w-7xl mx-auto px-0 md:px-4 py-0 md:py-8">
         {/* GET GLOWING Text - Desktop Only */}
         {!isMobile && (
-          <h2 className="text-center text-4xl font-bold text-purple-600 mb-6 tracking-wider">
+          <h2 className="text-center text-4xl font-bold text-[#9e7653] mb-6 tracking-[0.8px]">
             GET GLOWING
           </h2>
         )}
@@ -273,7 +273,7 @@ const CarouselBanner = () => {
               className={`
                 transition-all duration-200 rounded-full
                 ${i === currentIndex
-                  ? 'w-8 h-3 bg-pink-500'
+                  ? 'w-8 h-3 bg-[#AD9682]'
                   : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
                 }
               `}
