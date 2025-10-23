@@ -50,7 +50,7 @@ export default function ProductDetailPage({ params }) {
 
     return (
         
-        <div className="flex flex-col md:flex-row gap-10 px-4 md:px-12 py-10 text-[#2b2b2b] pt-[95px] md:pt-[65px]">
+        <div className="flex flex-col md:flex-row gap-10 px-4 md:px-12 py-10 text-[#2b2b2b] pt-[110px] md:pt-[65px]">
             {/* LEFT SECTION — Image Slider */}
             <div className="flex flex-col md:flex-row items-center gap-6 md:w-1/2">
                 {/* Thumbnail Column */}
