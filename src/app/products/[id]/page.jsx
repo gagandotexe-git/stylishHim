@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { Minus, Plus, ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 
+import ProductListingPage from "../../productdisplay/page";
 export default function ProductDetailPage({ params }) {
     const productId = 2;
-
     const product = {
         id: productId,
         title: "Scalp Purify Anti-Dandruff Shampoo",
@@ -381,6 +381,8 @@ export default function ProductDetailPage({ params }) {
                     </div>
                 </div>
             </div>
+
+             <ProductListingPage />
         </>
     );
 }

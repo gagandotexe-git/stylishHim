@@ -2,71 +2,78 @@
 import { useState } from 'react';
 import { Heart } from 'lucide-react';
 
-// Product data array
-const products = [
+export const products = [
   {
     id: 1,
     name: "Stronger Strands - Hairfall Control Shampoo",
     image: "/images/productone.webp",
     price: 349.00,
     rating: 4,
-    reviews: 32
+    reviews: 32,
+    description: "Our Stronger Strands Hairfall Control Shampoo is specially formulated to reduce hair fall and strengthen your hair from the roots. Enriched with natural ingredients that nourish and protect, this shampoo helps prevent breakage and promotes healthier, stronger hair. Suitable for all hair types, it gently cleanses while maintaining the natural moisture balance of your scalp."
   },
   {
     id: 2,
-    name: "Radiance Vitamin C Facewash",
-    image: "/images/productone.webp",
+    name: "Radiance Vitamin C FaceMask",
+    image: "/images/productone.jpeg",
     price: 249.00,
     rating: 5,
-    reviews: 45
+    reviews: 45,
+    description: "Radiance Vitamin C FaceMask is a premium skincare treatment designed to brighten and revitalize your complexion. Packed with potent vitamin C, this mask helps fade dark spots, evens out skin tone, and boosts overall radiance. Perfect for dull and tired-looking skin, it delivers intensive hydration and leaves your face glowing and refreshed."
   },
   {
     id: 3,
-    name: "Scalp Purify Anti-Dandruff Shampoo",
-    image: "/images/productone.webp",
+    name: "Vitamin C Face Wash",
+    image: "/images/producttwo.jpeg",
     price: 399.00,
     rating: 4,
-    reviews: 28
+    reviews: 28,
+    description: "Our Vitamin C Face Wash is a gentle yet effective cleanser that removes impurities while delivering the brightening benefits of vitamin C. It helps reduce dark spots, improves skin texture, and promotes a more radiant complexion. This daily-use face wash is perfect for all skin types and leaves your skin feeling fresh, clean, and luminous."
   },
   {
     id: 4,
-    name: "Hair Nourish Deep Conditioning Mask",
-    image: "/images/productone.webp",
+    name: "Glow Boost Serum",
+    image: "/images/productthree.jpeg",
     price: 449.00,
     rating: 5,
-    reviews: 56
+    reviews: 56,
+    description: "Glow Boost Serum is a lightweight, fast-absorbing serum that instantly boosts your skin's radiance and vitality. Formulated with powerful active ingredients, it hydrates deeply, reduces fine lines, and brightens the complexion. Use it as the first step in your skincare routine for maximum absorption and visible results within days."
   },
   {
     id: 5,
-    name: "Glow Boost Serum",
-    image: "/images/productone.webp",
+    name: "Glow Boost Serum - Premium",
+    image: "/images/prodcutfour.jpeg",
     price: 599.00,
     rating: 5,
-    reviews: 67
+    reviews: 67,
+    description: "Glow Boost Serum Premium is our most luxurious formulation, featuring advanced ingredients that provide intense hydration and skin renewal. This serum targets multiple skin concerns including dryness, dullness, and fine lines. With its potent blend of antioxidants and nourishing oils, it transforms your skin into a glowing, youthful canvas."
   },
   {
     id: 6,
     name: "Gentle Cleanse Micellar Water",
-    image: "/images/productone.webp",
+    image: "/images/productfive.jpeg",
     price: 299.00,
     rating: 4,
-    reviews: 41
+    reviews: 41,
+    description: "Gentle Cleanse Micellar Water is a no-fuss, no-residue makeup remover and cleanser. Its micelle technology gently lifts away makeup, dirt, and impurities without harsh rubbing. Perfect for sensitive skin, this micellar water leaves your skin feeling refreshed and clean without any drying or irritating effects."
   },
   {
     id: 7,
     name: "Volume Boost Hair Spray",
-    image: "/images/productone.webp",
+    image: "/images/productsix.jpeg",
     price: 379.00,
     rating: 4,
-    reviews: 23
+    reviews: 23,
+    description: "Volume Boost Hair Spray adds instant volume and thickness to your hair while providing a strong, long-lasting hold. This lightweight formula doesn't weigh your hair down or make it sticky. Perfect for creating voluminous styles that last all day, it gives you the confidence to flaunt your best hair look."
   },
   {
     id: 8,
     name: "Hydrate Plus Moisturizer",
-    image: "/images/productone.webp",
+    image: "/images/productseven.jpeg",
     price: 499.00,
     rating: 5,
-    reviews: 89
+    reviews: 89,
+    description: "Hydrate Plus Moisturizer is a rich, nourishing cream that deeply hydrates and protects your skin. Formulated with advanced moisturizing complex, it locks in moisture, reduces dryness, and restores skin's natural glow. This luxurious moisturizer is suitable for all skin types and provides 24-hour hydration for soft, supple skin."
   }
 ];
 
@@ -81,7 +88,7 @@ const ProductCard = ({ product, onNavigate }) => {
   return (
     <div 
       onClick={() => onNavigate(product.id)}
-      className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden group"
+      className="bg-white rounded-xl  transition-all duration-300 cursor-pointer relative overflow-hidden group"
     >
       {/* Favorite Icon */}
       <button
@@ -141,8 +148,7 @@ const ProductCard = ({ product, onNavigate }) => {
 
 export default function ProductListingPage() {
   const handleNavigate = (productId) => {
-    window.location.href = `/product/${productId}`;
-    console.log(`Navigating to product ${productId}`);
+    window.location.href = `/products/${productId}`; 
   };
 
   return (
@@ -175,14 +181,7 @@ export default function ProductListingPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-10 sm:mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <p className="text-center text-xs sm:text-sm text-gray-600">
-            © 2024 Your Brand. All rights reserved.
-          </p>
-        </div>
-      </footer>
+    
     </div>
   );
 }
