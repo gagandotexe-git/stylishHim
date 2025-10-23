@@ -15,25 +15,45 @@ const NavBar = () => {
   ];
 
   const AnimatedLogo = () => (
-    <Link href="/" className="flex items-center group">
-      <div className="relative mr-4">
-        {/* Logo text with shimmer effect */}
-        <h1 className="  text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-          <span className="relative inline-block bg-gradient-to-r from-[#2C2C2C] via-[#1a1a1a] to-[#2C2C2C] bg-clip-text text-transparent">
-            StylishHim
-          </span>
+  <Link href="/" className="flex items-center group">
+    <div className="relative mr-4">
+      {/* Logo text with warm shimmer effect */}
+      <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
+        <span className="relative inline-block bg-gradient-to-r from-[#AD9682] via-[#FFEEE2] to-[#AD9682] bg-clip-text text-transparent">
+          StylishHim
+        </span>
+
+        {/* Animated shimmer overlay */}
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#AD9682] to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
+          StylishHim
+        </span>
+      </h1>
+
+      {/* Soft underline accent */}
+      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#FFEEE2] to-[#AD9682] transition-all duration-500 mx-auto rounded-full"></div>
+    </div>
+  </Link>
+);
+  // const AnimatedLogo = () => (
+  //   <Link href="/" className="flex items-center group">
+  //     <div className="relative mr-4">
+  //       {/* Logo text with shimmer effect */}
+  //       <h1 className="  text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
+  //         <span className="relative inline-block bg-gradient-to-r from-[#2C2C2C] via-[#1a1a1a] to-[#2C2C2C] bg-clip-text text-transparent">
+  //           StylishHim
+  //         </span>
           
-          {/* Animated shimmer overlay */}
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
-            StylishHim
-          </span>
-        </h1>
+  //         {/* Animated shimmer overlay */}
+  //         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
+  //           StylishHim
+  //         </span>
+  //       </h1>
         
-        {/* Subtle underline accent */}
-        <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#F6CBB0] via-[#E8B89A] to-[#F6CBB0] transition-all duration-500 mx-auto"></div>
-      </div>
-    </Link>
-  );
+  //       {/* Subtle underline accent */}
+  //       <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#E8B89A] to-[#AD9682] transition-all duration-500 mx-auto"></div>
+  //     </div>
+  //   </Link>
+  // );
 
   const Icons = (
     <div className="flex items-center space-x-3">
