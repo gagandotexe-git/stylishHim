@@ -7,31 +7,55 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/products/0", label: "Products" },
+    { href: "/", label: "Products" },
     { href: "/", label: "About" },
     { href: "/", label: "StylishHim Fashion" },
     { href: "/", label: "Style Advice" },
     { href: "/", label: "Help" },
   ];
 
-  const Logo = (
-    <Link href="/" className="flex items-center">
-      <span className="text-[20px] font-bold bg-gradient-to-r from-[#AD9682] to-[#AD9682] bg-clip-text text-transparent">
-        StylishHim
-      </span>
+  const AnimatedLogo = () => (
+    <Link href="/" className="flex items-center group">
+      <div className="relative mr-4">
+        {/* Logo text with shimmer effect */}
+        <h1 className="  text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
+          <span className="relative inline-block bg-gradient-to-r from-[#2C2C2C] via-[#1a1a1a] to-[#2C2C2C] bg-clip-text text-transparent">
+            StylishHim
+          </span>
+          
+          {/* Animated shimmer overlay */}
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
+            StylishHim
+          </span>
+        </h1>
+        
+        {/* Subtle underline accent */}
+        <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#F6CBB0] via-[#E8B89A] to-[#F6CBB0] transition-all duration-500 mx-auto"></div>
+      </div>
     </Link>
   );
 
   const Icons = (
     <div className="flex items-center space-x-3">
-      <Link href="/" className="p-2 text-black hover:text-[#AD9682] transition-colors">
+      <Link
+        href="/"
+        className="p-2 text-black hover:text-[#AD9682] transition-colors"
+      >
         <User className="h-5 w-5" />
       </Link>
-      <Link href="/" className="relative p-2 text-black hover:text-[#AD9682] transition-colors">
+      <Link
+        href="/"
+        className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
+      >
         <ShoppingBag className="h-5 w-5" />
-        <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+        <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+          0
+        </span>
       </Link>
-      <button className="p-2 text-black md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <button
+        className="p-2 text-black md:hidden"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
     </div>
@@ -43,46 +67,70 @@ const NavBar = () => {
       <input
         type="text"
         placeholder="Search on StylishHim"
-        className="w-full pl-12 pr-4 py-1.5 text-[14px] border border-gray-300 rounded-[20px] focus:outline-none focus:ring-2 focus:ring-[#AD9682] focus:border-transparent"
+        className="w-full pl-12 pr-4 py-1.5 text-[14px] border border-gray-300 rounded-[20px] focus:outline-none focus:ring-2 focus:ring-[#AD9682] focus:border-transparent [font-family:'Raleway',_'Lato',_sans-serif]"
       />
     </div>
   );
 
   return (
-    <nav className="bg-[#FFFFFF] ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Mobile */}
-        <div className="flex md:hidden justify-between items-center h-12">
-          {Logo} {Icons}
-        </div>
-        <div className="flex md:hidden mb-4 w-full">{SearchBar}</div>
-
-        {/* Desktop */}
-        <div className="hidden md:flex justify-between items-center h-14">
-          {Logo}
-          <div className="flex items-center space-x-8">
-            {navItems.map(({ href, label }) => (
-              <Link key={label} href={href} className="text-[14px] font-[500] text-black hover:text-[#AD9682] transition-colors">
-                {label}
-              </Link>
-            ))}
+    <>
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=Lato:wght@300;400;700&family=Italiana&display=swap');
+        
+        @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+      `}</style>
+      
+      <nav className="bg-[#FFFFFF]  ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Mobile */}
+          <div className="flex md:hidden justify-between items-center h-14">
+            <AnimatedLogo />
+            {Icons}
           </div>
-          <div className="flex-1 max-w-md mx-8">{SearchBar}</div>
-          {Icons}
-        </div>
+          <div className="flex md:hidden mb-4 w-full">{SearchBar}</div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden pb-4 space-y-2">
-            {navItems.map(({ href, label }) => (
-              <Link key={href} href={href} className="text-[14px] font-[500] block px-3 py-2 text-black hover:bg-gray-100 rounded">
-                {label}
-              </Link>
-            ))}
+          {/* Desktop */}
+          <div className="hidden md:flex justify-between items-center h-16">
+            <AnimatedLogo />
+            <div className="flex items-center space-x-8">
+              {navItems.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-[14px] font-[500] text-black hover:text-[#AD9682] transition-colors [font-family:'Raleway',_'Lato',_sans-serif]"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+            <div className="flex-1 max-w-md mx-8">{SearchBar}</div>
+            {Icons}
           </div>
-        )}
-      </div>
-    </nav>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden pb-4 space-y-2">
+              {navItems.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-[14px] font-[500] block px-3 py-2 text-black hover:bg-gray-100 rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </nav>
+    </>
   );
 };
 
