@@ -62,7 +62,7 @@ const NavBar = () => {
           {Logo}
           <div className="flex items-center space-x-8">
             {navItems.map(({ href, label }) => (
-              <Link key={href} href={href} className="text-[14px] font-[500] text-black hover:text-[#AD9682] transition-colors">
+              <Link key={label} href={href} className="text-[14px] font-[500] text-black hover:text-[#AD9682] transition-colors">
                 {label}
               </Link>
             ))}

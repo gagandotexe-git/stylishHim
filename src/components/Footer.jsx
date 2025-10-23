@@ -6,42 +6,43 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 export default function Footer() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const menuItems = [
-    {
-      title: "Who are we?",
-      items: [
-        { label: "Authenticity", href: "#" },
-        { label: "Sustainability", href: "#" }
-      ]
-    },
-    {
-      title: "Help",
-      items: [
-        { label: "Contact Us", href: "#" },
-        { label: "FAQ", href: "#" },
-        { label: "Cancellation & Return", href:"#" },
-        { label: "Shipping & Delivery", href: "#"}
-      ]
-    },
-    {
-      title: "Quick Links",
-      items: [
-        { label: "Offer Zone", href: "#"},
-        { label: "New Launches", href:"#" }
-      ]
-    },
-    {
-      title: "Top Categories",
-      items: [
-        { label: "Makeup", href: "#" },
-        { label: "Skin", href: "#"},
-        { label: "Hair", href: "#" },
-        { label: "Appliances", href: "#" },
-        { label: "Bath & Body", href:"#" },
-        { label: "Fragrance", href: "#" }
-      ]
-    }
-  ];
+ const menuItems = [
+  {
+    title: "Who are we?",
+    items: [
+      { label: "Authenticity", href: "/about/authenticity" },
+      { label: "Sustainability", href: "/about/sustainability" }
+    ]
+  },
+  {
+    title: "Help",
+    items: [
+      { label: "Contact Us", href: "/contact" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Cancellation & Return", href: "/returns" },
+      { label: "Shipping & Delivery", href: "/shipping" }
+    ]
+  },
+  {
+    title: "Quick Links",
+    items: [
+      { label: "Offer Zone", href: "/offers" },
+      { label: "New Launches", href: "/new-launches" }
+    ]
+  },
+  {
+    title: "Top Categories",
+    items: [
+      { label: "Makeup", href: "/categories/makeup" },
+      { label: "Skin", href: "/categories/skin" },
+      { label: "Hair", href: "/categories/hair" },
+      { label: "Appliances", href: "/categories/appliances" },
+      { label: "Bath & Body", href: "/categories/bath-body" },
+      { label: "Fragrance", href: "/categories/fragrance" }
+    ]
+  }
+];
+
 
   const renderMenuItem = (item) => (
     <Link
