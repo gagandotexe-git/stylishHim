@@ -13,6 +13,7 @@ export default function ProductDetailPage({ params }) {
         reviews: 10,
         images: [
             "https://seonskin.in/cdn/shop/files/3d_product_mockup_and_render_2.png?v=1750847007&width=1800",
+            
             "https://seonskin.in/cdn/shop/files/WhatsApp_Image_2025-07-05_at_19.41.02_1.jpg?v=1751888972&width=1800",
             "https://seonskin.in/cdn/shop/files/WhatsApp_Image_2025-07-05_at_19.41.02.jpg?v=1751888972&width=1800",
             "https://seonskin.in/cdn/shop/files/WhatsApp_Image_2025-07-05_at_19.41.01_1.jpg?v=1751888971&width=1800",

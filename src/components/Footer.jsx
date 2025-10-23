@@ -58,10 +58,18 @@ export default function Footer() {
     <footer className="px-6 md:px-[32px] mt-[10px] border-t border-[#D4D4D5]">
       <div className="max-w-7xl mx-auto pt-6">
         <div className="flex justify-start mb-[10px]">
-          <Link href="/" className="flex items-center">
-            <span className="text-[20px] font-bold bg-gradient-to-r from-[#AD9682] to-[#AD9682] bg-clip-text text-transparent">
-              StylishHim
-            </span>
+          <Link href="/" className="flex items-center group">
+            <div className="relative">
+              <h1 className="text-[24px] md:text-[28px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
+                <span className="relative inline-block bg-gradient-to-r from-[#AD9682] via-[#FFEEE2] to-[#AD9682] bg-clip-text text-transparent">
+                  StylishHim
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#AD9682] to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
+                  StylishHim
+                </span>
+              </h1>
+              <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#FFEEE2] to-[#AD9682] transition-all duration-500 mx-auto rounded-full"></div>
+            </div>
           </Link>
         </div>
 
