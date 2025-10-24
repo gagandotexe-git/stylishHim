@@ -13,26 +13,28 @@ const NavBar = () => {
     { href: "/", label: "Help" },
   ];
 
-  const AnimatedLogo = () => (
+const AnimatedLogo = () => (
   <Link href="/" className="flex items-center group">
     <div className="relative mr-4">
       {/* Logo text with warm shimmer effect */}
       <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-        <span className="relative inline-block bg-gradient-to-r from-[#AD9682] via-[#FFEEE2] to-[#AD9682] bg-clip-text text-transparent">
+        <span className="relative inline-block bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] bg-clip-text text-transparent">
           StylishHim
         </span>
 
-        {/* Animated shimmer overlay */}
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#AD9682] to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
+        {/* Subtle shimmer overlay */}
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#AEA394]/40 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
           StylishHim
         </span>
       </h1>
 
       {/* Soft underline accent */}
-      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#FFEEE2] to-[#AD9682] transition-all duration-500 mx-auto rounded-full"></div>
+      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] transition-all duration-500 mx-auto rounded-full"></div>
     </div>
   </Link>
 );
+
+
   // const AnimatedLogo = () => (
   //   <Link href="/" className="flex items-center group">
   //     <div className="relative mr-4">
