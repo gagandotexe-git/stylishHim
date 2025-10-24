@@ -29,18 +29,7 @@ export default function ProductDetailPage() {
   const dispatch = useDispatch();
 
   const reviewSummary  ={}
-  if (!product) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-600">Product not found.</p>
-          <Link href="/productdisplay" className="text-[#AD9682] font-medium mt-4 inline-block">
-            Back to products
-          </Link>
-        </div>
-      </div>
-    );
-  }
+ 
 
   const primaryImage = product.image;
 
@@ -120,6 +109,19 @@ export default function ProductDetailPage() {
             </svg>
         );
     }
+
+     if (!product) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">Product not found.</p>
+          <Link href="/productdisplay" className="text-[#AD9682] font-medium mt-4 inline-block">
+            Back to products
+          </Link>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-white">
       <style jsx global>{`
