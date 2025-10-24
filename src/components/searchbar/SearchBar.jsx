@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Mic, X, Search } from 'lucide-react';
+import { Mic, MicOff, X, Search } from 'lucide-react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const SearchBar = () => {
   // core state
@@ -10,95 +11,101 @@ const SearchBar = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [listeningBorderHidden, setListeningBorderHidden] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
-  const [listening, setListening] = useState(false);
 
   const containerRef = useRef(null);
   const inputRef = useRef(null);
   const suggestionsRef = useRef(null);
+  const speechTimeoutRef = useRef(null);
 
-  // Categories
+  // Speech recognition setup
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition();
+
+  // Categories with keywords for better matching
   const categorySuggestions = [
-    'Razors for Men',
-    'Best Sellers',
-    'Gifts for Men',
-    'Trimmers',
-    'Shave',
-    'Fragrances',
-    'Skin',
-    'Corporate Gifting',
-    'Blog',
-    'Women',
-    'Haircare',
-    'Makeup',
-    'Skincare',
-    'New Arrivals',
-    'Top Rated',
-    'Budget Buys',
-    'Personal Care',
-    'Bath & Body',
-    'Oral Care',
-    'Wellness'
+    { name: 'Razors for Men', keywords: ['razor', 'shave', 'blade', 'men', 'grooming'] },
+    { name: 'Best Sellers', keywords: ['best', 'seller', 'popular', 'top', 'trending'] },
+    { name: 'Gifts for Men', keywords: ['gift', 'present', 'men', 'him'] },
+    { name: 'Trimmers', keywords: ['trimmer', 'trim', 'beard', 'hair', 'clipper'] },
+    { name: 'Shave', keywords: ['shave', 'shaving', 'razor', 'foam', 'gel'] },
+    { name: 'Fragrances', keywords: ['perfume', 'fragrance', 'scent', 'cologne', 'smell'] },
+    { name: 'Skin', keywords: ['skin', 'skincare', 'face', 'moisturizer', 'cream'] },
+    { name: 'Corporate Gifting', keywords: ['corporate', 'gift', 'business', 'office'] },
+    { name: 'Blog', keywords: ['blog', 'article', 'read', 'tips'] },
+    { name: 'Women', keywords: ['women', 'woman', 'her', 'female', 'lady'] },
+    { name: 'Haircare', keywords: ['hair', 'haircare', 'shampoo', 'conditioner', 'treatment'] },
+    { name: 'Makeup', keywords: ['makeup', 'cosmetic', 'lipstick', 'foundation', 'eyeshadow'] },
+    { name: 'Skincare', keywords: ['skincare', 'skin', 'face', 'serum', 'moisturizer'] },
+    { name: 'New Arrivals', keywords: ['new', 'arrival', 'latest', 'fresh', 'recent'] },
+    { name: 'Top Rated', keywords: ['top', 'rated', 'best', 'review', 'recommended'] },
+    { name: 'Budget Buys', keywords: ['budget', 'cheap', 'affordable', 'value', 'deal'] },
+    { name: 'Personal Care', keywords: ['personal', 'care', 'hygiene', 'daily'] },
+    { name: 'Bath & Body', keywords: ['bath', 'body', 'shower', 'soap', 'wash'] },
+    { name: 'Oral Care', keywords: ['oral', 'dental', 'teeth', 'toothpaste', 'mouth'] },
+    { name: 'Wellness', keywords: ['wellness', 'health', 'vitamin', 'supplement'] }
   ];
 
-  // Products
+  // Products with keywords
   const products = [
-    { id: 1, name: 'Nykaa Lipstick', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 2, name: 'Lakme Eyeliner', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 3, name: "L'Oreal Shampoo", category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 4, name: 'Maybelline Mascara', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 5, name: 'Gillette Mach3 Razor', category: 'Razors for Men', image: '/images/productseven.jpeg' },
-    { id: 6, name: 'Philips Trimmer Series 3000', category: 'Trimmers', image: '/images/productseven.jpeg' },
-    { id: 7, name: 'Nivea Men Shaving Foam', category: 'Shave', image: '/images/productseven.jpeg' },
-    { id: 8, name: 'Axe Body Spray', category: 'Fragrances', image: '/images/productseven.jpeg' },
-    { id: 9, name: 'Dove Body Wash', category: 'Bath & Body', image: '/images/productseven.jpeg' },
-    { id: 10, name: 'Himalaya Face Wash', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 11, name: 'Cetaphil Gentle Cleanser', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 12, name: 'Mamaearth Vitamin C Serum', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 13, name: 'Revlon Hair Spray', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 14, name: 'Tresemme Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 15, name: 'Lotus Herbals Sunscreen', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 16, name: 'Patanjali Aloe Vera Gel', category: 'Skin', image: '/images/productseven.jpeg' },
-    { id: 17, name: 'Park Avenue Deodorant', category: 'Fragrances', image: '/images/productseven.jpeg' },
-    { id: 18, name: 'Forest Essentials Facial Oil', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 19, name: 'Kama Ayurveda Soap', category: 'Bath & Body', image: '/images/productseven.jpeg' },
-    { id: 20, name: 'Harpic Toilet Cleaner', category: 'Homecare', image: '/images/productseven.jpeg' },
-    { id: 21, name: 'TRESemmé Keratin Smooth', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 22, name: 'Bajaj Almond Drops Hair Oil', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 23, name: 'Ponds Cold Cream', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 24, name: 'Lakme Compact Powder', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 25, name: 'Maybelline Fit Me Foundation', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 26, name: 'Batiste Dry Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 27, name: 'Braun Electric Shaver', category: 'Razors for Men', image: '/images/productseven.jpeg' },
-    { id: 28, name: 'Himalaya Herbals Face Pack', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 29, name: 'Ambi Skincare Cream', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 30, name: 'Colgate Toothpaste', category: 'Oral Care', image: '/images/productseven.jpeg' },
-    { id: 31, name: 'Sensodyne Toothpaste', category: 'Oral Care', image: '/images/productseven.jpeg' },
-    { id: 32, name: 'Batiste Volume Dry Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 33, name: 'The Man Company Beard Oil', category: 'Gifts for Men', image: '/images/productseven.jpeg' },
-    { id: 34, name: 'Old Spice Aftershave', category: 'Fragrances', image: '/images/productseven.jpeg' },
-    { id: 35, name: 'Nivea Soft Moisturizer', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 36, name: 'Garnier Micellar Water', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 37, name: 'Loreal Men Expert Face Wash', category: 'Skin', image: '/images/productseven.jpeg' },
-    { id: 38, name: 'Park Avenue Beard Trimmer', category: 'Trimmers', image: '/images/productseven.jpeg' },
-    { id: 39, name: 'Philips OneBlade', category: 'Trimmers', image: '/images/productseven.jpeg' },
-    { id: 40, name: 'Nivea Men Deodorant', category: 'Fragrances', image: '/images/productseven.jpeg' },
-    { id: 41, name: 'Dove Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 42, name: 'Clinique Moisturizer', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 43, name: 'Biotique Bio Honey Gel', category: 'Skincare', image: '/images/productseven.jpeg' },
-    { id: 44, name: 'Vaseline Petroleum Jelly', category: 'Skin', image: '/images/productseven.jpeg' },
-    { id: 45, name: 'Himalaya Soap', category: 'Bath & Body', image: '/images/productseven.jpeg' },
-    { id: 46, name: 'Yardley London Soap', category: 'Bath & Body', image: '/images/productseven.jpeg' },
-    { id: 47, name: 'Forest Essentials Lip Balm', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 48, name: 'Streax Hair Serum', category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 49, name: 'Nivea Lip Conditioner', category: 'Skin', image: '/images/productseven.jpeg' },
-    { id: 50, name: 'Mamaearth Charcoal Face Pack', category: 'Skincare', image: '/images/productseven.jpeg' }
+    { 
+      id: 1, 
+      name: 'Nykaa Lipstick', 
+      category: 'Makeup', 
+      image: '/images/productseven.jpeg',
+      keywords: ['lipstick', 'lip', 'nykaa', 'makeup', 'cosmetic', 'color']
+    },
+    { 
+      id: 2, 
+      name: 'Lakme Eyeliner', 
+      category: 'Makeup', 
+      image: '/images/productseven.jpeg',
+      keywords: ['eyeliner', 'eye', 'lakme', 'makeup', 'liner', 'kajal']
+    },
+    { 
+      id: 3, 
+      name: "L'Oreal Shampoo", 
+      category: 'Haircare', 
+      image: '/images/productseven.jpeg',
+      keywords: ['shampoo', 'hair', 'loreal', 'wash', 'haircare', 'clean']
+    },
+    { 
+      id: 4, 
+      name: 'Maybelline Mascara', 
+      category: 'Makeup', 
+      image: '/images/productseven.jpeg',
+      keywords: ['mascara', 'eye', 'maybelline', 'makeup', 'lash', 'eyelash']
+    },
   ];
 
-  // Load history from localStorage
+  // Load history from memory (not localStorage)
+  const historyRef = useRef([]);
   useEffect(() => {
-    const h = JSON.parse(localStorage.getItem('searchHistory')) || [];
-    setSearchHistory(h.slice(0, 5)); // Ensure only 5 items max
+    setSearchHistory(historyRef.current.slice(0, 5));
   }, []);
+
+  // Handle speech recognition transcript
+  useEffect(() => {
+    if (transcript) {
+      setQuery(transcript);
+      setShowSuggestions(true);
+      performSearch(transcript);
+
+      // Auto-search after 1.5 seconds of continuous speech
+      if (speechTimeoutRef.current) {
+        clearTimeout(speechTimeoutRef.current);
+      }
+      
+      speechTimeoutRef.current = setTimeout(() => {
+        if (transcript.trim()) {
+          handleSelect({ type: 'text', name: transcript });
+        }
+      }, 1500);
+    }
+  }, [transcript]);
 
   // Click outside to close
   useEffect(() => {
@@ -113,43 +120,40 @@ const SearchBar = () => {
     return () => document.removeEventListener('mousedown', onClick);
   }, []);
 
-  // Fuzzy matching function - calculates similarity between two strings
-  const calculateSimilarity = (str1, str2) => {
-    const s1 = str1.toLowerCase();
-    const s2 = str2.toLowerCase();
+  // Enhanced keyword matching function
+  const calculateKeywordMatch = (searchTokens, keywords, text) => {
+    let score = 0;
+    const textLower = text.toLowerCase();
     
-    // Exact match
-    if (s1 === s2) return 1.0;
-    
-    // Check if one contains the other
-    if (s1.includes(s2) || s2.includes(s1)) return 0.9;
-    
-    // Count matching characters in sequence
-    let matches = 0;
-    let j = 0;
-    for (let i = 0; i < s1.length && j < s2.length; i++) {
-      if (s1[i] === s2[j]) {
-        matches++;
-        j++;
+    searchTokens.forEach(token => {
+      // Direct match in text
+      if (textLower.includes(token)) {
+        score += 1.0;
       }
-    }
+      
+      // Keyword match
+      keywords.forEach(keyword => {
+        if (keyword.includes(token) || token.includes(keyword)) {
+          score += 0.8;
+        }
+        // Partial keyword match
+        if (keyword.length > 3 && token.length > 3) {
+          const minLen = Math.min(keyword.length, token.length);
+          let matching = 0;
+          for (let i = 0; i < minLen; i++) {
+            if (keyword[i] === token[i]) matching++;
+          }
+          if (matching / minLen > 0.6) {
+            score += 0.5;
+          }
+        }
+      });
+    });
     
-    // Calculate match ratio
-    const matchRatio = matches / Math.max(s1.length, s2.length);
-    
-    // Character position similarity
-    let positionScore = 0;
-    const minLen = Math.min(s1.length, s2.length);
-    for (let i = 0; i < minLen; i++) {
-      if (s1[i] === s2[i]) positionScore++;
-    }
-    const positionRatio = positionScore / Math.max(s1.length, s2.length);
-    
-    // Combined score
-    return (matchRatio * 0.7 + positionRatio * 0.3);
+    return score;
   };
 
-  // Enhanced search with fuzzy matching
+  // Enhanced search with keyword matching
   const performSearch = useCallback((text) => {
     const trimmedText = text.trim().toLowerCase();
     
@@ -159,29 +163,14 @@ const SearchBar = () => {
     }
 
     const tokens = trimmedText.split(/\s+/).filter(Boolean);
-    const SIMILARITY_THRESHOLD = 0.5; // Match if at least 50% similar
 
-    // Search categories with fuzzy matching
+    // Search categories with keyword matching
     const matchedCategories = categorySuggestions
       .map((cat) => {
-        let maxScore = 0;
-        const catLower = cat.toLowerCase();
-        
-        // Check each token against category
-        tokens.forEach((token) => {
-          const score = calculateSimilarity(token, catLower);
-          if (score > maxScore) maxScore = score;
-          
-          // Also check against category words
-          cat.split(/\s+/).forEach((word) => {
-            const wordScore = calculateSimilarity(token, word.toLowerCase());
-            if (wordScore > maxScore) maxScore = wordScore;
-          });
-        });
-        
-        return { category: cat, score: maxScore };
+        const score = calculateKeywordMatch(tokens, cat.keywords, cat.name);
+        return { category: cat.name, score };
       })
-      .filter((item) => item.score >= SIMILARITY_THRESHOLD)
+      .filter((item) => item.score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)
       .map((item, idx) => ({ 
@@ -191,32 +180,16 @@ const SearchBar = () => {
         score: item.score 
       }));
 
-    // Search products with fuzzy matching
+    // Search products with keyword matching
     const matchedProducts = products
       .map((product) => {
-        let maxScore = 0;
-        const nameLower = product.name.toLowerCase();
-        const categoryLower = product.category.toLowerCase();
+        const nameScore = calculateKeywordMatch(tokens, product.keywords, product.name);
+        const categoryScore = calculateKeywordMatch(tokens, [], product.category) * 0.5;
+        const score = nameScore + categoryScore;
         
-        tokens.forEach((token) => {
-          // Check against product name
-          const nameScore = calculateSimilarity(token, nameLower);
-          if (nameScore > maxScore) maxScore = nameScore;
-          
-          // Check against product name words
-          product.name.split(/\s+/).forEach((word) => {
-            const wordScore = calculateSimilarity(token, word.toLowerCase());
-            if (wordScore > maxScore) maxScore = wordScore;
-          });
-          
-          // Check against category
-          const catScore = calculateSimilarity(token, categoryLower);
-          if (catScore > maxScore) maxScore = catScore * 0.8; // Slightly lower weight for category
-        });
-        
-        return { ...product, score: maxScore };
+        return { ...product, score };
       })
-      .filter((item) => item.score >= SIMILARITY_THRESHOLD)
+      .filter((item) => item.score > 0)
       .sort((a, b) => b.score - a.score);
 
     // Combine results
@@ -252,10 +225,16 @@ const SearchBar = () => {
     setShowSuggestions(false);
     setHighlightIndex(-1);
     
-    // Update history - keep only last 5 searches
-    const updated = [text, ...searchHistory.filter((h) => h !== text)].slice(0, 5);
+    // Update history in memory
+    const updated = [text, ...historyRef.current.filter((h) => h !== text)].slice(0, 5);
+    historyRef.current = updated;
     setSearchHistory(updated);
-    localStorage.setItem('searchHistory', JSON.stringify(updated));
+    
+    // Stop listening if active
+    if (listening) {
+      SpeechRecognition.stopListening();
+      resetTranscript();
+    }
     
     // Navigate to products page
     setTimeout(() => {
@@ -263,10 +242,24 @@ const SearchBar = () => {
     }, 100);
   };
 
-  // Voice toggle (mock implementation)
+  // Voice toggle with speech recognition
   const toggleMic = () => {
-    setListening(!listening);
-    // In production, integrate with Web Speech API or react-speech-recognition
+    if (!browserSupportsSpeechRecognition) {
+      alert('Your browser does not support speech recognition. Please use Chrome, Edge, or Safari.');
+      return;
+    }
+
+    if (listening) {
+      SpeechRecognition.stopListening();
+      if (speechTimeoutRef.current) {
+        clearTimeout(speechTimeoutRef.current);
+      }
+    } else {
+      resetTranscript();
+      setQuery('');
+      setMatches([]);
+      SpeechRecognition.startListening({ continuous: true, language: 'en-IN' });
+    }
   };
 
   // Keyboard navigation
@@ -334,19 +327,42 @@ const SearchBar = () => {
     setMatches([]);
     setShowSuggestions(false);
     setHighlightIndex(-1);
+    resetTranscript();
+    if (listening) {
+      SpeechRecognition.stopListening();
+    }
     inputRef.current?.focus();
   };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (speechTimeoutRef.current) {
+        clearTimeout(speechTimeoutRef.current);
+      }
+      if (listening) {
+        SpeechRecognition.stopListening();
+      }
+    };
+  }, [listening]);
 
   return (
     <div ref={containerRef} className="relative w-full max-w-2xl mx-auto" style={{ fontFamily: "'Marcellus', 'Work Sans', serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@400;500;600&display=swap');
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        .listening-pulse {
+          animation: pulse 1.5s ease-in-out infinite;
+        }
       `}</style>
       
       <div
         className={`flex items-center rounded-full px-4 py-2 bg-white transition-shadow shadow-sm ${
           showSuggestions ? 'shadow-lg' : ''
-        }`}
+        } ${listening ? 'ring-2 ring-red-400' : ''}`}
       >
         <Search className="text-gray-500 mr-2" />
         <input
@@ -358,9 +374,10 @@ const SearchBar = () => {
             if (query.trim()) performSearch(query);
             else setMatches([]);
           }}
-          placeholder="Search for products, brands, categories..."
+          placeholder={listening ? "Listening..." : "Search for products, brands, categories..."}
           className="flex-1 outline-none text-black placeholder-gray-400 bg-transparent"
           style={{ fontFamily: "'Work Sans', sans-serif" }}
+          disabled={listening}
         />
 
         {query ? (
@@ -371,10 +388,11 @@ const SearchBar = () => {
 
         <button
           onClick={toggleMic}
-          className={`ml-1 transition ${listening ? 'text-red-500' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`ml-1 transition ${listening ? 'text-red-500 listening-pulse' : 'text-gray-500 hover:text-gray-700'}`}
           aria-label="Voice search"
+          title={listening ? "Stop listening" : "Start voice search"}
         >
-          <Mic />
+          {listening ? <MicOff /> : <Mic />}
         </button>
       </div>
 
@@ -408,15 +426,15 @@ const SearchBar = () => {
               <div className="flex flex-wrap gap-2">
                 {categorySuggestions.slice(0, 8).map((c) => (
                   <button
-                    key={c}
+                    key={c.name}
                     onClick={() => {
-                      setQuery(c);
-                      performSearch(c);
+                      setQuery(c.name);
+                      performSearch(c.name);
                       setShowSuggestions(true);
                     }}
                     className="px-3 py-1 bg-gray-100 rounded-full text-sm text-black hover:bg-gray-200 transition"
                   >
-                    {c}
+                    {c.name}
                   </button>
                 ))}
               </div>
