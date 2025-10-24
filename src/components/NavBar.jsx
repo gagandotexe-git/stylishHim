@@ -149,6 +149,7 @@ const AnimatedLogo = () => (
                   key={href}
                   href={href}
                   className="text-[14px] font-[500] block px-3 py-2 text-black hover:bg-gray-100 rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
                 </Link>

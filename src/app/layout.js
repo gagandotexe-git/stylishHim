@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
           </div>
 
           {/* Space for navbar and banner combined */}
-          <main className="pt-[115px]">{children}</main>
+          <main className="pt-[125px]">{children}</main>
 
           <FeaturesBanner />
           <Footer />
