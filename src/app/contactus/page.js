@@ -86,7 +86,7 @@ export default function Contact() {
     };
 
     return (
-        <div className="min-h-screen pt-[60px] md:pt-[35px]">
+        <div className="min-h-screen pt-[60px] md:pt-[30px]">
             <Toaster
                 position="top-right"
                 toastOptions={{

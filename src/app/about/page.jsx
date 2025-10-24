@@ -4,7 +4,7 @@ import { useState } from 'react';
 export default function AboutUs() {
     const [email, setEmail] = useState('');
     return (
-        <div className="bg-white pt-[60px] md:pt-[35px]">
+        <div className="bg-white pt-[60px] md:pt-[20px]">
 
             <div className="w-full">
 
