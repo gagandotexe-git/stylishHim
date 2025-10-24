@@ -18,7 +18,7 @@ const NavBar = () => {
   { href: "/about", label: "About" },
   { href: "/fashion", label: "StylishHim Fashion" },
   { href: "/contactus", label: "Contact Us" },
-  { href: "/help", label: "Help" }, 
+  { href: "/helpcenter", label: "Help" }, 
   ];
 const cartItems = useSelector((state) => state.cart.items);
 const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
