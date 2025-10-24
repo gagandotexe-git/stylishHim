@@ -13,6 +13,23 @@ export const products = [
     reviews: 32,
     description:
       "Our Stronger Strands Hairfall Control Shampoo is specially formulated to reduce hair fall and strengthen your hair from the roots.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Reduces hair fall, strengthens roots, and promotes thicker, healthier strands.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Apply a small amount to wet hair, massage gently into the scalp, and rinse thoroughly.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Biotin, Keratin Complex, Natural Oils, and Aloe Vera Extracts.",
+      },
+    ],
   },
   {
     id: 2,
@@ -23,6 +40,23 @@ export const products = [
     reviews: 45,
     description:
       "Radiance Vitamin C FaceMask brightens and revitalizes your complexion with potent vitamin C and hydration.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Brightens dull skin, evens out skin tone, and improves elasticity.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Apply evenly on cleansed skin, leave for 15 minutes, and rinse off with lukewarm water.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Vitamin C, Hyaluronic Acid, Niacinamide, and Fruit Extracts.",
+      },
+    ],
   },
   {
     id: 3,
@@ -33,6 +67,23 @@ export const products = [
     reviews: 28,
     description:
       "A gentle yet effective cleanser that removes impurities while delivering the brightening benefits of vitamin C.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Cleanses impurities, brightens complexion, and refreshes skin instantly.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Massage onto wet face in circular motions, rinse thoroughly, and pat dry.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Vitamin C, Lemon Extract, Aloe Vera, and Glycerin.",
+      },
+    ],
   },
   {
     id: 4,
@@ -43,6 +94,23 @@ export const products = [
     reviews: 56,
     description:
       "A lightweight serum that instantly boosts radiance and hydrates deeply while reducing fine lines.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Enhances glow, reduces fine lines, and deeply hydrates the skin.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Apply a few drops to clean skin before moisturizer, morning and night.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Vitamin C, Niacinamide, Hyaluronic Acid, and Natural Oils.",
+      },
+    ],
   },
   {
     id: 5,
@@ -53,6 +121,23 @@ export const products = [
     reviews: 89,
     description:
       "A rich, nourishing cream that deeply hydrates and protects your skin for 24 hours.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Provides 24-hour hydration, restores moisture barrier, and gives smooth skin texture.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Apply evenly on face and neck after cleansing and serum.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Shea Butter, Ceramides, Hyaluronic Acid, and Vitamin E.",
+      },
+    ],
   },
   {
     id: 6,
@@ -63,6 +148,23 @@ export const products = [
     reviews: 41,
     description:
       "Micellar water that removes makeup and impurities gently without irritation.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Removes makeup, cleanses impurities, and hydrates skin.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Soak a cotton pad and gently wipe over face until clean.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Micelles, Rose Water, Cucumber Extract, and Vitamin B5.",
+      },
+    ],
   },
   {
     id: 7,
@@ -73,6 +175,23 @@ export const products = [
     reviews: 23,
     description:
       "Adds instant volume and thickness with a strong hold — lightweight and non-sticky.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Gives instant volume, adds texture, and provides long-lasting hold.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Spray onto dry hair from 8-10 inches away for desired volume.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Keratin, Vitamin B5, and Natural Polymers.",
+      },
+    ],
   },
   {
     id: 8,
@@ -83,8 +202,26 @@ export const products = [
     reviews: 67,
     description:
       "A luxurious formulation with advanced ingredients that deliver intense hydration and skin renewal.",
+    details: [
+      {
+        title: "Key Benefits",
+        content:
+          "Deeply hydrates, improves elasticity, and reduces fine lines.",
+      },
+      {
+        title: "How to Use",
+        content:
+          "Apply 2–3 drops to cleansed face and neck before moisturizer.",
+      },
+      {
+        title: "Ingredients",
+        content:
+          "Hyaluronic Acid, Vitamin E, Peptides, and Botanical Extracts.",
+      },
+    ],
   },
 ];
+
 
 const ProductCard = ({ product, onNavigate }) => {
   const [isFavorite, setIsFavorite] = useState(false);

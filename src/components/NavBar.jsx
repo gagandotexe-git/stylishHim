@@ -11,11 +11,15 @@ const NavBar = () => {
 const [isCartOpen, setIsCartOpen] = useState(false);
 
   const navItems = [
-    { href: "/productdisplay", label: "Products" },
-    { href: "/", label: "About" },
-    { href: "/", label: "StylishHim Fashion" },
-    { href: "/", label: "Style Advice" },
-    { href: "/", label: "Help" },
+  // src/constants/navLinks.js
+
+  { href: "/productdisplay", label: "Products" },
+  { href: "/about", label: "About" },
+  { href: "/fashion", label: "StylishHim Fashion" },
+  { href: "/style-advice", label: "Style Advice" },
+  { href: "/help", label: "Help" },
+
+
   ];
 const cartItems = useSelector((state) => state.cart.items);
 const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
