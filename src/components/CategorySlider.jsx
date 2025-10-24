@@ -17,17 +17,22 @@ const CategorySlider = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const categories = [
-    { name: "Makeup", image: "/images/categoryImage/gifting.png", link: "/" },
-    { name: "Skin", image: "/images/categoryImage/skin.png", link: "/" },
-    { name: "Hair", image: "/images/categoryImage/hair.png", link: "/" },
-    { name: "Appliances", image: "/images/categoryImage/glow.png", link: "/" },
-    { name: "Bath & Body", image: "/images/categoryImage/bathbody.png", link: "/" },
-    { name: "Fragrance", image: "/images/categoryImage/glow.png", link: "/" },
-  ];
+const categories = [
+  { name: "Razors for Men", image: "/images/categoryImage/gifting.png", link: "/" },
+  { name: "Best Sellers", image: "/images/categoryImage/skin.png", link: "/" },
+  { name: "Gifts for Men", image: "/images/categoryImage/hair.png", link: "/" },
+  { name: "Trimmers", image: "/images/categoryImage/glow.png", link: "/" },
+  { name: "Shave", image: "/images/categoryImage/bathbody.png", link: "/" },
+  { name: "Fragrances", image: "/images/categoryImage/glow.png", link: "/" },
+  { name: "Skin", image: "/images/categoryImage/gifting.png", link: "/" },
+  { name: "Corporate Gifting", image: "/images/categoryImage/skin.png", link: "/" },
+  { name: "Blog", image: "/images/categoryImage/hair.png", link: "/" },
+  { name: "Women", image: "/images/categoryImage/glow.png", link: "/" },
+];
+
 
   return (
-    <div className="w-full bg-white pt-[85px] md:pt-[65px]">
+    <div className="w-full bg-white  ">
       {/* Desktop View - Text Navigation */}
       <div className="hidden lg:block mb-[15px]">
         <div className="container mx-auto px-4">

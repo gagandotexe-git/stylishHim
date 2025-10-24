@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
-import Link from "next/link";
-
+import Link from "next/link"; 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -106,8 +105,8 @@ const NavBar = () => {
           }
         }
       `}</style>
-      
-      <nav className="bg-[#FFFFFF]  ">
+        
+       <nav className="bg-[#FFFFFF]  ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile */}
           <div className="flex md:hidden justify-between items-center h-14">
@@ -149,7 +148,7 @@ const NavBar = () => {
             </div>
           )}
         </div>
-      </nav>
+      </nav> 
     </>
   );
 };

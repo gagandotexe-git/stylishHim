@@ -1,80 +1,88 @@
-"use client"
-import { useState } from 'react';
-import { Heart } from 'lucide-react';
+"use client";
+import { useState } from "react";
+import { Heart } from "lucide-react";
 
 export const products = [
   {
     id: 1,
     name: "Stronger Strands - Hairfall Control Shampoo",
     image: "/images/productone.webp",
-    price: 349.00,
+    price: 349.0,
     rating: 4,
     reviews: 32,
-    description: "Our Stronger Strands Hairfall Control Shampoo is specially formulated to reduce hair fall and strengthen your hair from the roots. Enriched with natural ingredients that nourish and protect, this shampoo helps prevent breakage and promotes healthier, stronger hair. Suitable for all hair types, it gently cleanses while maintaining the natural moisture balance of your scalp."
+    description:
+      "Our Stronger Strands Hairfall Control Shampoo is specially formulated to reduce hair fall and strengthen your hair from the roots.",
   },
   {
     id: 2,
     name: "Radiance Vitamin C FaceMask",
     image: "/images/productone.jpeg",
-    price: 249.00,
+    price: 249.0,
     rating: 5,
     reviews: 45,
-    description: "Radiance Vitamin C FaceMask is a premium skincare treatment designed to brighten and revitalize your complexion. Packed with potent vitamin C, this mask helps fade dark spots, evens out skin tone, and boosts overall radiance. Perfect for dull and tired-looking skin, it delivers intensive hydration and leaves your face glowing and refreshed."
+    description:
+      "Radiance Vitamin C FaceMask brightens and revitalizes your complexion with potent vitamin C and hydration.",
   },
   {
     id: 3,
     name: "Vitamin C Face Wash",
     image: "/images/producttwo.jpeg",
-    price: 399.00,
+    price: 399.0,
     rating: 4,
     reviews: 28,
-    description: "Our Vitamin C Face Wash is a gentle yet effective cleanser that removes impurities while delivering the brightening benefits of vitamin C. It helps reduce dark spots, improves skin texture, and promotes a more radiant complexion. This daily-use face wash is perfect for all skin types and leaves your skin feeling fresh, clean, and luminous."
+    description:
+      "A gentle yet effective cleanser that removes impurities while delivering the brightening benefits of vitamin C.",
   },
   {
     id: 4,
     name: "Glow Boost Serum",
     image: "/images/productthree.jpeg",
-    price: 449.00,
+    price: 449.0,
     rating: 5,
     reviews: 56,
-    description: "Glow Boost Serum is a lightweight, fast-absorbing serum that instantly boosts your skin's radiance and vitality. Formulated with powerful active ingredients, it hydrates deeply, reduces fine lines, and brightens the complexion. Use it as the first step in your skincare routine for maximum absorption and visible results within days."
+    description:
+      "A lightweight serum that instantly boosts radiance and hydrates deeply while reducing fine lines.",
   },
   {
     id: 5,
-    name: "Glow Boost Serum - Premium",
-    image: "/images/prodcutfour.jpeg",
-    price: 599.00,
+    name: "Hydrate Plus Moisturizer",
+    image: "/images/productseven.jpeg",
+    price: 499.0,
     rating: 5,
-    reviews: 67,
-    description: "Glow Boost Serum Premium is our most luxurious formulation, featuring advanced ingredients that provide intense hydration and skin renewal. This serum targets multiple skin concerns including dryness, dullness, and fine lines. With its potent blend of antioxidants and nourishing oils, it transforms your skin into a glowing, youthful canvas."
+    reviews: 89,
+    description:
+      "A rich, nourishing cream that deeply hydrates and protects your skin for 24 hours.",
   },
   {
     id: 6,
     name: "Gentle Cleanse Micellar Water",
     image: "/images/productfive.jpeg",
-    price: 299.00,
+    price: 299.0,
     rating: 4,
     reviews: 41,
-    description: "Gentle Cleanse Micellar Water is a no-fuss, no-residue makeup remover and cleanser. Its micelle technology gently lifts away makeup, dirt, and impurities without harsh rubbing. Perfect for sensitive skin, this micellar water leaves your skin feeling refreshed and clean without any drying or irritating effects."
+    description:
+      "Micellar water that removes makeup and impurities gently without irritation.",
   },
   {
     id: 7,
     name: "Volume Boost Hair Spray",
     image: "/images/productsix.jpeg",
-    price: 379.00,
+    price: 379.0,
     rating: 4,
     reviews: 23,
-    description: "Volume Boost Hair Spray adds instant volume and thickness to your hair while providing a strong, long-lasting hold. This lightweight formula doesn't weigh your hair down or make it sticky. Perfect for creating voluminous styles that last all day, it gives you the confidence to flaunt your best hair look."
+    description:
+      "Adds instant volume and thickness with a strong hold — lightweight and non-sticky.",
   },
   {
     id: 8,
-    name: "Hydrate Plus Moisturizer",
-    image: "/images/productseven.jpeg",
-    price: 499.00,
+    name: "Glow Boost Serum - Premium",
+    image: "/images/prodcutfour.jpeg",
+    price: 599.0,
     rating: 5,
-    reviews: 89,
-    description: "Hydrate Plus Moisturizer is a rich, nourishing cream that deeply hydrates and protects your skin. Formulated with advanced moisturizing complex, it locks in moisture, reduces dryness, and restores skin's natural glow. This luxurious moisturizer is suitable for all skin types and provides 24-hour hydration for soft, supple skin."
-  }
+    reviews: 67,
+    description:
+      "A luxurious formulation with advanced ingredients that deliver intense hydration and skin renewal.",
+  },
 ];
 
 const ProductCard = ({ product, onNavigate }) => {
@@ -86,9 +94,10 @@ const ProductCard = ({ product, onNavigate }) => {
   };
 
   return (
-    <div 
+    <div
       onClick={() => onNavigate(product.id)}
-      className="bg-white rounded-xl  transition-all duration-300 cursor-pointer relative overflow-hidden group"
+      className="bg-white rounded-xl transition-all duration-300 cursor-pointer relative overflow-hidden group flex-shrink-0 
+        w-[48%] sm:w-[48%] md:w-[23%] lg:w-[23%]"
     >
       {/* Favorite Icon */}
       <button
@@ -97,12 +106,14 @@ const ProductCard = ({ product, onNavigate }) => {
       >
         <Heart
           size={18}
-          className={`${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400'} transition-colors duration-300`}
+          className={`${
+            isFavorite ? "fill-red-500 text-red-500" : "text-gray-400"
+          } transition-colors duration-300`}
         />
       </button>
 
       {/* Product Image */}
-      <div className="relative h-48 sm:h-64    rounded-t-xl overflow-hidden">
+      <div className="relative h-48 sm:h-64 rounded-t-xl overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
@@ -123,7 +134,7 @@ const ProductCard = ({ product, onNavigate }) => {
               <svg
                 key={index}
                 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                  index < product.rating ? 'text-[#AD9682]' : 'text-gray-300'
+                  index < product.rating ? "text-[#AD9682]" : "text-gray-300"
                 }`}
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -148,29 +159,32 @@ const ProductCard = ({ product, onNavigate }) => {
 
 export default function ProductListingPage() {
   const handleNavigate = (productId) => {
-    window.location.href = `/products/${productId}`; 
+    window.location.href = `/products/${productId}`;
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@300;400;500;600;700&display=swap');
-        
+        @import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@300;400;500;600;700&display=swap");
+
         * {
-          font-family: 'Work Sans', 'Marcellus', serif;
+          font-family: "Work Sans", "Marcellus", serif;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
-          font-family: 'Marcellus', 'Work Sans', serif;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: "Marcellus", "Work Sans", serif;
         }
       `}</style>
 
-    
-
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-10">
-        {/* Product Grid - 2 columns on mobile, 4 on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-7">
+        {/* Horizontal Scroll Row */}
+        <div className="flex gap-3 sm:gap-6 md:gap-7 overflow-x-auto scroll-smooth scrollbar-hide pb-4 md:pb-6">
           {products.map((product) => (
             <ProductCard
               key={product.id}
@@ -181,7 +195,16 @@ export default function ProductListingPage() {
         </div>
       </main>
 
-    
+      {/* Hide scrollbar */}
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }

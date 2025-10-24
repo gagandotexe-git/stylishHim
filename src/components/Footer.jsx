@@ -6,42 +6,42 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 export default function Footer() {
   const [openIndex, setOpenIndex] = useState(null);
 
- const menuItems = [
-  {
-    title: "Who are we?",
-    items: [
-      { label: "Authenticity", href: "/about/authenticity" },
-      { label: "Sustainability", href: "/about/sustainability" }
-    ]
-  },
-  {
-    title: "Help",
-    items: [
-      { label: "Contact Us", href: "/contact" },
-      { label: "FAQ", href: "/faq" },
-      { label: "Cancellation & Return", href: "/returns" },
-      { label: "Shipping & Delivery", href: "/shipping" }
-    ]
-  },
-  {
-    title: "Quick Links",
-    items: [
-      { label: "Offer Zone", href: "/offers" },
-      { label: "New Launches", href: "/new-launches" }
-    ]
-  },
-  {
-    title: "Top Categories",
-    items: [
-      { label: "Makeup", href: "/categories/makeup" },
-      { label: "Skin", href: "/categories/skin" },
-      { label: "Hair", href: "/categories/hair" },
-      { label: "Appliances", href: "/categories/appliances" },
-      { label: "Bath & Body", href: "/categories/bath-body" },
-      { label: "Fragrance", href: "/categories/fragrance" }
-    ]
-  }
-];
+  const menuItems = [
+    {
+      title: "Who are we?",
+      items: [
+        { label: "Authenticity", href: "/about/authenticity" },
+        { label: "Sustainability", href: "/about/sustainability" }
+      ]
+    },
+    {
+      title: "Help",
+      items: [
+        { label: "Contact Us", href: "/contact" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Cancellation & Return", href: "/returns" },
+        { label: "Shipping & Delivery", href: "/shipping" }
+      ]
+    },
+    {
+      title: "Quick Links",
+      items: [
+        { label: "We are into", href: "/offers" },
+        { label: "For investors", href: "/new-launches" },
+      ]
+    },
+    {
+      title: "Top Categories",
+      items: [
+        { label: "Makeup", href: "/categories/makeup" },
+        { label: "Skin", href: "/categories/skin" },
+        { label: "Hair", href: "/categories/hair" },
+        { label: "Appliances", href: "/categories/appliances" },
+        { label: "Bath & Body", href: "/categories/bath-body" },
+        { label: "Fragrance", href: "/categories/fragrance" }
+      ]
+    }
+  ];
 
 
   const renderMenuItem = (item) => (

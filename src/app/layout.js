@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import FeaturesBanner from "@/components/FeaturesBanner";
 import FooterBanner from "@/components/FooterBanner";
+import ScrollingBanner from "@/components/ScrollingBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,13 +26,24 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      > <div className="fixed top-0 z-[100] w-full bg-[rgba(255,255,255,0.20)] backdrop-blur-[30px]">
+      >
+        {/* Banner above Navbar */}
+        <ScrollingBanner />
+
+        {/* Fixed Navbar just below banner */}
+        <div
+          id="navbar-wrapper"
+          className="fixed z-[100] w-full transition-all duration-500"
+        >
           <NavBar />
-        </div>     <main> {children}</main>
+        </div>
+
+        {/* Space for navbar and banner combined */}
+        <main className="pt-[115px]">{children}</main>
+
         <FeaturesBanner />
         <Footer />
         <FooterBanner />
-
       </body>
     </html>
   );
