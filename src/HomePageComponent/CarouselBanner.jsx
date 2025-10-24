@@ -4,82 +4,75 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const CarouselBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleSlides, setVisibleSlides] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const banners = [
+  // Separate banners for mobile and desktop
+  const mobileBanners = [
     {
       id: 1,
-      src: '/bannerImages/stylishhimbanner8.png',
+      src: '/bannerImages/banner1.png',
       alt: 'Nykaa Diwali Dhamaka Sale',
       link: '#',
-      title: 'Nykaa Diwali Dhamaka Sale',
-      subtitle: 'Up to 50% Off',
-      buttonText: 'Know More',
     },
     {
       id: 2,
-      src: '/bannerImages/stylishhimbanner10.png',
+      src: '/bannerImages/bannertwo.png',
       alt: 'Get Glowing',
       link: '#',
-      title: 'Only At Nykaa',
-      subtitle: 'Up to 10% Off',
-      buttonText: 'Know More',
-    },
-    {
-      id: 3,
-      src: '/bannerImages/stylishhimbanner14.png',
-      alt: 'Foxtale Offer',
-      link: '#',
-      title: 'Up To 30% Off',
-      subtitle: 'Free Gift on ₹599+',
-      buttonText: 'Know More',
-    },
-    {
-      id: 4,
-      src: '/bannerImages/stylishhimbanner10.png',
-      alt: 'Festive Gift Store',
-      link: '#',
-      title: 'Festive Gift Store',
-      subtitle: 'Perfect Gifts for Everyone',
-      buttonText: 'Know More',
     },
   ];
 
+  const desktopBanners = [
+    {
+      id: 1,
+      src: '/bannerImages/stylishhimbanner10.png',
+      alt: 'Stylish Banner 1',
+      link: '#',
+    },
+    {
+      id: 2,
+      src: '/bannerImages/stylishhimbanner14.png',
+      alt: 'Stylish Banner 2',
+      link: '#',
+    },
+    {
+      id: 3,
+      src: '/bannerImages/stylishhimbanner10.png',
+      alt: 'Stylish Banner 3',
+      link: '#',
+    },
+  ];
+
+  const banners = isMobile ? mobileBanners : desktopBanners;
+
   useEffect(() => {
-    const updateVisibleSlides = () => {
+    const updateViewport = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth;
         setIsMobile(width < 768);
-        if (width >= 1200) setVisibleSlides(3);
-        else if (width >= 768) setVisibleSlides(2);
-        else setVisibleSlides(1);
       }
     };
 
-    updateVisibleSlides();
-    window.addEventListener('resize', updateVisibleSlides);
-    return () => window.removeEventListener('resize', updateVisibleSlides);
+    updateViewport();
+    window.addEventListener('resize', updateViewport);
+    return () => window.removeEventListener('resize', updateViewport);
   }, []);
 
+  // Reset index when switching between mobile/desktop
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [isMobile]);
+
   const totalSlides = banners.length;
-  const maxIndex = Math.max(0, totalSlides - visibleSlides);
-  const GAP = 16;
 
   const goToNext = () => {
-    setCurrentIndex((prev) => {
-      if (isMobile) return (prev + 1) % totalSlides;
-      return (prev + 1) % (maxIndex + 1);
-    });
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
   };
 
   const goToPrev = () => {
-    setCurrentIndex((prev) => {
-      if (isMobile) return (prev - 1 + totalSlides) % totalSlides;
-      return (prev - 1 + (maxIndex + 1)) % (maxIndex + 1);
-    });
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
   const goToSlide = (index) => setCurrentIndex(index);
@@ -154,7 +147,7 @@ const CarouselBanner = () => {
     <div className="relative w-full overflow-hidden bg-white md:bg-[#FFEEE2]">
       {!isMobile && <AnimatedStars />}
 
-      <div className="relative w-full max-w-7xl mx-auto px-0 md:px-4 py-0 md:py-8">
+      <div className={`relative w-full mx-auto ${isMobile ? '' : 'max-w-7xl py-8'}`}>
         {!isMobile && (
           <h2 className="text-center text-4xl font-bold text-[#9e7653] mb-6 tracking-[0.8px]">
             GET GLOWING
@@ -163,53 +156,43 @@ const CarouselBanner = () => {
 
         {/* Carousel Container */}
         <div
-          className={`relative overflow-hidden rounded-none md:rounded-2xl ${
-            isMobile ? 'mx-0' : 'mx-4'
-          }`}
+          className="relative overflow-hidden"
           onTouchStart={isMobile ? handleTouchStart : null}
           onTouchMove={isMobile ? handleTouchMove : null}
           onTouchEnd={isMobile ? handleTouchEnd : null}
         >
           {/* Slides */}
           <div
-            className={`flex transition-transform duration-500 ease-in-out ${
-              isMobile ? 'h-[300px]' : 'h-[400px] md:h-96 lg:h-[420px]'
-            }`}
+            className="flex transition-transform duration-500 ease-in-out"
             style={{
-              transform: isMobile
-                ? `translateX(-${currentIndex * 100}%)`
-                : `translateX(-${(currentIndex * (100 + GAP / visibleSlides)) / visibleSlides}%)`,
-              gap: isMobile ? '0px' : `${GAP}px`,
+              transform: `translateX(-${currentIndex * 100}%)`,
             }}
           >
             {banners.map((banner) => (
               <div
                 key={banner.id}
-                className={`flex-shrink-0 relative group ${
-                  isMobile
-                    ? 'w-full h-[300px]'
-                    : 'md:w-[calc(50%-8px)] lg:w-[calc(33.333%-12px)] h-[400px] md:h-96 lg:h-[420px]'
-                }`}
+                className="flex-shrink-0 w-full relative"
               >
-                <a href={banner.link} className="block w-full h-full relative">
+                <a href={banner.link} className="block w-full relative">
                   <img
                     src={banner.src}
                     alt={banner.alt}
-                    className="object-cover w-full h-full rounded-none md:rounded-2xl"
-                    style={{ objectPosition: 'center' }}
+                    className={`w-full h-auto ${isMobile ? '' : 'object-cover'}`}
+                    style={isMobile ? {} : { 
+                      maxHeight: '650px',
+                      objectPosition: 'center center'
+                    }}
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </a>
               </div>
             ))}
           </div>
 
           {/* Arrows (Desktop Only) */}
-          {!isMobile && maxIndex > 0 && (
+          {!isMobile && totalSlides > 1 && (
             <>
               <button
                 onClick={goToPrev}
@@ -225,21 +208,23 @@ const CarouselBanner = () => {
               </button>
             </>
           )}
-        </div>
 
-        {/* ✅ Indicators (visible over images) */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center space-x-2 z-20">
-          {Array.from({ length: isMobile ? totalSlides : maxIndex + 1 }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => goToSlide(i)}
-              className={`transition-all duration-200 rounded-full ${
-                i === currentIndex
-                  ? 'w-8 h-3 bg-[#AD9682]'
-                  : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
-              }`}
-            />
-          ))}
+          {/* Indicators */}
+          {totalSlides > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center space-x-2 z-20">
+              {Array.from({ length: totalSlides }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToSlide(i)}
+                  className={`transition-all duration-200 rounded-full ${
+                    i === currentIndex
+                      ? 'w-8 h-3 bg-[#AD9682]'
+                      : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
