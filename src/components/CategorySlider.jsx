@@ -32,7 +32,7 @@ const categories = [
 
 
   return (
-    <div className="w-full bg-white  ">
+    <div className="w-full bg-white mt-0 sm:mt-4 md:mt-3 lg:mt-0 ">
       {/* Desktop View - Text Navigation */}
       <div className="hidden lg:block mb-[15px]">
         <div className="container mx-auto px-4">
