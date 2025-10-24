@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import Link from "next/link"; 
+import SearchBar from "./searchbar/SearchBar";
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -82,16 +83,7 @@ const AnimatedLogo = () => (
     </div>
   );
 
-  const SearchBar = (
-    <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-      <input
-        type="text"
-        placeholder="Search on StylishHim"
-        className="w-full pl-12 pr-4 py-1.5 text-[14px] border border-gray-300 rounded-[20px] focus:outline-none focus:ring-2 focus:ring-[#AD9682] focus:border-transparent [font-family:'Raleway',_'Lato',_sans-serif]"
-      />
-    </div>
-  );
+ 
 
   return (
     <>
@@ -115,7 +107,9 @@ const AnimatedLogo = () => (
             <AnimatedLogo />
             {Icons}
           </div>
-          <div className="flex md:hidden mb-4 w-full">{SearchBar}</div>
+          <div className="flex md:hidden mb-4 w-full">
+            <SearchBar />
+          </div>
 
           {/* Desktop */}
           <div className="hidden md:flex justify-between items-center h-16">
