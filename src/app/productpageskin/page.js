@@ -5,7 +5,7 @@ import { Heart } from "lucide-react";
 
 export const products = [
       {
-    id: 1,
+    id: 8,
     name: "Hydrate Plus Moisturizer",
     image: "/images/productseven.jpeg",
     price: 499.0,
@@ -32,7 +32,7 @@ export const products = [
     ],
   },
   {
-    id: 2,
+    id: 7,
     name: "Gentle Cleanse Micellar Water",
     image: "/images/productfive.jpeg",
     price: 299.0,
@@ -59,7 +59,7 @@ export const products = [
     ],
   },
   {
-    id: 3,
+    id: 6,
     name: "Volume Boost Hair Spray",
     image: "/images/productsix.jpeg",
     price: 379.0,
@@ -86,7 +86,7 @@ export const products = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     name: "Glow Boost Serum - Premium",
     image: "/images/prodcutfour.jpeg",
     price: 599.0,
@@ -113,7 +113,7 @@ export const products = [
     ],
   },
   {
-    id: 5,
+    id: 1,
     name: "Stronger Strands - Hairfall Control Shampoo",
     image: "/images/productone.webp",
     price: 349.0,
@@ -140,7 +140,7 @@ export const products = [
     ],
   },
   {
-    id: 6,
+    id: 2,
     name: "Radiance Vitamin C FaceMask",
     image: "/images/productone.jpeg",
     price: 249.0,
@@ -167,7 +167,7 @@ export const products = [
     ],
   },
   {
-    id: 7,
+    id: 3,
     name: "Vitamin C Face Wash",
     image: "/images/producttwo.jpeg",
     price: 399.0,
@@ -194,7 +194,7 @@ export const products = [
     ],
   },
   {
-    id: 8,
+    id: 4,
     name: "Glow Boost Serum",
     image: "/images/productthree.jpeg",
     price: 449.0,

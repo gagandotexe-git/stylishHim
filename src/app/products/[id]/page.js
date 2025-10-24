@@ -120,7 +120,7 @@ export default function ProductDetailPage() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600">Product not found.</p>
-          <Link href="/productdisplay" className="text-[#AD9682] font-medium mt-4 inline-block">
+          <Link href="/productpage" className="text-[#AD9682] font-medium mt-4 inline-block">
             Back to products
           </Link>
         </div>

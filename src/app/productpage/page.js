@@ -293,7 +293,7 @@ const ProductCard = ({ product, onNavigate }) => {
   );
 };
 
-export default function ProductListingPage() {
+export default function ProductListingPagetwo() {
   const router = useRouter();
 
   const handleNavigate = (productId) => {

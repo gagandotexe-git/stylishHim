@@ -374,7 +374,7 @@ const SearchBar = () => {
             if (query.trim()) performSearch(query);
             else setMatches([]);
           }}
-          placeholder={listening ? "Listening..." : "Search for products, brands, categ..."}
+          placeholder={listening ? "Listening..." : "Search for products, brands, cat..."}
           className="flex-1 outline-none text-black placeholder-gray-400 bg-transparent"
           style={{ fontFamily: "'Work Sans', sans-serif" }}
         />
