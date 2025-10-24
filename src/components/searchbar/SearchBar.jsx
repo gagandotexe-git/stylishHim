@@ -362,7 +362,7 @@ const SearchBar = () => {
       <div
         className={`flex items-center rounded-full px-4 py-2 bg-white transition-shadow shadow-sm ${
           showSuggestions ? 'shadow-lg' : ''
-        } ${listening ? 'ring-2 ring-red-400' : ''}`}
+        }`}
       >
         <Search className="text-gray-500 mr-2" />
         <input
@@ -377,7 +377,6 @@ const SearchBar = () => {
           placeholder={listening ? "Listening..." : "Search for products, brands, categories..."}
           className="flex-1 outline-none text-black placeholder-gray-400 bg-transparent"
           style={{ fontFamily: "'Work Sans', sans-serif" }}
-          disabled={listening}
         />
 
         {query ? (
