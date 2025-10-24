@@ -11,10 +11,10 @@ export default function Home() {
      
       <CategorySlider /> 
      <CarouselBanner />
+     <ProductListingPage /> 
+        <ProductBannerPageTwo />
      <ProductListingPage />
-     <ProductBannerPage />
-     <ProductListingPage />
-     <ProductBannerPageTwo />
+       <ProductBannerPage />
     </>
   );
 }
