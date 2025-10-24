@@ -125,7 +125,7 @@ const AnimatedLogo = () => (
                 </Link>
               ))}
             </div>
-            <div className="flex-1 max-w-md mx-8">{SearchBar}</div>
+            <div className="flex-1 max-w-md mx-8"> <SearchBar /></div>
             {Icons}
           </div>
 

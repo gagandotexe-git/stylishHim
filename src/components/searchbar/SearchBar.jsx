@@ -1,106 +1,154 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { Mic, X, Search } from 'lucide-react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { Search, Mic, X } from 'lucide-react';
 
-const SearchBar = () => {
+const products = [
+  { id: 1, name: 'Nykaa Lipstick', category: 'Makeup', image: '/images/productseven.jpeg' },
+  { id: 2, name: 'Lakme Eyeliner', category: 'Makeup', image: '/images/productseven.jpeg' },
+  { id: 3, name: "L'Oreal Shampoo", category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 4, name: 'Maybelline Mascara', category: 'Makeup', image: '/images/productseven.jpeg' },
+  { id: 5, name: 'Gillette Mach3 Razor', category: 'Razors for Men', image: '/images/productseven.jpeg' },
+  { id: 6, name: 'Philips Trimmer Series 3000', category: 'Trimmers', image: '/images/productseven.jpeg' },
+  { id: 7, name: 'Nivea Men Shaving Foam', category: 'Shave', image: '/images/productseven.jpeg' },
+  { id: 8, name: 'Axe Body Spray', category: 'Fragrances', image: '/images/productseven.jpeg' },
+  { id: 9, name: 'Dove Body Wash', category: 'Bath & Body', image: '/images/productseven.jpeg' },
+  { id: 10, name: 'Himalaya Face Wash', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 11, name: 'Cetaphil Gentle Cleanser', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 12, name: 'Mamaearth Vitamin C Serum', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 13, name: 'Revlon Hair Spray', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 14, name: 'Tresemme Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 15, name: 'Lotus Herbals Sunscreen', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 16, name: 'Patanjali Aloe Vera Gel', category: 'Skin', image: '/images/productseven.jpeg' },
+  { id: 17, name: 'Park Avenue Deodorant', category: 'Fragrances', image: '/images/productseven.jpeg' },
+  { id: 18, name: 'Forest Essentials Facial Oil', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 19, name: 'Kama Ayurveda Soap', category: 'Bath & Body', image: '/images/productseven.jpeg' },
+  { id: 20, name: 'Harpic Toilet Cleaner', category: 'Homecare', image: '/images/productseven.jpeg' },
+  { id: 21, name: 'TRESemmé Keratin Smooth', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 22, name: 'Bajaj Almond Drops Hair Oil', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 23, name: 'Ponds Cold Cream', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 24, name: 'Lakme Compact Powder', category: 'Makeup', image: '/images/productseven.jpeg' },
+  { id: 25, name: 'Maybelline Fit Me Foundation', category: 'Makeup', image: '/images/productseven.jpeg' },
+  { id: 26, name: 'Batiste Dry Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 27, name: 'Braun Electric Shaver', category: 'Razors for Men', image: '/images/productseven.jpeg' },
+  { id: 28, name: 'Himalaya Herbals Face Pack', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 29, name: 'Ambi Skincare Cream', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 30, name: 'Colgate Toothpaste', category: 'Oral Care', image: '/images/productseven.jpeg' },
+  { id: 31, name: 'Sensodyne Toothpaste', category: 'Oral Care', image: '/images/productseven.jpeg' },
+  { id: 32, name: 'Batiste Volume Dry Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 33, name: 'The Man Company Beard Oil', category: 'Gifts for Men', image: '/images/productseven.jpeg' },
+  { id: 34, name: 'Old Spice Aftershave', category: 'Fragrances', image: '/images/productseven.jpeg' },
+  { id: 35, name: 'Nivea Soft Moisturizer', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 36, name: 'Garnier Micellar Water', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 37, name: 'Loreal Men Expert Face Wash', category: 'Skin', image: '/images/productseven.jpeg' },
+  { id: 38, name: 'Park Avenue Beard Trimmer', category: 'Trimmers', image: '/images/productseven.jpeg' },
+  { id: 39, name: 'Philips OneBlade', category: 'Trimmers', image: '/images/productseven.jpeg' },
+  { id: 40, name: 'Nivea Men Deodorant', category: 'Fragrances', image: '/images/productseven.jpeg' },
+  { id: 41, name: 'Dove Shampoo', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 42, name: 'Clinique Moisturizer', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 43, name: 'Biotique Bio Honey Gel', category: 'Skincare', image: '/images/productseven.jpeg' },
+  { id: 44, name: 'Vaseline Petroleum Jelly', category: 'Skin', image: '/images/productseven.jpeg' },
+  { id: 45, name: 'Himalaya Soap', category: 'Bath & Body', image: '/images/productseven.jpeg' },
+  { id: 46, name: 'Yardley London Soap', category: 'Bath & Body', image: '/images/productseven.jpeg' },
+  { id: 47, name: 'Forest Essentials Lip Balm', category: 'Makeup', image: '/images/productseven.jpeg' },
+  { id: 48, name: 'Streax Hair Serum', category: 'Haircare', image: '/images/productseven.jpeg' },
+  { id: 49, name: 'Nivea Lip Conditioner', category: 'Skin', image: '/images/productseven.jpeg' },
+  { id: 50, name: 'Mamaearth Charcoal Face Pack', category: 'Skincare', image: '/images/productseven.jpeg' }
+];
+
+export default function SearchBar() {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  const [searchHistory, setSearchHistory] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const inputRef = useRef(null);
+  const [history, setHistory] = useState([]);
+  const [listening, setListening] = useState(false);
+  const recognitionRef = useRef(null);
 
-  const { transcript, listening } = useSpeechRecognition();
-
-  // 💾 Load history from localStorage
   useEffect(() => {
-    const history = JSON.parse(localStorage.getItem('searchHistory')) || [];
-    setSearchHistory(history);
+    const savedHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    setHistory(savedHistory);
   }, []);
 
-  // 🎤 Update when using voice input
-  useEffect(() => {
-    if (transcript) setQuery(transcript);
-  }, [transcript]);
-
-  // 🧩 Static product data (no API)
-  const products = [
-    { id: 1, name: 'Nykaa Lipstick', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 2, name: 'Lakme Eyeliner', category: 'Makeup', image: '/images/productseven.jpeg' },
-    { id: 3, name: "L'Oreal Shampoo", category: 'Haircare', image: '/images/productseven.jpeg' },
-    { id: 4, name: 'Maybelline Mascara', category: 'Makeup', image: '/images/productseven.jpeg' }
-  ];
-
-  // 🔍 Handle typing
-  const handleChange = (e) => {
-    const value = e.target.value;
+  const handleSearch = (value) => {
     setQuery(value);
-    setShowSuggestions(true);
-
-    if (value.trim()) {
-      const filtered = products.filter(p =>
-        p.name.toLowerCase().includes(value.toLowerCase())
-      );
-      setSuggestions(filtered);
-    } else {
+    if (value.trim() === '') {
       setSuggestions([]);
+      return;
     }
+    const filtered = products.filter((p) =>
+      p.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setSuggestions(filtered);
   };
 
-  // 🕑 Handle selecting search
-  const handleSearch = (text) => {
-    setQuery(text);
-    setShowSuggestions(false);
-    const updated = [text, ...searchHistory.filter((h) => h !== text)].slice(0, 5);
-    setSearchHistory(updated);
+  const handleSelect = (name) => {
+    setQuery(name);
+    setSuggestions([]);
+    const updated = [name, ...history.filter((item) => item !== name)].slice(0, 5);
+    setHistory(updated);
     localStorage.setItem('searchHistory', JSON.stringify(updated));
   };
 
-  // 🎙️ Mic toggle
+  const clearHistory = () => {
+    localStorage.removeItem('searchHistory');
+    setHistory([]);
+  };
+
   const startVoiceSearch = () => {
-    if (!listening) SpeechRecognition.startListening();
-    else SpeechRecognition.stopListening();
+    if (!('webkitSpeechRecognition' in window)) {
+      alert('Voice search not supported on this browser.');
+      return;
+    }
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.lang = 'en-IN';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => setListening(true);
+    recognition.onend = () => setListening(false);
+    recognition.onresult = (e) => {
+      const transcript = e.results[0][0].transcript;
+      handleSearch(transcript);
+      handleSelect(transcript);
+    };
+    recognition.start();
+    recognitionRef.current = recognition;
   };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto">
-      {/* Search Input */}
-      <div className="flex items-center border border-gray-300 rounded-full px-4 py-2 bg-white  ">
-        <Search className="text-gray-500" />
+    <div className="relative max-w-xl mx-auto mt-4">
+      <div className="flex items-center border border-gray-300 rounded-full px-4 py-2 bg-white shadow-sm">
+        <Search className="text-gray-500 mr-2" size={20} />
         <input
-          ref={inputRef}
           type="text"
-          placeholder="Search for products, brands, etc..."
+          placeholder="Search for products, brands and more..."
           value={query}
-          onChange={handleChange}
-          onFocus={() => setShowSuggestions(true)}
-          className="flex-1 px-2 outline-none text-black placeholder-gray-400 bg-transparent"
+          onChange={(e) => handleSearch(e.target.value)}
+          className="flex-grow outline-none text-sm"
         />
         {query && (
-          <button onClick={() => setQuery('')} className="text-gray-400 hover:text-gray-600 transition">
-            <X size={18} />
-          </button>
+          <X size={18} className="cursor-pointer text-gray-400 mr-2" onClick={() => setQuery('')} />
         )}
-        <button
+        <Mic
+          size={20}
           onClick={startVoiceSearch}
-          className={`ml-2 transition ${listening ? 'text-red-500' : 'text-gray-500 hover:text-gray-700'}`}
-        >
-          <Mic />
-        </button>
+          className={`cursor-pointer ${listening ? 'text-pink-500 animate-pulse' : 'text-gray-500'}`}
+        />
       </div>
 
-      {/* Suggestions Box */}
-      {showSuggestions && (suggestions.length > 0 || searchHistory.length > 0) && (
-        <div className="absolute left-0 right-0 bg-white border border-gray-200 mt-2 rounded-xl shadow-2xl max-h-80 overflow-y-auto z-10 backdrop-blur-sm">
-          {/* Search History */}
-          {query === '' && searchHistory.length > 0 && (
-            <div>
-              <p className="px-4 py-2 text-gray-500 text-sm border-b">Recent Searches</p>
-              {searchHistory.map((item, idx) => (
+      {(suggestions.length > 0 || history.length > 0) && (
+        <div className="absolute z-10 w-full bg-white border border-gray-200 rounded-lg mt-2 shadow-lg max-h-80 overflow-y-auto">
+          {query.trim() === '' && history.length > 0 && (
+            <div className="p-3 text-sm">
+              <div className="flex justify-between mb-2">
+                <span className="text-gray-600 font-semibold">Recent Searches</span>
+                <button onClick={clearHistory} className="text-xs text-pink-500 hover:underline">
+                  Clear
+                </button>
+              </div>
+              {history.map((item, i) => (
                 <div
-                  key={idx}
-                  onClick={() => handleSearch(item)}
-                  className="px-4 py-2 text-black hover:bg-gray-100 cursor-pointer transition"
+                  key={i}
+                  onClick={() => handleSelect(item)}
+                  className="px-2 py-2 cursor-pointer hover:bg-gray-100 rounded-md"
                 >
                   {item}
                 </div>
@@ -108,33 +156,21 @@ const SearchBar = () => {
             </div>
           )}
 
-          {/* Product Suggestions */}
-          {suggestions.map((product) => (
+          {suggestions.map((item) => (
             <div
-              key={product.id}
-              onClick={() => handleSearch(product.name)}
-              className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 cursor-pointer transition"
+              key={item.id}
+              onClick={() => handleSelect(item.name)}
+              className="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-100 rounded-md"
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-12 h-12 rounded-lg object-cover shadow-sm"
-              />
-              <div className="flex flex-col">
-                <p className="text-sm font-semibold text-black">{product.name}</p>
-                <p className="text-xs text-gray-500">{product.category}</p>
+              <img src={item.image} alt={item.name} className="w-10 h-10 rounded-md object-cover" />
+              <div>
+                <p className="text-sm font-medium">{item.name}</p>
+                <p className="text-xs text-gray-500">{item.category}</p>
               </div>
             </div>
           ))}
-
-          {/* No Results */}
-          {query && suggestions.length === 0 && (
-            <p className="px-4 py-3 text-sm text-gray-500">No products found</p>
-          )}
         </div>
       )}
     </div>
   );
-};
-
-export default SearchBar;
+}
