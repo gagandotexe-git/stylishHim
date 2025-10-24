@@ -141,7 +141,7 @@ export default function ProductDetailPage() {
         </Link>
         <div className="grid md:grid-cols-2 gap-10">
           <div>
-            <div className="relative w-full h-96 bg-gray-50 rounded-2xl flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-96 rounded-2xl flex items-center justify-center overflow-hidden">
               <img src={primaryImage} alt={product.name} className="max-h-full object-contain p-4" />
             </div>
               <div className="divide-y divide-gray-200 border-y border-gray-200">

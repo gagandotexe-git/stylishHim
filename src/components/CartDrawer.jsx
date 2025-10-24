@@ -104,7 +104,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                         <p className="text-xs text-gray-500">
                             Taxes and <span className="text-[#AD9682]">shipping</span> calculated at checkout.
                         </p>
-                        <button className="w-full bg-[#E08E75] hover:bg-[#d87b61] text-white font-semibold py-3 rounded-md transition-colors" onClick={() => {
+                        <button className="w-full bg-[#AD9682] hover:bg-[#AD9682] text-white font-semibold py-3 rounded-md transition-colors" onClick={() => {
                             onClose();
                             router.push("/checkout");
                         }}>

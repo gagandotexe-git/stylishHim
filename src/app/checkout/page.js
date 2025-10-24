@@ -31,7 +31,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10">
+    <div className="min-h-screen  py-10">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left: Shipping Details */}
         <div className="lg:col-span-2 bg-white rounded-2xl shadow p-6">
@@ -109,7 +109,7 @@ export default function CheckoutPage() {
 
             <button
               type="submit"
-              className="w-full bg-[#E08E75] hover:bg-[#d87b61] text-white py-3 rounded-md font-semibold mt-6 transition-colors"
+              className="w-full bg-[#AD9682] hover:bg-[#AD9682] text-white py-3 rounded-md font-semibold mt-6 transition-colors"
             >
               Place Order
             </button>
