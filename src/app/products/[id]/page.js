@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/app/redux/cartSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from 'next/navigation';
+import { useCartDrawer } from "@/app/context/CartContext";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -16,6 +17,7 @@ export default function ProductDetailPage() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
+  const { setIsCartOpen } = useCartDrawer();
   // const prevImage = () => {
   //     setActiveImageIndex((prev) =>
   //         prev === 0 ? product.images.length - 1 : prev - 1
@@ -37,6 +39,7 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity }));
     toast.success(`${product.name} has been added to your cart!`);
+    setIsCartOpen(true);
   };
 
   const handleBuyNow = () => {

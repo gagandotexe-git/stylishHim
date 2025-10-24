@@ -5,21 +5,20 @@ import Link from "next/link";
 import SearchBar from "./searchbar/SearchBar";
 import { useSelector } from "react-redux";
 import CartDrawer from "./CartDrawer";
+import toast from "react-hot-toast";
+import { useCartDrawer } from "@/app/context/CartContext";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-const [isCartOpen, setIsCartOpen] = useState(false);
+  const { isCartOpen, setIsCartOpen } = useCartDrawer();
 
   const navItems = [
-  // src/constants/navLinks.js
-
-  { href: "/productdisplay", label: "Products" },
+  // src/constants/navLinks.js 
+  { href: "/productpage", label: "Products" },
   { href: "/about", label: "About" },
   { href: "/fashion", label: "StylishHim Fashion" },
   { href: "/contactus", label: "Contact Us" },
-  { href: "/help", label: "Help" },
-
-
+  { href: "/help", label: "Help" }, 
   ];
 const cartItems = useSelector((state) => state.cart.items);
 const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -44,29 +43,7 @@ const AnimatedLogo = () => (
     </div>
   </Link>
 );
-
-
-  // const AnimatedLogo = () => (
-  //   <Link href="/" className="flex items-center group">
-  //     <div className="relative mr-4">
-  //       {/* Logo text with shimmer effect */}
-  //       <h1 className="  text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-  //         <span className="relative inline-block bg-gradient-to-r from-[#2C2C2C] via-[#1a1a1a] to-[#2C2C2C] bg-clip-text text-transparent">
-  //           StylishHim
-  //         </span>
-          
-  //         {/* Animated shimmer overlay */}
-  //         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
-  //           StylishHim
-  //         </span>
-  //       </h1>
-        
-  //       {/* Subtle underline accent */}
-  //       <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#E8B89A] to-[#AD9682] transition-all duration-500 mx-auto"></div>
-  //     </div>
-  //   </Link>
-  // );
-
+ 
   const Icons = (
     <div className="flex items-center space-x-3">
       <Link
@@ -76,7 +53,10 @@ const AnimatedLogo = () => (
         <User className="h-5 w-5" />
       </Link>
      <button
-  onClick={() => setIsCartOpen(true)}
+  onClick={() => {
+    setIsCartOpen(true);
+    toast.success("Shopping cart opened!");
+  }}
   className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
 >
   <ShoppingBag className="h-5 w-5" />

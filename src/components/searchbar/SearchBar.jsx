@@ -53,30 +53,30 @@ const SearchBar = () => {
   const products = [
     { 
       id: 1, 
-      name: 'Nykaa Lipstick', 
+      name: 'Face Wash', 
       category: 'Makeup', 
-      image: '/images/productseven.jpeg',
-      keywords: ['lipstick', 'lip', 'nykaa', 'makeup', 'cosmetic', 'color']
+      image: '/images/categoryImage/dailycare.png',
+      keywords: ['face wash', 'cleanser', 'face mask', 'makeup', 'face serum', 'face care', 'facial cleanser']
     },
     { 
       id: 2, 
-      name: 'Lakme Eyeliner', 
-      category: 'Makeup', 
-      image: '/images/productseven.jpeg',
-      keywords: ['eyeliner', 'eye', 'lakme', 'makeup', 'liner', 'kajal']
+      name: 'Stylish Him', 
+      category: 'glow', 
+      image: '/images/categoryImage/skin.png',
+      keywords: ['face glow mask', 'face pack', 'perfume', 'makeup']
     },
     { 
       id: 3, 
-      name: "L'Oreal Shampoo", 
+      name: "Shampoo", 
       category: 'Haircare', 
-      image: '/images/productseven.jpeg',
+      image: '/images/categoryImage/hair.png',
       keywords: ['shampoo', 'hair', 'loreal', 'wash', 'haircare', 'clean']
     },
     { 
       id: 4, 
       name: 'Maybelline Mascara', 
       category: 'Makeup', 
-      image: '/images/productseven.jpeg',
+      image: '/images/categoryImage/glow.jpeg',
       keywords: ['mascara', 'eye', 'maybelline', 'makeup', 'lash', 'eyelash']
     },
   ];
@@ -238,7 +238,7 @@ const SearchBar = () => {
     
     // Navigate to products page
     setTimeout(() => {
-      window.location.href = '/products/0';
+      window.location.href = 'https://stylishhim.vercel.app/productpage';
     }, 100);
   };
 
