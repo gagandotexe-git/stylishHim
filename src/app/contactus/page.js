@@ -135,7 +135,7 @@ export default function Contact() {
 
 
                 <p className="text-[#5C6268] text-sm mb-2 tracking-widest uppercase font-body">Contact Us</p>
-                <h1 className="text-4xl md:text-6xl font-semibold text-[#1C252E] mb-4 font-body">We're Here for You</h1>
+                <h1 className="text-4xl md:text-6xl font-semibold text-[#1C252E] mb-4 font-body">We&apos;Are Here for You</h1>
                 <p className="text-base md:text-lg text-[#1C252E] font-body mb-8">
                     Reach out to our team for support, inquiries, or just to connect with us.
                 </p>
@@ -158,7 +158,7 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="max-w-3xl mx-auto px-8 py-12">
                 <div className="bg-[#FCFCFC] shadow-lg rounded-2xl p-8">
-                    <h2 className="text-2xl md:text-3xl font-medium text-center mb-2 font-body">Let's Connect!</h2>
+                    <h2 className="text-2xl md:text-3xl font-medium text-center mb-2 font-body">Let&apos;s Connect!</h2>
                     <p className="text-sm md:text-base text-[#5C6268] mb-8 text-center font-body">
                         Reach out to discover smarter solutions for your management needs.
                     </p>
