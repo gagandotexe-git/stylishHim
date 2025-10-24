@@ -16,7 +16,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
   { href: "/productdisplay", label: "Products" },
   { href: "/about", label: "About" },
   { href: "/fashion", label: "StylishHim Fashion" },
-  { href: "/style-advice", label: "Style Advice" },
+  { href: "/contactus", label: "Contact Us" },
   { href: "/help", label: "Help" },
 
 
