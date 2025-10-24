@@ -4,13 +4,15 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { products } from "../../productdisplay/page";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/app/redux/cartSlice";
 
 export default function ProductDetailPage() {
   const params = useParams();
   const idParam = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const product = products.find((item) => String(item.id) === String(idParam));
   const [quantity, setQuantity] = useState(1);
-
+const dispatch = useDispatch();
   if (!product) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
@@ -26,6 +28,9 @@ export default function ProductDetailPage() {
 
   const primaryImage = product.image;
 
+const handleAddToCart = () => {
+  dispatch(addToCart({ ...product, quantity }));
+};
   return (
     <div className="min-h-screen bg-white">
       <style jsx global>{`
@@ -87,7 +92,9 @@ export default function ProductDetailPage() {
                   +
                 </button>
               </div>
-              <button className="flex-1 bg-[#AD9682] hover:bg-[#9a7f6d] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+              <button className="flex-1 bg-[#AD9682] hover:bg-[#9a7f6d] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+              onClick={handleAddToCart}
+              >
                 Add to Cart
               </button>
             </div>

@@ -3,16 +3,22 @@ import { useState } from "react";
 import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import Link from "next/link"; 
 import SearchBar from "./searchbar/SearchBar";
+import { useSelector } from "react-redux";
+import CartDrawer from "./CartDrawer";
+
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+const [isCartOpen, setIsCartOpen] = useState(false);
 
   const navItems = [
-    { href: "/products/0", label: "Products" },
+    { href: "/productdisplay", label: "Products" },
     { href: "/", label: "About" },
     { href: "/", label: "StylishHim Fashion" },
     { href: "/", label: "Style Advice" },
     { href: "/", label: "Help" },
   ];
+const cartItems = useSelector((state) => state.cart.items);
+const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
 const AnimatedLogo = () => (
   <Link href="/" className="flex items-center group">
@@ -65,15 +71,16 @@ const AnimatedLogo = () => (
       >
         <User className="h-5 w-5" />
       </Link>
-      <Link
-        href="/"
-        className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
-      >
-        <ShoppingBag className="h-5 w-5" />
-        <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-          0
-        </span>
-      </Link>
+     <button
+  onClick={() => setIsCartOpen(true)}
+  className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
+>
+  <ShoppingBag className="h-5 w-5" />
+  <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+    {totalQuantity}
+  </span>
+</button>
+
       <button
         className="p-2 text-black md:hidden"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -99,7 +106,8 @@ const AnimatedLogo = () => (
           }
         }
       `}</style>
-        
+        <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+
        <nav className="bg-[#FFFFFF]  ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile */}

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Heart } from "lucide-react";
 
 export const products = [
@@ -158,8 +159,10 @@ const ProductCard = ({ product, onNavigate }) => {
 };
 
 export default function ProductListingPage() {
+  const router = useRouter();
+
   const handleNavigate = (productId) => {
-    window.location.href = `/products/${productId}`;
+    router.push(`/products/${productId}`);
   };
 
   return (
