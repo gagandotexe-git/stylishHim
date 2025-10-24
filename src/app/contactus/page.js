@@ -145,12 +145,12 @@ export default function Contact() {
                     <div className="text-center">
                         <Mail className="w-6 h-6 mx-auto mb-2 text-[#1C252E]" />
                         <p className="text-lg font-semibold text-[#1C252E] mb-1 font-body">Write to us</p>
-                        <p className="text-base font-body text-[#1C252E]">contact@oreqo.io</p>
+                        <p className="text-base font-body text-[#1C252E]">support@stylishhim.com</p>
                     </div>
                     <div className="text-center">
                         <Phone className="w-6 h-6 mx-auto mb-2 text-[#1C252E]" />
                         <p className="text-lg font-semibold text-[#1C252E] mb-1 font-body">Call us</p>
-                        <p className="text-base font-body text-[#1C252E]">0124-4369009</p>
+                        <p className="text-base font-body text-[#1C252E]">+91 9999781282</p>
                     </div>
                 </div>
             </div>
