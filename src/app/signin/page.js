@@ -1,15 +1,22 @@
 "use client"
 import React, { useState } from 'react';
-import { Package, Star } from 'lucide-react';
-
+import { Package } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 export default function LoginPage() {
   const [mobileNumber, setMobileNumber] = useState('');
+  const router = useRouter();
 
+  const handleClick = () => {
+    router.push('/');
+  };
   return (
-    <div className="min-h-screen bg-white">
+    <div className="py-12 md:py-2 bg-white">
       {/* Header */}
       <div className="bg-[#AD9682] p-4 flex justify-end">
-        <button className="text-white text-sm font-medium">
+        <button
+          className="text-white text-sm font-medium"
+          onClick={handleClick}
+        >
           Skip
         </button>
       </div>
@@ -17,7 +24,7 @@ export default function LoginPage() {
       {/* Hero Section */}
       <div className="bg-[#AD9682] px-6 pb-12 pt-8 flex flex-col items-center relative">
         {/* Decorative stars */}
-   
+
         {/* Shopping bag illustration */}
         <div className="relative w-40 h-40 mb-6">
           <div className="absolute inset-0 flex items-center justify-center">
