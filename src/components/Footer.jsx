@@ -10,15 +10,15 @@ export default function Footer() {
     {
       title: "Who are we?",
       items: [
-        { label: "Authenticity", href: "/about/authenticity" },
-        { label: "Sustainability", href: "/about/sustainability" }
+        { label: "Authenticity", href: "/authenticity" },
+        { label: "Sustainability", href: "/sustainability" }
       ]
     },
     {
       title: "Help",
       items: [
-        { label: "Contact Us", href: "/contact" },
-        { label: "FAQ", href: "/faq" },
+        { label: "Contact Us", href: "/contactus" },
+        { label: "StylishHim Help", href: "/helpcenter" },
         { label: "Cancellation & Return", href: "/returns" },
         { label: "Shipping & Delivery", href: "/shipping" }
       ]
