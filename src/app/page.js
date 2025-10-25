@@ -14,14 +14,14 @@ export default function Home() {
     <>
      
       <CategorySlider /> 
-      <ImageBanner />
+    
      <CarouselBanner />
      <ProductListingPage /> 
         <ProductBannerPageTwo />
      <ProductskinListingPage />
        <ProductBannerPage />
        <ProductListingPagetwo />
-
+  <ImageBanner />
        <NaturalGradientProduct />
     </>
   );
