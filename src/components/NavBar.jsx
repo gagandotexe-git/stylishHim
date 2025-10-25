@@ -23,6 +23,9 @@ const NavBar = () => {
     { href: "/fashion", label: "StylishHim Fashion" },
     { href: "/contactus", label: "Contact Us" },
     { href: "/helpcenter", label: "Help" },
+    { href: "/signin", label: "Sign In" },
+    
+   
   ];
   const cartItems = useSelector((state) => state.cart.items);
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -64,12 +67,7 @@ const AnimatedLogo = () => (
 
   const Icons = (
     <div className="flex items-center space-x-0 md:space-x-3">
-      <Link
-        href="/signin"
-        className="p-2 text-black hover:text-[#3AA2CC] transition-colors"
-      >
-        <User className="h-5 w-5" />
-      </Link>
+      
       <button
         onClick={() => {
           setIsCartOpen(true);
