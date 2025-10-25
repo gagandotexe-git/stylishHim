@@ -18,14 +18,14 @@ const CategorySlider = () => {
   }, []);
 
 const categories = [
-  { name: "Skin", image: "/images/categoryImage/gifting.jpg", link: "/" },
-  { name: "Best Sellers", image: "/images/categoryImage/skin.png", link: "/" },
-  { name: "Gifts for Men", image: "/images/categoryImage/hair.png", link: "/" },
-     { name: "Razors for Men", image: "/images/categoryImage/menrazors.png", link: "/" },
-   { name: "Best Sellers", image: "/images/categoryImage/bestseller.png", link: "/" },
-  { name: "Trimmers", image: "/images/categoryImage/fragrances.png", link: "/" },
-  { name: "Shave", image: "/images/categoryImage/bathbody.png", link: "/" },
-  { name: "Fragrances", image: "/images/categoryImage/glow.png", link: "/" },
+  { name: "Skin", image: "/images/categoryImage/gifting.jpg", link: "/productpage" },
+  { name: "Best Sellers", image: "/images/categoryImage/skin.png", link: "/productpage" },
+  { name: "Gifts for Men", image: "/images/categoryImage/hair.png", link: "/productpage" },
+     { name: "Razors for Men", image: "/images/categoryImage/menrazors.png", link: "/productpage" },
+   { name: "Best Sellers", image: "/images/categoryImage/bestseller.png", link: "/productpage" },
+  { name: "Trimmers", image: "/images/categoryImage/fragrances.png", link: "/productpage" },
+  { name: "Shave", image: "/images/categoryImage/bathbody.png", link: "/productpage" },
+  { name: "Fragrances", image: "/images/categoryImage/glow.png", link: "/productpage" },
  
  
 ];
