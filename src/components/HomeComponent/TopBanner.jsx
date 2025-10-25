@@ -122,17 +122,6 @@ export default function TopBanner() {
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   
-                  {/* Text Content Overlay - Bottom Right */}
-                  <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-12 lg:right-12">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5 text-right">
-                      <h3 className="text-base sm:text-lg lg:text-2xl font-bold text-gray-900 mb-1">
-                        {slide.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm lg:text-base text-gray-700">
-                        {slide.subtitle}
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}

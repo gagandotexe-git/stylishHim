@@ -84,15 +84,7 @@ export default function BeautyProductsGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              {/* Content */}
-              <div className="p-3 sm:p-4">
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 group-hover:text-pink-600 transition-colors">
-                  {product.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-600">
-                  {product.description}
-                </p>
-              </div>
+             
 
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
