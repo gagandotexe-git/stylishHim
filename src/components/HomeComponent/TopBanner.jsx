@@ -1,174 +1,218 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+"use client"
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const TopBanner = () => {
+export default function TopBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleSlides, setVisibleSlides] = useState(1);
-  const [isMobile, setIsMobile] = useState(false);
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const banners = [
+  const slides = [
     {
       id: 1,
-      src: "https://images-static.nykaa.com/uploads/0b12049e-a26a-4588-8bad-369d32f057b6.gif",
-      alt: "Nykaa Diwali Dhamaka Sale",
-      link: "#",
-      title: "Nykaa Diwali Dhamaka Sale",
-      subtitle: "Up to 50% Off",
-      buttonText: "Know More",
+      image: "https://images-static.nykaa.com/uploads/0b12049e-a26a-4588-8bad-369d32f057b6.gif",
+      title: "Up To 30% Off",
+      subtitle: "On Professional Hair Care Brands",
+      isGif: true
     },
     {
       id: 2,
-      src: "https://images-static.nykaa.com/uploads/0b12049e-a26a-4588-8bad-369d32f057b6.gif",
-      alt: "Get Glowing",
-      link: "#",
-      title: "Only At Nykaa",
-      subtitle: "Up to 10% Off",
-      buttonText: "Know More",
+      image: "https://images-static.nykaa.com/creatives/5f647897-ac69-4cc4-83b4-3567c8975a51/default.jpg?tr=cm-pad_resize,w-600",
+      title: "Up To 20% Off",
+      subtitle: "On Kay Bestsellers"
     },
     {
       id: 3,
-      src: "https://images-static.nykaa.com/uploads/0b12049e-a26a-4588-8bad-369d32f057b6.gif",
-      alt: "Foxtale Offer",
-      link: "#",
-      title: "Up To 30% Off",
-      subtitle: "Free Gift on ₹599+",
-      buttonText: "Know More",
+      image: "https://images-static.nykaa.com/creatives/999a2d06-5480-4ca2-a8ac-03d235f8c7c7/default.jpg?tr=cm-pad_resize,w-600",
+      title: "CLEARANCESALE",
+      subtitle: "Extra 10% On 999+"
     },
     {
       id: 4,
-      src: "https://images-static.nykaa.com/uploads/0b12049e-a26a-4588-8bad-369d32f057b6.gif",
-      alt: "Festive Gift Store",
-      link: "#",
-      title: "Festive Gift Store",
-      subtitle: "Perfect Gifts for Everyone",
-      buttonText: "Know More",
+      image: "https://images-static.nykaa.com/creatives/efb244da-3dc3-495f-aea1-4597f8ed21a8/default.jpg?tr=cm-pad_resize,w-600",
+      title: "Bestsellers",
+      subtitle: "Starting ₹600"
     },
+    {
+      id: 5,
+      image: "https://images-static.nykaa.com/creatives/1e5ab17e-643d-49d7-9de7-caa6e0018e66/default.jpg?tr=cm-pad_resize,w-600",
+      title: "Bestsellers",
+      subtitle: "Starting at 349!"
+    },
+    {
+      id: 6,
+      image: "https://images-static.nykaa.com/creatives/c0a366ce-e787-4855-afc9-15e1dc8bb0f4/default.jpg?tr=cm-pad_resize,w-450",
+      title: "Up To 40% Off",
+      subtitle: "On Bestsellers"
+    },
+    {
+      id: 7,
+      image: "https://images-static.nykaa.com/creatives/5c9fba41-d21a-41be-865c-aa0d3944057d/default.jpg?tr=cm-pad_resize,w-450",
+      title: "Free Gift On",
+      subtitle: "The New Skin Tint"
+    },
+    {
+      id: 8,
+      image: "https://images-static.nykaa.com/creatives/4cb62e45-60be-4b25-b717-0a1b50561d64/default.jpeg?tr=cm-pad_resize,w-450",
+      title: "On ₹3500+",
+      subtitle: "Gifts worth ₹2000"
+    },
+    {
+      id: 9,
+      image: "https://images-static.nykaa.com/creatives/c0c1bfa7-41df-4fce-bf01-153b3825b1f9/default.jpg?tr=cm-pad_resize,w-450",
+      title: "20% off on 10k+",
+      subtitle: "& free gifts"
+    },
+    {
+      id: 10,
+      image: "https://images-static.nykaa.com/creatives/a1abca19-2643-4460-aac6-091451a81464/default.jpg?tr=cm-pad_resize,w-450",
+      title: "Free Shampoo",
+      subtitle: "On Orders Above ₹699"
+    }
   ];
 
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   useEffect(() => {
-    const updateVisibleSlides = () => {
-      const width = window.innerWidth;
-      setIsMobile(width < 768);
-      if (width >= 1200) setVisibleSlides(3);
-      else if (width >= 768) setVisibleSlides(2);
-      else setVisibleSlides(1);
-    };
-    updateVisibleSlides();
-    window.addEventListener("resize", updateVisibleSlides);
-    return () => window.removeEventListener("resize", updateVisibleSlides);
-  }, []);
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
 
-  const totalSlides = banners.length;
-  const maxIndex = Math.max(0, totalSlides - visibleSlides);
-  const GAP = 16;
+    return () => clearInterval(interval);
+  }, [currentIndex, isAutoPlaying]);
 
-  const goToNext = () => {
-    setCurrentIndex((prev) =>
-      isMobile ? (prev + 1) % totalSlides : (prev + 1) % (maxIndex + 1)
-    );
-  };
-  const goToPrev = () => {
-    setCurrentIndex((prev) =>
-      isMobile
-        ? (prev - 1 + totalSlides) % totalSlides
-        : (prev - 1 + (maxIndex + 1)) % (maxIndex + 1)
-    );
-  };
-  const goToSlide = (i) => setCurrentIndex(i);
-
-  const handleTouchStart = (e) => (touchStartX.current = e.touches[0].clientX);
-  const handleTouchMove = (e) => (touchEndX.current = e.touches[0].clientX);
-  const handleTouchEnd = () => {
-    if (touchStartX.current - touchEndX.current > 50) goToNext();
-    if (touchStartX.current - touchEndX.current < -50) goToPrev();
-  };
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <div className="relative w-full flex justify-center">
-      <div className="w-full max-w-[1500px] px-4 md:px-8 py-4 md:py-8">
-        <div
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Carousel Container */}
+        <div 
           className="relative overflow-hidden rounded-2xl"
-          onTouchStart={isMobile ? handleTouchStart : null}
-          onTouchMove={isMobile ? handleTouchMove : null}
-          onTouchEnd={isMobile ? handleTouchEnd : null}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          <div
-            className="flex transition-transform duration-500 ease-in-out h-[400px] md:h-96 lg:h-[420px]"
-            style={{
-              transform: isMobile
-                ? `translateX(-${currentIndex * 100}%)`
-                : `translateX(-${
-                    (currentIndex * (100 + GAP / visibleSlides)) / visibleSlides
-                  }%)`,
-              gap: `${GAP}px`,
-            }}
+          {/* Slides Wrapper */}
+          <div 
+            className="flex transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {banners.map((banner) => (
+            {slides.map((slide) => (
               <div
-                key={banner.id}
-                className="flex-shrink-0 w-full md:w-[calc(50%-8px)] lg:w-[calc(33.333%-10px)] h-[400px] md:h-96 lg:h-[420px] relative group"
+                key={slide.id}
+                className="min-w-full relative"
               >
-                <a href={banner.link} className="block w-full h-full relative">
+                {/* Image Container */}
+                <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[24/9] bg-gradient-to-br from-gray-100 to-gray-200">
                   <img
-                    src={banner.src}
-                    alt={banner.alt}
-                    className="object-fill rounded-2xl w-full h-full"
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl" />
-                  {isMobile ? (
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <button className="bg-[#AD9682] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#f4b899] transition-colors inline-flex items-center gap-2">
-                        {banner.buttonText}
-                        <span>→</span>
-                      </button>
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  
+                  {/* Text Content Overlay - Bottom Right */}
+                  <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-12 lg:right-12">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5 text-right">
+                      <h3 className="text-base sm:text-lg lg:text-2xl font-bold text-gray-900 mb-1">
+                        {slide.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm lg:text-base text-gray-700">
+                        {slide.subtitle}
+                      </p>
                     </div>
-                  ) : (
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 rounded-2xl" />
-                  )}
-                </a>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
 
-          {/* Desktop navigation */}
-          {!isMobile && maxIndex > 0 && (
-            <>
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 z-10"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 z-10"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
+          </button>
+
+          {/* Dots Navigation */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {slides.map((_, index) => (
               <button
-                onClick={goToPrev}
-                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-200 z-10 group"
-              >
-                <ChevronLeft className="w-6 h-6 text-gray-800 group-hover:-translate-x-1 transition-transform duration-200" />
-              </button>
-              <button
-                onClick={goToNext}
-                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-200 z-10 group"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-800 group-hover:translate-x-1 transition-transform duration-200" />
-              </button>
-            </>
-          )}
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  index === currentIndex
+                    ? 'bg-white w-8 h-2'
+                    : 'bg-white/50 w-2 h-2 hover:bg-white/75'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Dots indicator */}
-        <div className="flex justify-center space-x-2 mt-6">
-          {Array.from({ length: isMobile ? totalSlides : maxIndex + 1 }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => goToSlide(i)}
-              className={`transition-all duration-200 rounded-full ${
-                i === currentIndex
-                  ? "w-8 h-3 bg-[#000]"
-                  : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
-              }`}
-            />
-          ))}
+        {/* Products Grid Below Carousel */}
+        <div className="mt-12">
+          <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-6">
+            Featured Offers
+          </h2>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {slides.slice(0, 10).map((product) => (
+              <div
+                key={product.id}
+                className="group relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
+              >
+                {/* Image */}
+                <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-full group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-3">
+                  <h3 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">
+                    {product.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 line-clamp-2">
+                    {product.subtitle}
+                  </p>
+                </div>
+
+                {/* Badge */}
+                <div className="absolute top-2 right-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-bold">
+                  SALE
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default TopBanner;
+}
