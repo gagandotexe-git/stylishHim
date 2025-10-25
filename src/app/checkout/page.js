@@ -2,6 +2,7 @@
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -51,7 +52,8 @@ export default function CheckoutPage() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#3AA2CC] focus:border-transparent outline-none transition-all"
+                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
               <input
                 type="email"
@@ -60,7 +62,8 @@ export default function CheckoutPage() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#3AA2CC] focus:border-transparent outline-none transition-all"
+                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
             </div>
 
@@ -71,7 +74,8 @@ export default function CheckoutPage() {
               value={form.address}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#3AA2CC] focus:border-transparent outline-none transition-all"
+              style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -82,7 +86,8 @@ export default function CheckoutPage() {
                 value={form.city}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#3AA2CC] focus:border-transparent outline-none transition-all"
+                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
               <input
                 type="text"
@@ -91,7 +96,8 @@ export default function CheckoutPage() {
                 value={form.zip}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#3AA2CC] focus:border-transparent outline-none transition-all"
+                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
               <input
                 type="text"
@@ -100,7 +106,8 @@ export default function CheckoutPage() {
                 value={form.phone}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#3AA2CC] focus:border-transparent outline-none transition-all"
+                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
             </div>
 
@@ -114,7 +121,8 @@ export default function CheckoutPage() {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#3AA2CC] to-[#2D8AB3] hover:from-[#2D8AB3] hover:to-[#3AA2CC] text-white py-3 rounded-lg font-semibold mt-6 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              style={{background: `linear-gradient(to right, ${THEME_COLOR}, ${THEME_COLOR}cc)`}}
+              className="w-full text-white py-3 rounded-lg font-semibold mt-6 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
               Place Order
             </button>
@@ -159,18 +167,18 @@ export default function CheckoutPage() {
             </div>
             <div className="flex justify-between text-base font-semibold mt-2 pt-2 border-t border-gray-200">
               <span>Total</span>
-              <span className="text-[#3AA2CC]">₹{(total + shippingCost).toFixed(2)}</span>
+              <span style={{color: THEME_COLOR}}>₹{(total + shippingCost).toFixed(2)}</span>
             </div>
           </div>
 
           {/* Free Delivery Indicator */}
           {total < freeDeliveryThreshold && total > 0 && (
-            <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-[#3AA2CC] border-opacity-30">
+            <div style={{borderColor: THEME_COLOR}} className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-opacity-30">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-gray-700">
                   Add ₹{amountNeeded.toFixed(2)} more for FREE delivery!
                 </span>
-                <span className="text-xs font-semibold text-[#3AA2CC]">
+                <span style={{color: THEME_COLOR}} className="text-xs font-semibold">
                   {progressPercentage.toFixed(0)}%
                 </span>
               </div>
@@ -178,8 +186,8 @@ export default function CheckoutPage() {
               {/* Progress Bar */}
               <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
                 <div
-                  className="h-2.5 rounded-full bg-gradient-to-r from-[#3AA2CC] to-[#2D8AB3] transition-all duration-500 ease-out"
-                  style={{ width: `${progressPercentage}%` }}
+                  className="h-2.5 rounded-full transition-all duration-500 ease-out"
+                  style={{ width: `${progressPercentage}%`, backgroundColor: THEME_COLOR }}
                 ></div>
               </div>
               

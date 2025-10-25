@@ -1,6 +1,7 @@
 // pages/cancellation-return.js
 import Head from "next/head";
 import { XCircle, RefreshCw, CreditCard, Truck, Headphones } from "lucide-react";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 
 export default function CancellationReturn() {
   return (
@@ -30,7 +31,7 @@ export default function CancellationReturn() {
           {/* Cancellation Policy */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <XCircle className="text-[#3AA2CC]" size={28} />
+              <XCircle style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">Cancellation Policy</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -44,7 +45,8 @@ export default function CancellationReturn() {
                 Email us at{" "}
                 <a
                   href="mailto:stylishhim@gmail.com"
-                  className="text-[#3AA2CC] underline"
+                  style={{color: THEME_COLOR}}
+                  className="underline"
                 >
                   stylishhim@gmail.com
                 </a>{" "}
@@ -59,7 +61,7 @@ export default function CancellationReturn() {
           {/* Return Policy */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <RefreshCw className="text-[#3AA2CC]" size={28} />
+              <RefreshCw style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">Return Policy</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -75,7 +77,7 @@ export default function CancellationReturn() {
           {/* Refund Policy */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <CreditCard className="text-[#3AA2CC]" size={28} />
+              <CreditCard style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">Refund Policy</h2>
             </div>
             <p className="text-gray-600 mb-2">Refunds apply only if:</p>
@@ -87,7 +89,8 @@ export default function CancellationReturn() {
               Contact us at{" "}
               <a
                 href="mailto:stylishhim@gmail.com"
-                className="text-[#3AA2CC] underline"
+                style={{color: THEME_COLOR}}
+                className="underline"
               >
                 stylishhim@gmail.com
               </a>{" "}
@@ -103,7 +106,7 @@ export default function CancellationReturn() {
           {/* Shipping Info */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Truck className="text-[#3AA2CC]" size={28} />
+              <Truck style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">Shipping Information</h2>
             </div>
             <p className="text-gray-600 mb-2">
@@ -122,7 +125,7 @@ export default function CancellationReturn() {
         {/* Support Section */}
         <section className="mt-10 bg-[#d7f1fc]  rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Headphones className="text-[#3AA2CC]" size={36} />
+            <Headphones style={{color: THEME_COLOR}} size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Customer Support</h2>
               <p className="text-gray-600 mb-2">
@@ -133,7 +136,8 @@ export default function CancellationReturn() {
                   📧 Email:{" "}
                   <a
                     href="mailto:stylishhim@gmail.com"
-                    className="text-[#3AA2CC] underline"
+                    style={{color: THEME_COLOR}}
+                    className="underline"
                   >
                     stylishhim@gmail.com
                   </a>

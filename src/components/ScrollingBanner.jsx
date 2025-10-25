@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 
 export default function ScrollingBanner() {
   const messages = [
@@ -58,10 +59,10 @@ export default function ScrollingBanner() {
       </Head>
 
       <div
-        className={`fixed top-0 left-0 w-full z-[150] bg-[#3AA2CC] text-white overflow-hidden transition-transform duration-500 ${
+        className={`fixed top-0 left-0 w-full z-[150] text-white overflow-hidden transition-transform duration-500 ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
-        style={{ fontFamily: "'Marcellus', 'Work Sans', serif" }}
+        style={{ fontFamily: "'Marcellus', 'Work Sans', serif", backgroundColor: THEME_COLOR }}
       >
         {/* Desktop view */}
         <div className="hidden md:flex whitespace-nowrap animate-marquee py-2 text-sm font-medium">

@@ -6,10 +6,12 @@ import SearchBar from "./searchbar/SearchBar";
 import { Heart } from "lucide-react";
 import WishlistDrawer from "./WishlistDrawer";
 import { useSelector } from "react-redux";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 
 import CartDrawer from "./CartDrawer";
 import toast from "react-hot-toast";
 import { useCartDrawer } from "@/app/context/CartContext";
+import ColorPicker from "./ColorPicker";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,25 +70,30 @@ const AnimatedLogo = () => (
 
   const Icons = (
     <div className="flex items-center space-x-0 md:space-x-3">
+      <ColorPicker />
       
       <button
         onClick={() => {
           setIsCartOpen(true);
         }}
-        className="relative p-2 text-black hover:text-[#3AA2CC] transition-colors"
+        className="relative p-2 text-black transition-colors"
+        onMouseEnter={(e) => e.currentTarget.style.color = THEME_COLOR}
+        onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
       >
         <ShoppingBag className="h-5 w-5" />
-        <span className="absolute -top-1 -right-1 bg-[#3AA2CC] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+        <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: THEME_COLOR}}>
           {totalQuantity}
         </span>
       </button>
       <button
         onClick={() => setIsWishlistOpen(true)}
-        className="relative p-2 text-black hover:text-[#3AA2CC] transition-colors"
+        className="relative p-2 text-black transition-colors"
+        onMouseEnter={(e) => e.currentTarget.style.color = THEME_COLOR}
+        onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
       >
         <Heart className="h-5 w-5" />
         { (
-          <span className="absolute -top-1 -right-1 bg-[#3AA2CC] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: THEME_COLOR}}>
             {wishlistCount}
           </span>
         )}
@@ -141,7 +148,9 @@ const AnimatedLogo = () => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-[14px] font-[500] text-black hover:text-[#3AA2CC] transition-colors [font-family:'Raleway',_'Lato',_sans-serif]"
+                  className="text-[14px] font-[500] text-black transition-colors [font-family:'Raleway',_'Lato',_sans-serif]"
+                  onMouseEnter={(e) => e.currentTarget.style.color = THEME_COLOR}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
                 >
                   {label}
                 </Link>

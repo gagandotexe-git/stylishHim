@@ -1,6 +1,7 @@
 // pages/shipping-delivery.js
 import Head from "next/head";
 import { Truck, Clock, MapPin, Package, Headphones } from "lucide-react";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 
 export default function ShippingDelivery() {
   return (
@@ -29,11 +30,11 @@ export default function ShippingDelivery() {
           {/* Order Processing */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Package className="text-[#3AA2CC]" size={28} />
+              <Package style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">Order Processing</h2>
             </div>
             <p className="text-gray-600 mb-3">
-              We begin processing your order immediately after it’s placed. Orders are typically dispatched within <b>1–2 business days</b>.
+              We begin processing your order immediately after it's placed. Orders are typically dispatched within <b>1–2 business days</b>.
             </p>
             <ul className="list-disc list-inside text-gray-600 space-y-1">
               <li>All orders are carefully packed to maintain product safety.</li>
@@ -44,7 +45,7 @@ export default function ShippingDelivery() {
           {/* Domestic Shipping */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Truck className="text-[#3AA2CC]" size={28} />
+              <Truck style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">Domestic Shipping</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -60,7 +61,7 @@ export default function ShippingDelivery() {
           {/* International Shipping */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <MapPin className="text-[#3AA2CC]" size={28} />
+              <MapPin style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">International Shipping</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -79,11 +80,11 @@ export default function ShippingDelivery() {
           {/* Tracking & Updates */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Clock className="text-[#3AA2CC]" size={28} />
+              <Clock style={{color: THEME_COLOR}} size={28} />
               <h2 className="text-2xl font-semibold">Tracking & Updates</h2>
             </div>
             <p className="text-gray-600 mb-3">
-              Once your order is shipped, you’ll receive an email and SMS containing your tracking number and courier details.
+              Once your order is shipped, you'll receive an email and SMS containing your tracking number and courier details.
             </p>
             <ul className="list-disc list-inside text-gray-600 space-y-1">
               <li>Track your shipment anytime using the provided tracking link.</li>
@@ -95,15 +96,15 @@ export default function ShippingDelivery() {
         {/* Delivery Policy Section */}
         <section className="mt-10 bg-[#d7f1fc] rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Truck className="text-[#3AA2CC]" size={36} />
+            <Truck style={{color: THEME_COLOR}} size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Delivery Policy</h2>
               <p className="text-gray-600 mb-2">
-                In case your order is delayed beyond the estimated timeframe, please contact our support team. We’ll ensure your issue is resolved promptly.
+                In case your order is delayed beyond the estimated timeframe, please contact our support team. We'll ensure your issue is resolved promptly.
               </p>
               <ul className="text-gray-700 space-y-1">
                 <li>🚫 Delays may occur due to weather or courier partner issues.</li>
-                <li>📦 Orders marked as “Delivered” by courier are considered fulfilled.</li>
+                <li>📦 Orders marked as "Delivered" by courier are considered fulfilled.</li>
                 <li>📍 Ensure your address and contact details are accurate at checkout.</li>
               </ul>
             </div>
@@ -113,7 +114,7 @@ export default function ShippingDelivery() {
         {/* Support Section */}
         <section className="mt-10 bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Headphones className="text-[#3AA2CC]" size={36} />
+            <Headphones style={{color: THEME_COLOR}} size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Customer Support</h2>
               <p className="text-gray-600 mb-2">
@@ -124,7 +125,8 @@ export default function ShippingDelivery() {
                   📧 Email:{" "}
                   <a
                     href="mailto:stylishhim@gmail.com"
-                    className="text-[#3AA2CC] underline"
+                    style={{color: THEME_COLOR}}
+                    className="underline"
                   >
                     stylishhim@gmail.com
                   </a>

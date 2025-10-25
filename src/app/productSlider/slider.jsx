@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Minus, Plus, ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
-
+import { THEME_COLOR } from "@/helpers/colorHelper";
 import ProductListingPage from "../../productdisplay/page";
 export default function ProductDetailPage({ params }) {
     const productId = 2;
@@ -100,7 +100,7 @@ export default function ProductDetailPage({ params }) {
     ];
 
     const REVIEWS_PER_PAGE = 4;
-    const ACCENT = '#3AA2CC';
+    const ACCENT = THEME_COLOR;
     const [page, setPage] = useState(1);
     const totalPages = Math.ceil(reviewsData.length / REVIEWS_PER_PAGE);
 
@@ -115,8 +115,8 @@ export default function ProductDetailPage({ params }) {
                 height={size}
                 viewBox="0 0 20 20"
                 fill={filled ? 'currentColor' : 'none'}
-                stroke="currentColor"
-                className={filled ? 'text-[#3AA2CC]' : 'text-white stroke-[#3AA2CC]'}
+                stroke={filled ? THEME_COLOR : THEME_COLOR}
+                className={filled ? '' : 'text-white'}
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden
             >
@@ -209,13 +209,13 @@ export default function ProductDetailPage({ params }) {
                             </button>
                         </div>
 
-                        <button className="flex items-center gap-2 bg-[#3AA2CC] hover:bg-[#d16d4f] text-white px-6 py-3 rounded-md transition-all duration-200 shadow-sm w-auto justify-center">
+                        <button style={{backgroundColor: THEME_COLOR}} className="flex items-center gap-2 hover:bg-[#d16d4f] text-white px-6 py-3 rounded-md transition-all duration-200 shadow-sm w-auto justify-center">
                             <ShoppingCart className="w-4 h-4" />
                             <span className="text-sm font-medium">Add to cart</span>
                         </button>
                     </div>
 
-                    <button className="w-[280px] bg-[#3AA2CC] hover:bg-[#d16d4f] text-white text-base font-medium py-3 rounded-md transition-all duration-200 shadow-sm mb-6">
+                    <button style={{backgroundColor: THEME_COLOR}} className="w-[280px] hover:bg-[#d16d4f] text-white text-base font-medium py-3 rounded-md transition-all duration-200 shadow-sm mb-6">
                         Buy it now
                     </button>
 
@@ -302,14 +302,15 @@ export default function ProductDetailPage({ params }) {
                     <div className="self-start md:self-center">
                         <button
                             type="button"
-                            className="bg-[#3AA2CC] text-white px-4 py-2 rounded transition hover:bg-opacity-90"
+                            style={{backgroundColor: THEME_COLOR}}
+                            className="text-white px-4 py-2 rounded transition hover:bg-opacity-90"
                         >
                             Write a review
                         </button>
                     </div>
                 </div>
 
-                <hr className="my-6 h-[1px] border-[#3AA2CC]" />
+                <hr style={{borderColor: THEME_COLOR}} className="my-6 h-[1px]" />
 
                 {/* Reviews List */}
                 <div>
@@ -319,7 +320,8 @@ export default function ProductDetailPage({ params }) {
                         {paginated.map((r) => (
                             <div
                                 key={r.id}
-                                className="bg-white p-4 border-b-[1px] border-[#3AA2CC] flex flex-col md:flex-row gap-4"
+                                style={{borderColor: THEME_COLOR}}
+                                className="bg-white p-4 border-b-[1px] flex flex-col md:flex-row gap-4"
                             >
                                 {r.image &&  <img
                                     src={r.image}
@@ -364,7 +366,8 @@ export default function ProductDetailPage({ params }) {
                                 <button
                                     key={num}
                                     onClick={() => setPage(num)}
-                                    className={`px-3 py-1 rounded border text-sm ${page === num ? 'bg-[#3AA2CC] text-white' : 'text-gray-700'}`}
+                                    style={page === num ? {backgroundColor: THEME_COLOR} : {}}
+                                    className={`px-3 py-1 rounded border text-sm ${page === num ? 'text-white' : 'text-gray-700'}`}
                                 >
                                     {num}
                                 </button>

@@ -1,4 +1,5 @@
- 
+import { THEME_COLOR } from "@/helpers/colorHelper";
+
 export default function ProductBannerPageTwo() {
   return (
     <div className="bg-white">
@@ -6,7 +7,7 @@ export default function ProductBannerPageTwo() {
       <div className="px-4 sm:px-8 md:px-16 lg:px-24 py-8 md:py-12">
         <h1 
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-center leading-relaxed"
-          style={{ color: '#3AA2CC' }}
+          style={{ color: THEME_COLOR }}
         >
         Glow FaceWash 
         
@@ -40,7 +41,7 @@ export default function ProductBannerPageTwo() {
       <div className="px-4 sm:px-8 md:px-16 lg:px-24 py-8 md:py-12">
         <p 
           className="text-base sm:text-lg md:text-xl text-center font-light"
-          style={{ color: '#3AA2CC' }}
+          style={{ color: THEME_COLOR }}
         >
           Experience the tranquil beauty where nature meets artistry.
         </p>

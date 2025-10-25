@@ -1,4 +1,5 @@
 import React from "react";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 
 const categories = [
   { id: 1, name: "Gifting", image: "/images/gifting.jpg" }, 
@@ -23,9 +24,10 @@ const CategoryBar = () => {
         {categories.map((cat) => (
           <div
             key={cat.id}
+            style={cat.isSale ? {backgroundColor: THEME_COLOR} : {}}
             className={`cursor-pointer whitespace-nowrap transition-all duration-300 flex flex-col items-center ${
               cat.isSale
-                ? "bg-[#3AA2CC] text-white px-2 py-1 rounded-[20px] shadow-lg hover:scale-105 hover:shadow-xl text-sm sm:text-xs md:text-sm lg:text-base"
+                ? "text-white px-2 py-1 rounded-[20px] shadow-lg hover:scale-105 hover:shadow-xl text-sm sm:text-xs md:text-sm lg:text-base"
                 : "text-secondary hover:text-primary"
             }`}
           >

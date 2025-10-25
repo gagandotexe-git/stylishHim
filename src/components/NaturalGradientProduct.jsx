@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { THEME_COLOR } from '@/helpers/colorHelper';
 
 const NaturalGradientProduct = () => {
   return (
@@ -20,7 +21,7 @@ const NaturalGradientProduct = () => {
               
               {/* Decorative Elements */}
               <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#F4D138] rounded-full opacity-30 blur-3xl"></div>
-              <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-[#3AA2CC] rounded-full opacity-20 blur-3xl"></div>
+              <div className="absolute -bottom-8 -right-8 w-40 h-40 rounded-full opacity-20 blur-3xl" style={{backgroundColor: THEME_COLOR}}></div>
             </div>
 
             {/* Right Side - Content */}
@@ -29,14 +30,14 @@ const NaturalGradientProduct = () => {
                 <h1 
                   className="text-7xl font-bold leading-tight tracking-wide"
                   style={{ 
-                    color: '#3AA2CC',
+                    color: THEME_COLOR,
                     fontFamily: "'Marcellus', 'Work Sans', serif"
                   }}
                 >
                   Glow Naturaly
                 </h1>
                 
-                <div className="w-24 h-1.5 bg-gradient-to-r from-[#3AA2CC] to-transparent rounded-full"></div>
+                <div className="w-24 h-1.5 rounded-full" style={{backgroundImage: `linear-gradient(to right, ${THEME_COLOR}, transparent)`}}></div>
               </div>
               
               <p 
@@ -61,13 +62,13 @@ const NaturalGradientProduct = () => {
             <h1 
               className="text-5xl font-bold leading-tight tracking-wide"
               style={{ 
-                color: '#3AA2CC',
+                color: THEME_COLOR,
                 fontFamily: "'Marcellus', 'Work Sans', serif"
               }}
             >
               Glow Skin
             </h1>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-[#3AA2CC] to-transparent mx-auto rounded-full"></div>
+            <div className="w-20 h-1.5 mx-auto rounded-full" style={{backgroundImage: `linear-gradient(to right, ${THEME_COLOR}, transparent)`}}></div>
           </div>
           
           {/* Text Content */}

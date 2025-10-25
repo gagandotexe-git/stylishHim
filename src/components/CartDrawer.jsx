@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { X, Trash2 } from "lucide-react";
 import { addToCart, removeFromCart } from "@/app/redux/cartSlice";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 
 export default function CartDrawer({ isOpen, onClose }) {
     const cartItems = useSelector((state) => state.cart.items);
@@ -102,12 +103,16 @@ export default function CartDrawer({ isOpen, onClose }) {
                             </span>
                         </div>
                         <p className="text-xs text-gray-500">
-                            Taxes and <span className="text-[#3AA2CC]">shipping</span> calculated at checkout.
+                            Taxes and <span style={{color: THEME_COLOR}}>shipping</span> calculated at checkout.
                         </p>
-                        <button className="w-full bg-[#3AA2CC] hover:bg-[#3AA2CC] text-white font-semibold py-3 rounded-md transition-colors" onClick={() => {
-                            onClose();
-                            router.push("/checkout");
-                        }}>
+                        <button 
+                            style={{backgroundColor: THEME_COLOR}}
+                            className="w-full text-white font-semibold py-3 rounded-md transition-colors hover:opacity-90"
+                            onClick={() => {
+                                onClose();
+                                router.push("/checkout");
+                            }}
+                        >
                             Proceed to Checkout
                         </button>
                     </div>

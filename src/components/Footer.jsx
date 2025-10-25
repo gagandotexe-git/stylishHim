@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { THEME_COLOR } from "@/helpers/colorHelper";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Footer() {
@@ -48,7 +49,9 @@ export default function Footer() {
     <Link
       key={item.href}
       href={item.href}
-      className="text-[#5C6268] text-[14px] font-[400] hover:text-[#3AA2CC] transition-colors block py-1"
+      className="text-[#5C6268] text-[14px] font-[400] transition-colors block py-1"
+      onMouseEnter={(e) => e.target.style.color = THEME_COLOR}
+      onMouseLeave={(e) => e.target.style.color = '#5C6268'}
     >
       {item.label}
     </Link>
@@ -61,14 +64,14 @@ export default function Footer() {
           <Link href="/" className="flex items-center group">
             <div className="relative">
               <h1 className="text-[24px] md:text-[28px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-                <span className="relative inline-block bg-gradient-to-r from-[#3AA2CC] via-[#FFEEE2] to-[#3AA2CC] bg-clip-text text-transparent">
+                <span className="relative inline-block bg-clip-text text-transparent" style={{backgroundImage: `linear-gradient(to right, ${THEME_COLOR}, #FFEEE2, ${THEME_COLOR})`}}>
                   StylishHim
                 </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#3AA2CC] to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
+                <span className="absolute inset-0 bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70" style={{backgroundImage: `linear-gradient(to right, transparent, ${THEME_COLOR}, transparent)`}}>
                   StylishHim
                 </span>
               </h1>
-              <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#3AA2CC] via-[#FFEEE2] to-[#3AA2CC] transition-all duration-500 mx-auto rounded-full"></div>
+              <div className="h-[2px] w-0 group-hover:w-full transition-all duration-500 mx-auto rounded-full" style={{backgroundImage: `linear-gradient(to right, ${THEME_COLOR}, #FFEEE2, ${THEME_COLOR})`}}></div>
             </div>
           </Link>
         </div>

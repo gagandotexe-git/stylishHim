@@ -1,4 +1,5 @@
 import React from 'react';
+import { THEME_COLOR } from '@/helpers/colorHelper';
 
 export default function FooterBanner() {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,7 @@ export default function FooterBanner() {
   ];
 
   return (
-    <footer className="w-full bg-[#3AA2CC] py-4 px-4">
+    <footer className="w-full py-4 px-4" style={{backgroundColor: THEME_COLOR}}>
       <div className="max-w-7xl mx-auto">
         {/* Desktop Layout */}
         <div className="hidden md:block">
