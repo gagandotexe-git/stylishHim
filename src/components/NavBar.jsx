@@ -37,18 +37,18 @@ const AnimatedLogo = () => (
       {/* Main reflective logo text */}
       <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
         {/* Base gradient text */}
-        <span className="relative inline-block bg-gradient-to-r from-[#3AA2CC] via-[#5DCBE0] to-[#A4E9FF] bg-clip-text text-transparent">
+        <span className="relative inline-block bg-gradient-to-r from-[#CAA68C] via-[#D9BBA3] to-[#D9BBA3] bg-clip-text text-transparent">
           StylishHim
         </span>
 
         {/* Reflective shimmer overlay */}
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#A4E9FF]/60 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D9BBA3]/60 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
           StylishHim
         </span>
       </h1>
 
       {/* Underline accent with reflection */}
-      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#3AA2CC] via-[#5DCBE0] to-[#A4E9FF] transition-all duration-500 mx-auto rounded-full"></div>
+      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#CAA68C] via-[#D9BBA3] to-[#D9BBA3] transition-all duration-500 mx-auto rounded-full"></div>
     </div>
 
     <style jsx>{`
@@ -63,6 +63,7 @@ const AnimatedLogo = () => (
     `}</style>
   </Link>
 );
+
 
 
   const Icons = (
