@@ -27,17 +27,12 @@ const CarouselBanner = () => {
   const desktopBanners = [
     {
       id: 1,
-      src: '/bannerImages/stylishhimbanner10.png',
+      src: '/bannerImages/stylishhimbanner18.png',
       alt: 'Stylish Banner 1',
       link: '#',
     },
-     
-    {
-      id: 2,
-      src: '/bannerImages/stylishhimbanner18.png',
-      alt: 'Stylish Banner 3',
-      link: '#',
-    },
+
+    
   ];
 
   const banners = isMobile ? mobileBanners : desktopBanners;
@@ -143,7 +138,7 @@ const CarouselBanner = () => {
       {!isMobile && <AnimatedStars />}
 
       {/* Wrapper - Remove side gaps on laptop */}
-      <div className={`relative w-full mx-auto ${isMobile ? '' : 'py-8'}`}>
+      <div className={`relative w-full mx-auto ${isMobile ? '' : 'py-0'}`}>
         {!isMobile && (
           <h2 className="text-center text-4xl font-bold text-[#3AA2CC] mb-6 tracking-[0.8px]">
             GET GLOWING
@@ -175,11 +170,11 @@ const CarouselBanner = () => {
                       isMobile
                         ? {}
                         : {
-                            width: '100%',
-                            height: '100vh', // Increased height for laptops/desktops
-                            objectPosition: 'center center',
-                            objectFit: 'cover',
-                          }
+                          width: '100%',
+                          height: '100vh', // Increased height for laptops/desktops
+                          objectPosition: 'center center',
+                          objectFit: 'cover',
+                        }
                     }
                   />
                   {/* Overlay */}
@@ -214,11 +209,10 @@ const CarouselBanner = () => {
                 <button
                   key={i}
                   onClick={() => goToSlide(i)}
-                  className={`transition-all duration-200 rounded-full ${
-                    i === currentIndex
+                  className={`transition-all duration-200 rounded-full ${i === currentIndex
                       ? 'w-8 h-3 bg-[#3AA2CC]'
                       : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
-                  }`}
+                    }`}
                 />
               ))}
             </div>
