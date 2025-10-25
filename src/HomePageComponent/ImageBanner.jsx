@@ -3,7 +3,7 @@ export default function ImageBanner() {
   return (
   
      
-      <div className="w-full mt-[10px]">
+      <div className="w-full mt-[10px] mb-[10px]">
         <img
           src="/images/BannerShopNow.png" 
           alt="Men's Wellness Beauty Banner"
