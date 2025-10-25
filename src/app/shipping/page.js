@@ -34,7 +34,7 @@ export default function ShippingDelivery() {
               <h2 className="text-2xl font-semibold">Order Processing</h2>
             </div>
             <p className="text-gray-600 mb-3">
-              We begin processing your order immediately after it's placed. Orders are typically dispatched within <b>1–2 business days</b>.
+              We begin processing your order immediately after it&apos;s placed. Orders are typically dispatched within <b>1–2 business days</b>.
             </p>
             <ul className="list-disc list-inside text-gray-600 space-y-1">
               <li>All orders are carefully packed to maintain product safety.</li>
@@ -84,7 +84,7 @@ export default function ShippingDelivery() {
               <h2 className="text-2xl font-semibold">Tracking & Updates</h2>
             </div>
             <p className="text-gray-600 mb-3">
-              Once your order is shipped, you'll receive an email and SMS containing your tracking number and courier details.
+              Once your order is shipped, you&apos;ll receive an email and SMS containing your tracking number and courier details.
             </p>
             <ul className="list-disc list-inside text-gray-600 space-y-1">
               <li>Track your shipment anytime using the provided tracking link.</li>
@@ -94,17 +94,17 @@ export default function ShippingDelivery() {
         </div>
 
         {/* Delivery Policy Section */}
-        <section className="mt-10 bg-[#d7f1fc] rounded-2xl p-8 shadow-sm">
+        <section className="mt-10 bg-[#F0F0F0] rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <Truck style={{color: THEME_COLOR}} size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Delivery Policy</h2>
               <p className="text-gray-600 mb-2">
-                In case your order is delayed beyond the estimated timeframe, please contact our support team. We'll ensure your issue is resolved promptly.
+                In case your order is delayed beyond the estimated timeframe, please contact our support team. We&apos;ll ensure your issue is resolved promptly.
               </p>
               <ul className="text-gray-700 space-y-1">
                 <li>🚫 Delays may occur due to weather or courier partner issues.</li>
-                <li>📦 Orders marked as "Delivered" by courier are considered fulfilled.</li>
+                <li>📦 Orders marked as &quot;Delivered&quot; by courier are considered fulfilled.</li>
                 <li>📍 Ensure your address and contact details are accurate at checkout.</li>
               </ul>
             </div>

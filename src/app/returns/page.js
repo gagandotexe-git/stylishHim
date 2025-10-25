@@ -123,7 +123,7 @@ export default function CancellationReturn() {
         </div>
 
         {/* Support Section */}
-        <section className="mt-10 bg-[#d7f1fc]  rounded-2xl p-8 shadow-sm">
+        <section className="mt-10 bg-[#F0F0F0]  rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <Headphones style={{color: THEME_COLOR}} size={36} />
             <div>

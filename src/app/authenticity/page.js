@@ -52,7 +52,7 @@ export default function Authenticity() {
             key={index}
             className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col items-center text-center border border-gray-100"
           >
-            <div className="bg-[#d7f1fc] p-3 rounded-full mb-4">
+            <div className="bg-[#F0F0F0] p-3 rounded-full mb-4">
               <Icon style={{color: THEME_COLOR}} size={30} />
             </div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
@@ -62,7 +62,7 @@ export default function Authenticity() {
       </section>
 
       {/* About Section */}
-      <section className="bg-[#d7f1fc] py-16 px-6 text-center">
+      <section className="bg-[#F0F0F0] py-16 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-4 text-[#3b3b3b]">
             Why Authenticity Matters
@@ -92,7 +92,7 @@ export default function Authenticity() {
 </section>
 
       {/* Quote/Testimonial Section */}
-      <section className="bg-gradient-to-r from-[#d7f1fc] to-[#d7f1fc] py-16 px-6 text-center">
+      <section className="bg-gradient-to-r from-[#F0F0F0] to-[#F0F0F0] py-16 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <p className="text-2xl md:text-3xl italic text-[#6b4a2b] font-serif mb-6">
             “True beauty begins with truth — the purity of what you apply to your skin and the integrity of the brand behind it.”

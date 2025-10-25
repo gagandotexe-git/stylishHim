@@ -52,9 +52,7 @@ const ColorPicker = () => {
 
       if (response.ok) {
         setIsOpen(false);
-        setTimeout(() => {
-          window.location.reload();
-        }, 300);
+       
       }
     } catch (error) {
       console.error('Error updating theme color:', error);

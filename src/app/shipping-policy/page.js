@@ -37,7 +37,7 @@ export default function ShippingPolicy() {
 
         <h2 style={{color: THEME_COLOR}} className="text-2xl font-semibold mb-3 mt-6">Order Tracking</h2>
         <p className="text-gray-700 mb-3">
-          After your order is shipped, you will receive a tracking number via email or SMS. You can track your package through the carrier's website.
+          After your order is shipped, you will receive a tracking number via email or SMS. You can track your package through the carrier&apos;s website.
         </p>
 
         <h2 style={{color: THEME_COLOR}} className="text-2xl font-semibold mb-3 mt-6">Lost or Damaged Shipments</h2>
