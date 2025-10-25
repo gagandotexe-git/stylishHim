@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Heart } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavourite } from "../redux/favouriteSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 export const products = [
       {
@@ -225,11 +228,14 @@ export const products = [
 
 
 const ProductCard = ({ product, onNavigate }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const dispatch = useDispatch();
+  const favourites = useSelector((state) => state.favourite.items);
+  const isFavorite = favourites.some((item) => item.id === product.id);
 
-  const toggleFavorite = (e) => {
+  const handleToggleFavorite = (e) => {
     e.stopPropagation();
-    setIsFavorite(!isFavorite);
+    dispatch(toggleFavourite(product)); 
+     toast.success(`${product.name} ${product.isFavourite ? 'removed from' : 'added to'} favourites!`);
   };
 
   return (
@@ -238,16 +244,57 @@ const ProductCard = ({ product, onNavigate }) => {
       className="bg-white rounded-xl transition-all duration-300 cursor-pointer relative overflow-hidden group flex-shrink-0 
         w-[48%] sm:w-[48%] md:w-[23%] lg:w-[23%]"
     >
+       <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '14px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            padding: '16px 20px',
+            borderRadius: '10px',
+          },
+          success: {
+            style: {
+              background: '#DBF6E5',
+              color: '#007B5E', // slightly darker green for better contrast
+              borderLeft: '5px solid #00A76F',
+            },
+            iconTheme: {
+              primary: '#00A76F',
+              secondary: '#FFFFFF',
+            },
+          },
+          error: {
+            style: {
+              background: '#FFEBEE',
+              color: '#C62828', // slightly darker red
+              borderLeft: '5px solid #D32F2F',
+            },
+            iconTheme: {
+              primary: '#D32F2F',
+              secondary: '#FFFFFF',
+            },
+          },
+          loading: {
+            style: {
+              background: '#E3F2FD',
+              color: '#1565C0',
+              borderLeft: '5px solid #2196F3',
+            },
+          },
+        }}
+      />
       {/* Favorite Icon */}
       <button
-        onClick={toggleFavorite}
+        onClick={handleToggleFavorite}
         className="absolute top-3 right-3 z-10 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110"
       >
         <Heart
           size={18}
-          className={`${
-            isFavorite ? "fill-red-500 text-red-500" : "text-gray-400"
-          } transition-colors duration-300`}
+          className={`${isFavorite ? "fill-red-500 text-red-500" : "text-gray-400"
+            } transition-colors duration-300`}
         />
       </button>
 
@@ -272,9 +319,8 @@ const ProductCard = ({ product, onNavigate }) => {
             {[...Array(5)].map((_, index) => (
               <svg
                 key={index}
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                  index < product.rating ? "text-[#AD9682]" : "text-gray-300"
-                }`}
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${index < product.rating ? "text-[#AD9682]" : "text-gray-300"
+                  }`}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >

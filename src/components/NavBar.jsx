@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
-import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
-import Link from "next/link"; 
+import { User, ShoppingBag, Menu, X } from "lucide-react";
+import Link from "next/link";
 import SearchBar from "./searchbar/SearchBar";
+import { Heart } from "lucide-react";
+import WishlistDrawer from "./WishlistDrawer";
 import { useSelector } from "react-redux";
+
 import CartDrawer from "./CartDrawer";
 import toast from "react-hot-toast";
 import { useCartDrawer } from "@/app/context/CartContext";
@@ -11,39 +14,41 @@ import { useCartDrawer } from "@/app/context/CartContext";
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isCartOpen, setIsCartOpen } = useCartDrawer();
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
   const navItems = [
-  // src/constants/navLinks.js 
-  { href: "/productpage", label: "Products" },
-  { href: "/about", label: "About" },
-  { href: "/fashion", label: "StylishHim Fashion" },
-  { href: "/contactus", label: "Contact Us" },
-  { href: "/helpcenter", label: "Help" }, 
+    // src/constants/navLinks.js 
+    { href: "/productpage", label: "Products" },
+    { href: "/about", label: "About" },
+    { href: "/fashion", label: "StylishHim Fashion" },
+    { href: "/contactus", label: "Contact Us" },
+    { href: "/helpcenter", label: "Help" },
   ];
-const cartItems = useSelector((state) => state.cart.items);
-const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const wishlistItems = useSelector((state) => state.favourite.items);
+  const wishlistCount = wishlistItems.length;
+  const AnimatedLogo = () => (
+    <Link href="/" className="flex items-center group">
+      <div className="relative mr-4">
+        {/* Logo text with warm shimmer effect */}
+        <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
+          <span className="relative inline-block bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] bg-clip-text text-transparent">
+            StylishHim
+          </span>
 
-const AnimatedLogo = () => (
-  <Link href="/" className="flex items-center group">
-    <div className="relative mr-4">
-      {/* Logo text with warm shimmer effect */}
-      <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-        <span className="relative inline-block bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] bg-clip-text text-transparent">
-          StylishHim
-        </span>
+          {/* Subtle shimmer overlay */}
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#AEA394]/40 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
+            StylishHim
+          </span>
+        </h1>
 
-        {/* Subtle shimmer overlay */}
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#AEA394]/40 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
-          StylishHim
-        </span>
-      </h1>
+        {/* Soft underline accent */}
+        <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] transition-all duration-500 mx-auto rounded-full"></div>
+      </div>
+    </Link>
+  );
 
-      {/* Soft underline accent */}
-      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] transition-all duration-500 mx-auto rounded-full"></div>
-    </div>
-  </Link>
-);
- 
   const Icons = (
     <div className="flex items-center space-x-3">
       <Link
@@ -52,19 +57,28 @@ const AnimatedLogo = () => (
       >
         <User className="h-5 w-5" />
       </Link>
-     <button
-  onClick={() => {
-    setIsCartOpen(true);
-    toast.success("Shopping cart opened!");
-  }}
-  className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
->
-  <ShoppingBag className="h-5 w-5" />
-  <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-    {totalQuantity}
-  </span>
-</button>
-
+      <button
+        onClick={() => {
+          setIsCartOpen(true);
+        }}
+        className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
+      >
+        <ShoppingBag className="h-5 w-5" />
+        <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+          {totalQuantity}
+        </span>
+      </button>
+      <button
+        onClick={() => setIsWishlistOpen(true)}
+        className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
+      >
+        <Heart className="h-5 w-5" />
+        {wishlistCount > 0 && (
+          <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+            {wishlistCount}
+          </span>
+        )}
+      </button>
       <button
         className="p-2 text-black md:hidden"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -74,7 +88,7 @@ const AnimatedLogo = () => (
     </div>
   );
 
- 
+
 
   return (
     <>
@@ -90,9 +104,13 @@ const AnimatedLogo = () => (
           }
         }
       `}</style>
-        <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <WishlistDrawer
+        isOpen={isWishlistOpen}
+        onClose={() => setIsWishlistOpen(false)}
+      />
 
-       <nav className="bg-[#FFFFFF]  ">
+      <nav className="bg-[#FFFFFF]  ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile */}
           <div className="flex md:hidden justify-between items-center h-14">
@@ -137,7 +155,7 @@ const AnimatedLogo = () => (
             </div>
           )}
         </div>
-      </nav> 
+      </nav>
     </>
   );
 };
