@@ -69,7 +69,7 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            <section className="py-16 bg-[#EDE6DF]">
+            <section className="py-16 bg-[#d7f1fc]">
                 <div className="max-w-4xl mx-auto text-center px-4">
                     <h2 className="text-4xl font-bold text-gray-900 mb-8">
                         Our Mission
