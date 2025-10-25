@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Heart } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavourite } from "../redux/favouriteSlice";
+import toast from "react-hot-toast";
+import { showToast } from "@/components/ToastProvider";
 
 export const products = [
   {
@@ -223,11 +227,17 @@ export const products = [
 ];
 
 const ProductCard = ({ product, onNavigate }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const dispatch = useDispatch();
+  const favourites = useSelector((state) => state.favourite.items);
+  const isFavorite = favourites.some((item) => item.id === product.id);
 
   const toggleFavorite = (e) => {
     e.stopPropagation();
-    setIsFavorite(!isFavorite);
+    dispatch(toggleFavourite(product));
+   showToast(
+      `${product.name} ${isFavorite ? "removed from" : "added to"} favourites!`,
+      isFavorite ? "error" : "success"
+    );
   };
 
   return (
@@ -235,6 +245,7 @@ const ProductCard = ({ product, onNavigate }) => {
       onClick={() => onNavigate(product.id)}
       className="bg-white rounded-xl transition-all duration-300 cursor-pointer relative overflow-hidden group"
     >
+      
       {/* Favorite Icon */}
       <button
         onClick={toggleFavorite}

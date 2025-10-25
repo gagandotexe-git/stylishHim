@@ -7,6 +7,7 @@ import FeaturesBanner from "@/components/FeaturesBanner";
 import FooterBanner from "@/components/FooterBanner";
 import ScrollingBanner from "@/components/ScrollingBanner";
 import Providers from "./redux/Providers";
+import ToastProvider from "@/components/ToastProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +41,7 @@ export default function RootLayout({ children }) {
           >
             <NavBar />
           </div>
-
+  <ToastProvider />
           {/* Space for navbar and banner combined */}
           <main className="pt-[125px]">{children}</main>
 

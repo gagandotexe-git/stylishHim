@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 import { Heart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavourite } from "../redux/favouriteSlice";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { showToast } from "@/components/ToastProvider";
 
 export const products = [
   {
@@ -233,7 +234,10 @@ const ProductCard = ({ product, onNavigate }) => {
   const handleToggleFavorite = (e) => {
     e.stopPropagation();
     dispatch(toggleFavourite(product));
-    toast.success(`${product.name} ${product.isFavourite ? 'removed from' : 'added to'} favourites!`);
+     showToast(
+    `${product.name} ${isFavorite ? "removed from" : "added to"} favourites!`,
+    isFavorite ? "error" : "success"
+  );
   };
 
   return (
@@ -242,48 +246,7 @@ const ProductCard = ({ product, onNavigate }) => {
       className="bg-white rounded-xl transition-all duration-300 cursor-pointer relative overflow-hidden group flex-shrink-0 
         w-[48%] sm:w-[48%] md:w-[23%] lg:w-[23%]"
     >
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          duration: 5000,
-          style: {
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '14px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-            padding: '16px 20px',
-            borderRadius: '10px',
-          },
-          success: {
-            style: {
-              background: '#DBF6E5',
-              color: '#007B5E', // slightly darker green for better contrast
-              borderLeft: '5px solid #00A76F',
-            },
-            iconTheme: {
-              primary: '#00A76F',
-              secondary: '#FFFFFF',
-            },
-          },
-          error: {
-            style: {
-              background: '#FFEBEE',
-              color: '#C62828', // slightly darker red
-              borderLeft: '5px solid #D32F2F',
-            },
-            iconTheme: {
-              primary: '#D32F2F',
-              secondary: '#FFFFFF',
-            },
-          },
-          loading: {
-            style: {
-              background: '#E3F2FD',
-              color: '#1565C0',
-              borderLeft: '5px solid #2196F3',
-            },
-          },
-        }}
-      />
+      
       {/* Favorite Icon */}
       <button
         onClick={handleToggleFavorite}

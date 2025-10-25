@@ -1,7 +1,8 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { Mail, Phone, User, MessageCircle, Clipboard, Check } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { showToast } from "@/components/ToastProvider";
 
 export default function Contact() {
     const firstNameRef = useRef(null);
@@ -70,7 +71,7 @@ export default function Contact() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!validateForm()) {
-            toast.error("Fix all errors before submit");
+        showToast("Fix all errors before submit", "error");
             return;
         }
         setShowSuccessModal(true);
@@ -87,48 +88,7 @@ export default function Contact() {
 
     return (
         <div className="min-h-screen pt-[60px] md:pt-[30px]">
-            <Toaster
-                position="top-right"
-                toastOptions={{
-                    duration: 5000,
-                    style: {
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: '14px',
-                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                        padding: '16px 20px',
-                        borderRadius: '10px',
-                    },
-                    success: {
-                        style: {
-                            background: '#DBF6E5',
-                            color: '#007B5E', // slightly darker green for better contrast
-                            borderLeft: '5px solid #00A76F',
-                        },
-                        iconTheme: {
-                            primary: '#00A76F',
-                            secondary: '#FFFFFF',
-                        },
-                    },
-                    error: {
-                        style: {
-                            background: '#FFEBEE',
-                            color: '#C62828', // slightly darker red
-                            borderLeft: '5px solid #D32F2F',
-                        },
-                        iconTheme: {
-                            primary: '#D32F2F',
-                            secondary: '#FFFFFF',
-                        },
-                    },
-                    loading: {
-                        style: {
-                            background: '#E3F2FD',
-                            color: '#1565C0',
-                            borderLeft: '5px solid #2196F3',
-                        },
-                    },
-                }}
-            />
+            
 
 
             <div className="max-w-7xl mx-auto px-8 text-center">

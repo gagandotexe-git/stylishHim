@@ -6,9 +6,10 @@ import { useState } from "react";
 import { products } from "../../productdisplay/page";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/app/redux/cartSlice";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useRouter } from 'next/navigation';
 import { useCartDrawer } from "@/app/context/CartContext";
+import { showToast } from "@/components/ToastProvider";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -38,7 +39,7 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity }));
-    toast.success(`${product.name} has been added to your cart!`);
+   showToast(`${product.name} has been added to your cart!`, "success");
     setIsCartOpen(true);
   };
 
@@ -129,48 +130,7 @@ export default function ProductDetailPage() {
   }
   return (
     <div className="min-h-screen bg-white">
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          duration: 5000,
-          style: {
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '14px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-            padding: '16px 20px',
-            borderRadius: '10px',
-          },
-          success: {
-            style: {
-              background: '#DBF6E5',
-              color: '#007B5E', // slightly darker green for better contrast
-              borderLeft: '5px solid #00A76F',
-            },
-            iconTheme: {
-              primary: '#00A76F',
-              secondary: '#FFFFFF',
-            },
-          },
-          error: {
-            style: {
-              background: '#FFEBEE',
-              color: '#C62828', // slightly darker red
-              borderLeft: '5px solid #D32F2F',
-            },
-            iconTheme: {
-              primary: '#D32F2F',
-              secondary: '#FFFFFF',
-            },
-          },
-          loading: {
-            style: {
-              background: '#E3F2FD',
-              color: '#1565C0',
-              borderLeft: '5px solid #2196F3',
-            },
-          },
-        }}
-      />
+      
 
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@300;400;500;600;700&display=swap');
