@@ -28,26 +28,39 @@ const NavBar = () => {
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const wishlistItems = useSelector((state) => state.favourite.items);
   const wishlistCount = wishlistItems.length;
-  const AnimatedLogo = () => (
-    <Link href="/" className="flex items-center group">
-      <div className="relative mr-4">
-        {/* Logo text with warm shimmer effect */}
-        <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-          <span className="relative inline-block bg-gradient-to-r from-[#3AA2CC] via-[#AEA394] to-[#3AA2CC] bg-clip-text text-transparent">
-            StylishHim
-          </span>
+const AnimatedLogo = () => (
+  <Link href="/" className="flex items-center group">
+    <div className="relative mr-4">
+      {/* Main reflective logo text */}
+      <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
+        {/* Base gradient text */}
+        <span className="relative inline-block bg-gradient-to-r from-[#3AA2CC] via-[#5DCBE0] to-[#A4E9FF] bg-clip-text text-transparent">
+          StylishHim
+        </span>
 
-          {/* Subtle shimmer overlay */}
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#AEA394]/40 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-60">
-            StylishHim
-          </span>
-        </h1>
+        {/* Reflective shimmer overlay */}
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#A4E9FF]/60 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
+          StylishHim
+        </span>
+      </h1>
 
-        {/* Soft underline accent */}
-        <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#3AA2CC] via-[#AEA394] to-[#3AA2CC] transition-all duration-500 mx-auto rounded-full"></div>
-      </div>
-    </Link>
-  );
+      {/* Underline accent with reflection */}
+      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#3AA2CC] via-[#5DCBE0] to-[#A4E9FF] transition-all duration-500 mx-auto rounded-full"></div>
+    </div>
+
+    <style jsx>{`
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+    `}</style>
+  </Link>
+);
+
 
   const Icons = (
     <div className="flex items-center space-x-0 md:space-x-3">

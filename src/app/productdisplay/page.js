@@ -289,7 +289,7 @@ const ProductCard = ({ product, onNavigate }) => {
               </svg>
             ))}
           </div>
-          <span className="text-xs sm:text-sm text-[#3AA2CC] ml-1 font-medium">
+          <span className="text-xs sm:text-sm text-[#111] ml-1 font-medium">
             {product.reviews} reviews
           </span>
         </div>
