@@ -88,7 +88,7 @@ const TopBanner = () => {
 
   return (
     <div className="relative w-full flex justify-center">
-      <div className="w-full max-w-[1600px] px-4 md:px-8 py-4 md:py-8">
+      <div className="w-full max-w-[1500px] px-4 md:px-8 py-4 md:py-8">
         <div
           className="relative overflow-hidden rounded-2xl"
           onTouchStart={isMobile ? handleTouchStart : null}

@@ -1,5 +1,6 @@
 
 import CategorySlider from "@/components/CategorySlider";
+import AddTopBanner from "@/components/HomeComponent/AddTopBanner";
 import TopBanner from "@/components/HomeComponent/TopBanner";
 
 import NaturalGradientProduct from "@/components/NaturalGradientProduct";
@@ -11,8 +12,10 @@ export default function Home() {
     <>
 
       <CategorySlider />
-      <BeautyProductsGrid />
+     
       <TopBanner />
+      <AddTopBanner />
+       <BeautyProductsGrid />
       <ImageBanner />
       <NaturalGradientProduct />
     </>
