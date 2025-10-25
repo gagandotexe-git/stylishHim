@@ -8,7 +8,7 @@ export default function ShippingPolicy() {
         <meta name="description" content="Shipping Policy of StylishHim" />
       </Head>
 
-      <div className="max-w-5xl mx-auto bg-white p-10 rounded-2xl shadow-md">
+      <div className="max-w-5xl mx-auto bg-white p-10 rounded-2xl ">
         <h1 className="text-4xl font-bold text-[#AD9682] mb-8 text-center">
           Shipping Policy
         </h1>

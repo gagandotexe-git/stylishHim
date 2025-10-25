@@ -144,7 +144,7 @@ export default function ProductDetailPage() {
         }
       `}</style>
       <main className="max-w-6xl mx-auto px-4 py-10">
-        <Link href="/productdisplay" className="text-[#AD9682] font-medium mb-6 inline-block">
+        <Link href="/productpage" className="text-[#AD9682] font-medium mb-6 inline-block">
           &larr; Back to products
         </Link>
         <div className="grid md:grid-cols-2 gap-10">

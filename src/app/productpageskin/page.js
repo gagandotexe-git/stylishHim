@@ -9,7 +9,7 @@ import { showToast } from "@/components/ToastProvider";
 
 export const products = [
       {
-    id: 8,
+    id: 5,
     name: "Hydrate Plus Moisturizer",
     image: "/images/productseven.jpeg",
     price: 499.0,
@@ -36,7 +36,7 @@ export const products = [
     ],
   },
   {
-    id: 7,
+    id: 6,
     name: "Gentle Cleanse Micellar Water",
     image: "/images/productfive.jpeg",
     price: 299.0,
@@ -63,7 +63,7 @@ export const products = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     name: "Volume Boost Hair Spray",
     image: "/images/productsix.jpeg",
     price: 379.0,
@@ -90,7 +90,7 @@ export const products = [
     ],
   },
   {
-    id: 5,
+    id: 8,
     name: "Glow Boost Serum - Premium",
     image: "/images/prodcutfour.jpeg",
     price: 599.0,

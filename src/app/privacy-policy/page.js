@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
         <meta name="description" content="Privacy Policy of StylishHim" />
       </Head>
 
-      <div className="max-w-5xl mx-auto bg-white p-10 rounded-2xl shadow-md">
+      <div className="max-w-5xl mx-auto bg-white p-10 rounded-2xl  ">
         <h1 className="text-4xl font-bold text-[#AD9682] mb-8 text-center">
           Privacy Policy
         </h1>
