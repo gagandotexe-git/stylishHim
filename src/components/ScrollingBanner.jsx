@@ -6,7 +6,7 @@ import Head from "next/head";
 
 export default function ScrollingBanner() {
   const messages = [
-    "Free Shipping on orders over ₹299",
+    "Free Shipping on orders over ₹999",
     "Get 10% off on your first order",
     "24/7 Customer Support",
     "New Arrivals Every Week",

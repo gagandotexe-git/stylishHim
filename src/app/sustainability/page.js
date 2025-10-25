@@ -7,7 +7,7 @@ export default function Sustainability() {
       {/* Header Section */}
       <div className="text-center max-w-3xl">
         <h1 style={{color: "var(--theme-color)"}} className="text-4xl md:text-5xl font-serif mb-6 animate-fadeIn">
-          Our Commitment to Sustainability
+          Our Commitment to SustainabilityOur Commitment to Sustainability
         </h1>
         <p className="text-gray-600 text-lg leading-relaxed">
           At <span style={{color: "var(--theme-color)"}} className="font-semibold">StylishHim</span>, we believe that beauty should not come at the cost of our planet.
