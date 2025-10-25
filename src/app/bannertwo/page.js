@@ -37,19 +37,7 @@ const BannerGridtwo = () => {
       image: "https://images-static.nykaa.com/creatives/d841138d-8aac-4e57-9977-ba2e8b0bff17/default.jpg?tr=cm-pad_resize,w-600",
       calloutText: "Up To 35% Off",
       calloutSubtext: "On Trending Makeup!"
-    },
-    {
-      id: 7,
-      image: "https://via.placeholder.com/600x800/f3f4f5/666666?text=Banner+7",
-      calloutText: "Upto 30% Off",
-      calloutSubtext: "24H Volume, Zero Smudge"
-    },
-    {
-      id: 8,
-      image: "https://via.placeholder.com/600x800/f3f4f5/666666?text=Banner+8",
-      calloutText: "Up To 25% Off",
-      calloutSubtext: "On Entire Range!"
-    }
+    }, 
   ];
 
   return (
