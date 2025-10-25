@@ -31,15 +31,10 @@ const CarouselBanner = () => {
       alt: 'Stylish Banner 1',
       link: '#',
     },
+     
     {
       id: 2,
-      src: '/bannerImages/stylishhimbanner14.png',
-      alt: 'Stylish Banner 2',
-      link: '#',
-    },
-    {
-      id: 3,
-      src: '/bannerImages/stylishhimbanner10.png',
+      src: '/bannerImages/stylishhimbanner18.png',
       alt: 'Stylish Banner 3',
       link: '#',
     },
@@ -147,7 +142,8 @@ const CarouselBanner = () => {
     <div className="relative w-full overflow-hidden bg-white md:bg-[#FFEEE2]">
       {!isMobile && <AnimatedStars />}
 
-      <div className={`relative w-full mx-auto ${isMobile ? '' : 'max-w-7xl py-8'}`}>
+      {/* Wrapper - Remove side gaps on laptop */}
+      <div className={`relative w-full mx-auto ${isMobile ? '' : 'py-8'}`}>
         {!isMobile && (
           <h2 className="text-center text-4xl font-bold text-[#9e7653] mb-6 tracking-[0.8px]">
             GET GLOWING
@@ -169,21 +165,23 @@ const CarouselBanner = () => {
             }}
           >
             {banners.map((banner) => (
-              <div
-                key={banner.id}
-                className="flex-shrink-0 w-full relative"
-              >
+              <div key={banner.id} className="flex-shrink-0 w-full relative">
                 <a href={banner.link} className="block w-full relative">
                   <img
                     src={banner.src}
                     alt={banner.alt}
                     className={`w-full h-auto ${isMobile ? '' : 'object-cover'}`}
-                    style={isMobile ? {} : { 
-                      maxHeight: '650px',
-                      objectPosition: 'center center'
-                    }}
+                    style={
+                      isMobile
+                        ? {}
+                        : {
+                            width: '100%',
+                            height: '100vh', // Increased height for laptops/desktops
+                            objectPosition: 'center center',
+                            objectFit: 'cover',
+                          }
+                    }
                   />
-
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </a>
