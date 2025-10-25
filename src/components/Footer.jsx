@@ -26,7 +26,7 @@ export default function Footer() {
     {
       title: "Quick Links",
       items: [
-        { label: "We are into", href: "/offers" },
+        { label: "We are into", href: "/stylishhim.com" },
         { label: "For investors", href: "/new-launches" },
       ]
     },
