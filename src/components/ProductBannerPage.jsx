@@ -6,7 +6,7 @@ export default function ProductBannerPage() {
       <div className="px-4 sm:px-8 md:px-16 lg:px-24 py-8 md:py-12">
         <h1 
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-center leading-relaxed"
-          style={{ color: '#AD9682' }}
+          style={{ color: '#3AA2CC' }}
         >
           In the embrace of nature's hand, petals whisper secrets of beauty untold.
         </h1>
@@ -39,7 +39,7 @@ export default function ProductBannerPage() {
       <div className="px-4 sm:px-8 md:px-16 lg:px-24 py-8 md:py-12">
         <p 
           className="text-base sm:text-lg md:text-xl text-center font-light"
-          style={{ color: '#AD9682' }}
+          style={{ color: '#3AA2CC' }}
         >
           Experience the tranquil beauty where nature meets artistry.
         </p>

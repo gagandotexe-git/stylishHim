@@ -29,7 +29,7 @@ export default function FeaturesBanner() {
           <div className="flex md:flex-wrap md:justify-between gap-6 min-w-max md:min-w-0">
             {features.map((f, i) => (
               <div key={i} className="flex flex-col md:flex-row items-center md:items-start gap-3 min-w-[180px] md:min-w-[140px] flex-shrink-0 md:flex-shrink">
-                <div className="bg-[#AD9682] rounded-full p-3 flex-shrink-0">
+                <div className="bg-[#3AA2CC] rounded-full p-3 flex-shrink-0">
                   <f.icon className="w-6 h-6 md:w-6 md:h-6 text-white stroke-[2.5]" />
                 </div>
                 <div className="text-center md:text-left">

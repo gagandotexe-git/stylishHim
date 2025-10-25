@@ -46,7 +46,7 @@ export default function CheckoutPage() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#AD9682] outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#3AA2CC] outline-none"
               />
               <input
                 type="email"
@@ -55,7 +55,7 @@ export default function CheckoutPage() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#AD9682] outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#3AA2CC] outline-none"
               />
             </div>
 
@@ -66,7 +66,7 @@ export default function CheckoutPage() {
               value={form.address}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#AD9682] outline-none"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#3AA2CC] outline-none"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -77,7 +77,7 @@ export default function CheckoutPage() {
                 value={form.city}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#AD9682] outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#3AA2CC] outline-none"
               />
               <input
                 type="text"
@@ -86,7 +86,7 @@ export default function CheckoutPage() {
                 value={form.zip}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#AD9682] outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#3AA2CC] outline-none"
               />
               <input
                 type="text"
@@ -95,7 +95,7 @@ export default function CheckoutPage() {
                 value={form.phone}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#AD9682] outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#3AA2CC] outline-none"
               />
             </div>
 
@@ -109,7 +109,7 @@ export default function CheckoutPage() {
 
             <button
               type="submit"
-              className="w-full bg-[#AD9682] hover:bg-[#AD9682] text-white py-3 rounded-md font-semibold mt-6 transition-colors"
+              className="w-full bg-[#3AA2CC] hover:bg-[#3AA2CC] text-white py-3 rounded-md font-semibold mt-6 transition-colors"
             >
               Place Order
             </button>

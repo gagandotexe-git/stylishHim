@@ -54,7 +54,7 @@ export default function WishlistDrawer({ isOpen, onClose }) {
                                     <h3 className="text-sm font-medium text-gray-800 line-clamp-2">
                                         {item.name}
                                     </h3>
-                                    <p className="text-[#AD9682] text-sm font-semibold">
+                                    <p className="text-[#3AA2CC] text-sm font-semibold">
                                         Rs. {item.price.toFixed(2)}
                                     </p>
                                 </div>

@@ -41,7 +41,7 @@ const categories = [
               <Link
                 key={index}
                 href={category.link}
-                className="text-gray-700 hover:text-[#AD9682] transition-colors duration-200 text-sm font-medium whitespace-nowrap"
+                className="text-gray-700 hover:text-[#3AA2CC] transition-colors duration-200 text-sm font-medium whitespace-nowrap"
               >
                 {category.name}
               </Link>

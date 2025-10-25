@@ -91,7 +91,7 @@ export default function ProductDetailPage() {
   ];
 
   const REVIEWS_PER_PAGE = 4;
-  const ACCENT = '#AD9682';
+  const ACCENT = '#3AA2CC';
   const [page, setPage] = useState(1);
   const totalPages = Math.ceil(reviewsData.length / REVIEWS_PER_PAGE);
 
@@ -107,7 +107,7 @@ export default function ProductDetailPage() {
         viewBox="0 0 20 20"
         fill={filled ? 'currentColor' : 'none'}
         stroke="currentColor"
-        className={filled ? 'text-[#AD9682]' : 'text-white stroke-[#AD9682]'}
+        className={filled ? 'text-[#3AA2CC]' : 'text-white stroke-[#3AA2CC]'}
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden
       >
@@ -121,7 +121,7 @@ export default function ProductDetailPage() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600">Product not found.</p>
-          <Link href="/productpage" className="text-[#AD9682] font-medium mt-4 inline-block">
+          <Link href="/productpage" className="text-[#3AA2CC] font-medium mt-4 inline-block">
             Back to products
           </Link>
         </div>
@@ -144,7 +144,7 @@ export default function ProductDetailPage() {
         }
       `}</style>
       <main className="max-w-6xl mx-auto px-4 py-10">
-        <Link href="/productpage" className="text-[#AD9682] font-medium mb-6 inline-block">
+        <Link href="/productpage" className="text-[#3AA2CC] font-medium mb-6 inline-block">
           &larr; Back to products
         </Link>
         <div className="grid md:grid-cols-2 gap-10">
@@ -178,7 +178,7 @@ export default function ProductDetailPage() {
                 {[...Array(5)].map((_, index) => (
                   <svg
                     key={index}
-                    className={`w-5 h-5 ${index < product.rating ? 'text-[#AD9682]' : 'text-gray-300'}`}
+                    className={`w-5 h-5 ${index < product.rating ? 'text-[#3AA2CC]' : 'text-gray-300'}`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -188,7 +188,7 @@ export default function ProductDetailPage() {
               </div>
               <span className="text-gray-600 text-lg">({product.reviews} reviews)</span>
             </div>
-            <p className="text-3xl font-bold text-[#AD9682] mb-6">Rs. {product.price.toFixed(2)}</p>
+            <p className="text-3xl font-bold text-[#3AA2CC] mb-6">Rs. {product.price.toFixed(2)}</p>
             <p className="text-gray-700 text-base leading-relaxed mb-8">{product.description}</p>
 
             <div className="flex items-center gap-4 mb-8">
@@ -209,7 +209,7 @@ export default function ProductDetailPage() {
                   +
                 </button>
               </div>
-              <button className="flex-1 bg-[#AD9682] hover:bg-[#9a7f6d] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+              <button className="flex-1 bg-[#3AA2CC] hover:bg-[#9a7f6d] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
                 onClick={handleAddToCart}
               >
                 Add to Cart
@@ -217,7 +217,7 @@ export default function ProductDetailPage() {
             </div>
 
             <button
-              className="w-full bg-[#AD9682] hover:bg-[#9a7f6d] text-white font-semibold py-3 rounded-lg transition-colors duration-200 mb-6"
+              className="w-full bg-[#3AA2CC] hover:bg-[#9a7f6d] text-white font-semibold py-3 rounded-lg transition-colors duration-200 mb-6"
               onClick={handleBuyNow}
             >
               Buy Now
@@ -287,14 +287,14 @@ export default function ProductDetailPage() {
           <div className="self-start md:self-center">
             <button
               type="button"
-              className="bg-[#AD9682] text-white px-4 py-2 rounded transition hover:bg-opacity-90"
+              className="bg-[#3AA2CC] text-white px-4 py-2 rounded transition hover:bg-opacity-90"
             >
               Write a review
             </button>
           </div>
         </div>
 
-        <hr className="my-6 h-[1px] border-[#AD9682]" />
+        <hr className="my-6 h-[1px] border-[#3AA2CC]" />
 
         {/* Reviews List */}
         <div>
@@ -304,7 +304,7 @@ export default function ProductDetailPage() {
             {paginated?.map((r) => (
               <div
                 key={r.id}
-                className="bg-white p-4 border-b-[1px] border-[#AD9682] flex flex-col md:flex-row gap-4"
+                className="bg-white p-4 border-b-[1px] border-[#3AA2CC] flex flex-col md:flex-row gap-4"
               >
                 {r.image && <img
                   src={r.image}
@@ -349,7 +349,7 @@ export default function ProductDetailPage() {
                 <button
                   key={num}
                   onClick={() => setPage(num)}
-                  className={`px-3 py-1 rounded border text-sm ${page === num ? 'bg-[#AD9682] text-white' : 'text-gray-700'}`}
+                  className={`px-3 py-1 rounded border text-sm ${page === num ? 'bg-[#3AA2CC] text-white' : 'text-gray-700'}`}
                 >
                   {num}
                 </button>

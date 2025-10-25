@@ -216,7 +216,7 @@ const CarouselBanner = () => {
                   onClick={() => goToSlide(i)}
                   className={`transition-all duration-200 rounded-full ${
                     i === currentIndex
-                      ? 'w-8 h-3 bg-[#AD9682]'
+                      ? 'w-8 h-3 bg-[#3AA2CC]'
                       : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
                   }`}
                 />

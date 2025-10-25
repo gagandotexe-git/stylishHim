@@ -11,7 +11,7 @@ export default function FooterBanner() {
   ];
 
   return (
-    <footer className="w-full bg-[#AD9682] py-4 px-4">
+    <footer className="w-full bg-[#3AA2CC] py-4 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Desktop Layout */}
         <div className="hidden md:block">

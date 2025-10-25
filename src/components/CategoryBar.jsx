@@ -25,7 +25,7 @@ const CategoryBar = () => {
             key={cat.id}
             className={`cursor-pointer whitespace-nowrap transition-all duration-300 flex flex-col items-center ${
               cat.isSale
-                ? "bg-[#AD9682] text-white px-2 py-1 rounded-[20px] shadow-lg hover:scale-105 hover:shadow-xl text-sm sm:text-xs md:text-sm lg:text-base"
+                ? "bg-[#3AA2CC] text-white px-2 py-1 rounded-[20px] shadow-lg hover:scale-105 hover:shadow-xl text-sm sm:text-xs md:text-sm lg:text-base"
                 : "text-secondary hover:text-primary"
             }`}
           >

@@ -33,7 +33,7 @@ const NavBar = () => {
       <div className="relative mr-4">
         {/* Logo text with warm shimmer effect */}
         <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-          <span className="relative inline-block bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] bg-clip-text text-transparent">
+          <span className="relative inline-block bg-gradient-to-r from-[#3AA2CC] via-[#AEA394] to-[#3AA2CC] bg-clip-text text-transparent">
             StylishHim
           </span>
 
@@ -44,7 +44,7 @@ const NavBar = () => {
         </h1>
 
         {/* Soft underline accent */}
-        <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#AD9682] via-[#AEA394] to-[#AD9682] transition-all duration-500 mx-auto rounded-full"></div>
+        <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#3AA2CC] via-[#AEA394] to-[#3AA2CC] transition-all duration-500 mx-auto rounded-full"></div>
       </div>
     </Link>
   );
@@ -53,7 +53,7 @@ const NavBar = () => {
     <div className="flex items-center space-x-0 md:space-x-3">
       <Link
         href="/signin"
-        className="p-2 text-black hover:text-[#AD9682] transition-colors"
+        className="p-2 text-black hover:text-[#3AA2CC] transition-colors"
       >
         <User className="h-5 w-5" />
       </Link>
@@ -61,20 +61,20 @@ const NavBar = () => {
         onClick={() => {
           setIsCartOpen(true);
         }}
-        className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
+        className="relative p-2 text-black hover:text-[#3AA2CC] transition-colors"
       >
         <ShoppingBag className="h-5 w-5" />
-        <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+        <span className="absolute -top-1 -right-1 bg-[#3AA2CC] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
           {totalQuantity}
         </span>
       </button>
       <button
         onClick={() => setIsWishlistOpen(true)}
-        className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
+        className="relative p-2 text-black hover:text-[#3AA2CC] transition-colors"
       >
         <Heart className="h-5 w-5" />
         { (
-          <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 bg-[#3AA2CC] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
             {wishlistCount}
           </span>
         )}
@@ -129,7 +129,7 @@ const NavBar = () => {
                 <Link
                   key={href}
                   href={href}
-                  className="text-[14px] font-[500] text-black hover:text-[#AD9682] transition-colors [font-family:'Raleway',_'Lato',_sans-serif]"
+                  className="text-[14px] font-[500] text-black hover:text-[#3AA2CC] transition-colors [font-family:'Raleway',_'Lato',_sans-serif]"
                 >
                   {label}
                 </Link>

@@ -103,12 +103,12 @@ export default function AboutUs() {
                             placeholder="Enter your E-mail"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="flex-1 px-4 py-3 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#AD9682]"
+                            className="flex-1 px-4 py-3 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#3AA2CC]"
                             required
                         />
                         <button
                             type="submit"
-                            className="px-6 py-3 bg-[#AD9682] text-white font-semibold rounded-md transition-colors"
+                            className="px-6 py-3 bg-[#3AA2CC] text-white font-semibold rounded-md transition-colors"
                         >
                             Subscribe NOW
                         </button>

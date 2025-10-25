@@ -282,7 +282,7 @@ const ProductCard = ({ product, onNavigate }) => {
             {[...Array(5)].map((_, index) => (
               <svg
                 key={index}
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${index < product.rating ? "text-[#AD9682]" : "text-gray-300"
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${index < product.rating ? "text-[#3AA2CC]" : "text-gray-300"
                   }`}
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -291,13 +291,13 @@ const ProductCard = ({ product, onNavigate }) => {
               </svg>
             ))}
           </div>
-          <span className="text-xs sm:text-sm text-[#AD9682] ml-1 font-medium">
+          <span className="text-xs sm:text-sm text-[#3AA2CC] ml-1 font-medium">
             {product.reviews} reviews
           </span>
         </div>
 
         {/* Price */}
-        <p className="text-lg sm:text-xl font-semibold text-[#AD9682]">
+        <p className="text-lg sm:text-xl font-semibold text-[#3AA2CC]">
           Rs. {product.price.toFixed(2)}
         </p>
       </div>

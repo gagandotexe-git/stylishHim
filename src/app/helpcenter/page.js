@@ -65,11 +65,11 @@ export default function HelpCenter() {
       <div className="max-w-6xl mx-auto">
         {/* Sign In Card */}
         <div className="bg-white rounded-2xl   border border-gray-100 p-6 mb-8 hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#AD9682]/10 to-transparent rounded-full -mr-16 -mt-16"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#3AA2CC]/10 to-transparent rounded-full -mr-16 -mt-16"></div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
             <div className="flex items-start gap-4">
               <div className="relative">
-                <div className="bg-gradient-to-br from-[#AD9682] to-[#8d7662] w-12 h-12 rounded-xl flex items-center justify-center  ">
+                <div className="bg-gradient-to-br from-[#3AA2CC] to-[#8d7662] w-12 h-12 rounded-xl flex items-center justify-center  ">
                   <User className="w-6 h-6 text-white" strokeWidth={2} />
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
@@ -77,7 +77,7 @@ export default function HelpCenter() {
               <div>
                 <h3 className="text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
                   Getting help is easy
-                  <Sparkles className="w-4 h-4 text-[#AD9682]" />
+                  <Sparkles className="w-4 h-4 text-[#3AA2CC]" />
                 </h3>
                 <p className="text-sm text-gray-600">
                   Sign in to get help with recent orders
@@ -86,7 +86,7 @@ export default function HelpCenter() {
             </div>
             <button 
               
-              className="bg-gradient-to-r from-[#AD9682] to-[#8d7662] hover:from-[#9d8672] hover:to-[#7d6652] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105 whitespace-nowrap w-full sm:w-auto"
+              className="bg-gradient-to-r from-[#3AA2CC] to-[#8d7662] hover:from-[#9d8672] hover:to-[#7d6652] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105 whitespace-nowrap w-full sm:w-auto"
             >
               Sign in
             </button>
@@ -97,19 +97,19 @@ export default function HelpCenter() {
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             Browse Topics
-            <div className="h-1 w-12 bg-gradient-to-r from-[#AD9682] to-transparent rounded-full"></div>
+            <div className="h-1 w-12 bg-gradient-to-r from-[#3AA2CC] to-transparent rounded-full"></div>
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {topics.map((topic, index) => (
               <button
                 key={index}
                 onClick={() => handleTopicClick(topic.label)}
-                className={`bg-white rounded-2xl border-2 border-gray-100 p-6 hover:border-[#AD9682] hover:shadow-xl transition-all duration-300 group ${topic.shadowColor}`}
+                className={`bg-white rounded-2xl border-2 border-gray-100 p-6 hover:border-[#3AA2CC] hover:shadow-xl transition-all duration-300 group ${topic.shadowColor}`}
               >
                 <div className={`${topic.color} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 `}>
                   <topic.icon className={`w-8 h-8 ${topic.iconColor}`} strokeWidth={2} />
                 </div>
-                <h3 className="text-sm font-bold text-gray-900 group-hover:text-[#AD9682] transition-colors duration-300 leading-tight">
+                <h3 className="text-sm font-bold text-gray-900 group-hover:text-[#3AA2CC] transition-colors duration-300 leading-tight">
                   {topic.label}
                 </h3>
               </button>
@@ -121,21 +121,21 @@ export default function HelpCenter() {
         <div>
           <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             Need more help?
-            <div className="h-1 w-12 bg-gradient-to-r from-[#AD9682] to-transparent rounded-full"></div>
+            <div className="h-1 w-12 bg-gradient-to-r from-[#3AA2CC] to-transparent rounded-full"></div>
           </h2>
           <button
             onClick={handleChatClick}
-            className="w-full bg-white rounded-2xl border-2 border-gray-100 p-6 hover:border-[#AD9682] hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
+            className="w-full bg-white rounded-2xl border-2 border-gray-100 p-6 hover:border-[#3AA2CC] hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#AD9682] via-[#8d7662] to-[#AD9682] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#3AA2CC] via-[#8d7662] to-[#3AA2CC] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="bg-gradient-to-br from-[#AD9682] to-[#8d7662] w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg relative">
+                <div className="bg-gradient-to-br from-[#3AA2CC] to-[#8d7662] w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg relative">
                   <MessageCircle className="w-7 h-7 text-white" strokeWidth={2} />
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
                 </div>
                 <div className="text-left">
-                  <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-[#AD9682] transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-[#3AA2CC] transition-colors duration-300">
                     Chat with us
                   </h3>
                   <p className="text-sm text-gray-600 font-medium">
@@ -143,7 +143,7 @@ export default function HelpCenter() {
                   </p>
                 </div>
               </div>
-              <ChevronRight className="w-7 h-7 text-gray-400 group-hover:text-[#AD9682] group-hover:translate-x-2 transition-all duration-300" strokeWidth={2.5} />
+              <ChevronRight className="w-7 h-7 text-gray-400 group-hover:text-[#3AA2CC] group-hover:translate-x-2 transition-all duration-300" strokeWidth={2.5} />
             </div>
           </button>
         </div>

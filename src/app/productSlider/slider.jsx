@@ -100,7 +100,7 @@ export default function ProductDetailPage({ params }) {
     ];
 
     const REVIEWS_PER_PAGE = 4;
-    const ACCENT = '#AD9682';
+    const ACCENT = '#3AA2CC';
     const [page, setPage] = useState(1);
     const totalPages = Math.ceil(reviewsData.length / REVIEWS_PER_PAGE);
 
@@ -116,7 +116,7 @@ export default function ProductDetailPage({ params }) {
                 viewBox="0 0 20 20"
                 fill={filled ? 'currentColor' : 'none'}
                 stroke="currentColor"
-                className={filled ? 'text-[#AD9682]' : 'text-white stroke-[#AD9682]'}
+                className={filled ? 'text-[#3AA2CC]' : 'text-white stroke-[#3AA2CC]'}
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden
             >
@@ -209,13 +209,13 @@ export default function ProductDetailPage({ params }) {
                             </button>
                         </div>
 
-                        <button className="flex items-center gap-2 bg-[#AD9682] hover:bg-[#d16d4f] text-white px-6 py-3 rounded-md transition-all duration-200 shadow-sm w-auto justify-center">
+                        <button className="flex items-center gap-2 bg-[#3AA2CC] hover:bg-[#d16d4f] text-white px-6 py-3 rounded-md transition-all duration-200 shadow-sm w-auto justify-center">
                             <ShoppingCart className="w-4 h-4" />
                             <span className="text-sm font-medium">Add to cart</span>
                         </button>
                     </div>
 
-                    <button className="w-[280px] bg-[#AD9682] hover:bg-[#d16d4f] text-white text-base font-medium py-3 rounded-md transition-all duration-200 shadow-sm mb-6">
+                    <button className="w-[280px] bg-[#3AA2CC] hover:bg-[#d16d4f] text-white text-base font-medium py-3 rounded-md transition-all duration-200 shadow-sm mb-6">
                         Buy it now
                     </button>
 
@@ -302,14 +302,14 @@ export default function ProductDetailPage({ params }) {
                     <div className="self-start md:self-center">
                         <button
                             type="button"
-                            className="bg-[#AD9682] text-white px-4 py-2 rounded transition hover:bg-opacity-90"
+                            className="bg-[#3AA2CC] text-white px-4 py-2 rounded transition hover:bg-opacity-90"
                         >
                             Write a review
                         </button>
                     </div>
                 </div>
 
-                <hr className="my-6 h-[1px] border-[#AD9682]" />
+                <hr className="my-6 h-[1px] border-[#3AA2CC]" />
 
                 {/* Reviews List */}
                 <div>
@@ -319,7 +319,7 @@ export default function ProductDetailPage({ params }) {
                         {paginated.map((r) => (
                             <div
                                 key={r.id}
-                                className="bg-white p-4 border-b-[1px] border-[#AD9682] flex flex-col md:flex-row gap-4"
+                                className="bg-white p-4 border-b-[1px] border-[#3AA2CC] flex flex-col md:flex-row gap-4"
                             >
                                 {r.image &&  <img
                                     src={r.image}
@@ -364,7 +364,7 @@ export default function ProductDetailPage({ params }) {
                                 <button
                                     key={num}
                                     onClick={() => setPage(num)}
-                                    className={`px-3 py-1 rounded border text-sm ${page === num ? 'bg-[#AD9682] text-white' : 'text-gray-700'}`}
+                                    className={`px-3 py-1 rounded border text-sm ${page === num ? 'bg-[#3AA2CC] text-white' : 'text-gray-700'}`}
                                 >
                                     {num}
                                 </button>

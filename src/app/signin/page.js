@@ -12,7 +12,7 @@ export default function LoginPage() {
   return (
     <div className="py-12 md:py-2 bg-white">
       {/* Header */}
-      <div className="bg-[#AD9682] p-4 flex justify-end">
+      <div className="bg-[#3AA2CC] p-4 flex justify-end">
         <button
           className="text-white text-sm font-medium"
           onClick={handleClick}
@@ -22,7 +22,7 @@ export default function LoginPage() {
       </div>
 
       {/* Hero Section */}
-      <div className="bg-[#AD9682] px-6 pb-12 pt-8 flex flex-col items-center relative">
+      <div className="bg-[#3AA2CC] px-6 pb-12 pt-8 flex flex-col items-center relative">
         {/* Decorative stars */}
 
         {/* Shopping bag illustration */}
@@ -31,7 +31,7 @@ export default function LoginPage() {
             <div className="w-32 h-32 bg-white rounded-3xl transform rotate-45"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-[#AD9682] w-24 h-28 rounded-t-3xl flex items-center justify-center shadow-lg">
+            <div className="bg-[#3AA2CC] w-24 h-28 rounded-t-3xl flex items-center justify-center shadow-lg">
               <Package className="w-12 h-12 text-white" strokeWidth={2} />
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function LoginPage() {
       <div className="bg-white rounded-t-3xl -mt-6 px-6 pt-8 pb-12">
         {/* Logo */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-[#AD9682] tracking-tight">
+          <h1 className="text-3xl font-bold text-[#3AA2CC] tracking-tight">
             StylishHim
           </h1>
         </div>
@@ -71,7 +71,7 @@ export default function LoginPage() {
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
               placeholder="Enter mobile number"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#AD9682] focus:ring-1 focus:ring-[#AD9682]"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#3AA2CC] focus:ring-1 focus:ring-[#3AA2CC]"
               maxLength="10"
             />
             <button className="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors">
@@ -105,7 +105,7 @@ export default function LoginPage() {
 
         {/* Email Login Link */}
         <div className="text-center">
-          <button className="text-sm text-gray-600 hover:text-[#AD9682] transition-colors">
+          <button className="text-sm text-gray-600 hover:text-[#3AA2CC] transition-colors">
             Use Email ID
           </button>
         </div>
