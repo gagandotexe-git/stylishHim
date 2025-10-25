@@ -1,13 +1,13 @@
 import React from 'react';
- 
+
 export default function FooterBanner() {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Shipping Policy', href: '#' },
-    { name: 'Cancellation Policy', href: '#' },
-    { name: 'Privacy Policy', href: '#' }
+    { name: 'Terms & Conditions', href: '/terms-and-conditions' },
+    { name: 'Shipping Policy', href: '/shipping-policy' },
+    { name: 'Cancellation Policy', href: '/cancellation-policy' },
+    { name: 'Privacy Policy', href: '/privacy-policy' }
   ];
 
   return (

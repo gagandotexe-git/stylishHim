@@ -50,9 +50,9 @@ const NavBar = () => {
   );
 
   const Icons = (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-0 md:space-x-3">
       <Link
-        href="/"
+        href="/signin"
         className="p-2 text-black hover:text-[#AD9682] transition-colors"
       >
         <User className="h-5 w-5" />
@@ -73,7 +73,7 @@ const NavBar = () => {
         className="relative p-2 text-black hover:text-[#AD9682] transition-colors"
       >
         <Heart className="h-5 w-5" />
-        {wishlistCount > 0 && (
+        { (
           <span className="absolute -top-1 -right-1 bg-[#AD9682] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
             {wishlistCount}
           </span>

@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import { Package, Star } from 'lucide-react';
 
@@ -7,27 +8,23 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-[#A40753] p-4 flex justify-end">
+      <div className="bg-[#AD9682] p-4 flex justify-end">
         <button className="text-white text-sm font-medium">
           Skip
         </button>
       </div>
 
       {/* Hero Section */}
-      <div className="bg-[#A40753] px-6 pb-12 pt-8 flex flex-col items-center relative">
+      <div className="bg-[#AD9682] px-6 pb-12 pt-8 flex flex-col items-center relative">
         {/* Decorative stars */}
-        <Star className="absolute top-12 left-8 w-3 h-3 text-pink-300 fill-pink-300" />
-        <Star className="absolute top-20 right-12 w-2 h-2 text-pink-300 fill-pink-300" />
-        <Star className="absolute bottom-24 left-12 w-2 h-2 text-pink-300 fill-pink-300" />
-        <Star className="absolute bottom-32 right-8 w-3 h-3 text-pink-300 fill-pink-300" />
-
+   
         {/* Shopping bag illustration */}
         <div className="relative w-40 h-40 mb-6">
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-32 h-32 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-3xl transform rotate-45"></div>
+            <div className="w-32 h-32 bg-white rounded-3xl transform rotate-45"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-pink-200 w-24 h-28 rounded-t-3xl flex items-center justify-center shadow-lg">
+            <div className="bg-[#AD9682] w-24 h-28 rounded-t-3xl flex items-center justify-center shadow-lg">
               <Package className="w-12 h-12 text-white" strokeWidth={2} />
             </div>
           </div>
@@ -43,7 +40,7 @@ export default function LoginPage() {
       <div className="bg-white rounded-t-3xl -mt-6 px-6 pt-8 pb-12">
         {/* Logo */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-[#A40753] tracking-tight">
+          <h1 className="text-3xl font-bold text-[#AD9682] tracking-tight">
             StylishHim
           </h1>
         </div>
@@ -67,7 +64,7 @@ export default function LoginPage() {
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
               placeholder="Enter mobile number"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#A40753] focus:ring-1 focus:ring-[#A40753]"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#AD9682] focus:ring-1 focus:ring-[#AD9682]"
               maxLength="10"
             />
             <button className="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors">
@@ -101,7 +98,7 @@ export default function LoginPage() {
 
         {/* Email Login Link */}
         <div className="text-center">
-          <button className="text-sm text-gray-600 hover:text-[#A40753] transition-colors">
+          <button className="text-sm text-gray-600 hover:text-[#AD9682] transition-colors">
             Use Email ID
           </button>
         </div>
