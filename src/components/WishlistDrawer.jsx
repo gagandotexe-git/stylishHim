@@ -2,7 +2,7 @@
 import { removeFavourite } from "@/app/redux/favouriteSlice";
 import { X } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 export default function WishlistDrawer({ isOpen, onClose }) {
     const favourites = useSelector((state) => state.favourite.items);
@@ -55,7 +55,7 @@ export default function WishlistDrawer({ isOpen, onClose }) {
                                     <h3 className="text-sm font-medium text-gray-800 line-clamp-2">
                                         {item.name}
                                     </h3>
-                                    <p style={{color: THEME_COLOR}} className="text-sm font-semibold">
+                                    <p style={{color: "var(--theme-color)"}} className="text-sm font-semibold">
                                         Rs. {item.price.toFixed(2)}
                                     </p>
                                 </div>

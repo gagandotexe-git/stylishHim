@@ -3,7 +3,9 @@
 body {
    font-family: 'Marcellus', 'Work Sans', serif;
 }
-
+:root {
+  --theme-color: #3AA2CC;
+}
 .text-gray-700 {
   color: #000000 !important; 
 }

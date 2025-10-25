@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { THEME_COLOR } from '@/helpers/colorHelper';
+
 export default function AboutUs() {
     const [email, setEmail] = useState('');
     return (
@@ -105,14 +105,14 @@ export default function AboutUs() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="flex-1 px-4 py-3 border border-gray-300 rounded-md text-gray-900"
-                            style={{outlineColor: THEME_COLOR}}
-                            onFocus={(e) => e.target.style.boxShadow = `0 0 0 3px ${THEME_COLOR}40`}
+                            style={{outlineColor: "var(--theme-color)"}}
+                            onFocus={(e) => e.target.style.boxShadow = `0 0 0 3px ${"var(--theme-color)"}40`}
                             onBlur={(e) => e.target.style.boxShadow = 'none'}
                             required
                         />
                         <button
                             type="submit"
-                            style={{backgroundColor: THEME_COLOR}}
+                            style={{backgroundColor: "var(--theme-color)"}}
                             className="px-6 py-3 text-white font-semibold rounded-md transition-colors"
                         >
                             Subscribe NOW

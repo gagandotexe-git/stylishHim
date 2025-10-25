@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Package } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { THEME_COLOR } from '@/helpers/colorHelper';
+
 export default function LoginPage() {
   const [mobileNumber, setMobileNumber] = useState('');
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function LoginPage() {
   return (
     <div className="py-12 md:py-2 bg-white">
       {/* Header */}
-      <div style={{backgroundColor: THEME_COLOR}} className="p-4 flex justify-end">
+      <div style={{backgroundColor: "var(--theme-color)"}} className="p-4 flex justify-end">
         <button
           className="text-white text-sm font-medium"
           onClick={handleClick}
@@ -23,7 +23,7 @@ export default function LoginPage() {
       </div>
 
       {/* Hero Section */}
-      <div style={{backgroundColor: THEME_COLOR}} className="px-6 pb-12 pt-8 flex flex-col items-center relative">
+      <div style={{backgroundColor: "var(--theme-color)"}} className="px-6 pb-12 pt-8 flex flex-col items-center relative">
         {/* Decorative stars */}
 
         {/* Shopping bag illustration */}
@@ -32,7 +32,7 @@ export default function LoginPage() {
             <div className="w-32 h-32 bg-white rounded-3xl transform rotate-45"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div style={{backgroundColor: THEME_COLOR}} className="w-24 h-28 rounded-t-3xl flex items-center justify-center shadow-lg">
+            <div style={{backgroundColor: "var(--theme-color)"}} className="w-24 h-28 rounded-t-3xl flex items-center justify-center shadow-lg">
               <Package className="w-12 h-12 text-white" strokeWidth={2} />
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function LoginPage() {
       <div className="bg-white rounded-t-3xl -mt-6 px-6 pt-8 pb-12">
         {/* Logo */}
         <div className="text-center mb-6">
-          <h1 style={{color: THEME_COLOR}} className="text-3xl font-bold tracking-tight">
+          <h1 style={{color: "var(--theme-color)"}} className="text-3xl font-bold tracking-tight">
             StylishHim
           </h1>
         </div>
@@ -72,7 +72,7 @@ export default function LoginPage() {
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
               placeholder="Enter mobile number"
-              style={{borderColor: THEME_COLOR}}
+              style={{borderColor: "var(--theme-color)"}}
               className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1"
               maxLength="10"
             />
@@ -107,7 +107,7 @@ export default function LoginPage() {
 
         {/* Email Login Link */}
         <div className="text-center">
-          <button style={{color: 'inherit'}} onMouseEnter={(e) => e.target.style.color = THEME_COLOR} onMouseLeave={(e) => e.target.style.color = '#4b5563'} className="text-sm text-gray-600 transition-colors">
+          <button style={{color: 'inherit'}} onMouseEnter={(e) => e.target.style.color = "var(--theme-color)"} onMouseLeave={(e) => e.target.style.color = '#4b5563'} className="text-sm text-gray-600 transition-colors">
             Use Email ID
           </button>
         </div>

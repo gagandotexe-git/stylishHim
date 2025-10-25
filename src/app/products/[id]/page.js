@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { useRouter } from 'next/navigation';
 import { useCartDrawer } from "@/app/context/CartContext";
 import { showToast } from "@/components/ToastProvider";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -92,7 +92,7 @@ export default function ProductDetailPage() {
   ];
 
   const REVIEWS_PER_PAGE = 4;
-  const ACCENT = THEME_COLOR;
+  const ACCENT = "var(--theme-color)";
   const [page, setPage] = useState(1);
   const totalPages = Math.ceil(reviewsData.length / REVIEWS_PER_PAGE);
 
@@ -107,7 +107,7 @@ export default function ProductDetailPage() {
         height={size}
         viewBox="0 0 20 20"
         fill={filled ? 'currentColor' : 'none'}
-        stroke={filled ? THEME_COLOR : THEME_COLOR}
+        stroke={filled ? "var(--theme-color)" : "var(--theme-color)"}
         className={filled ? '' : 'text-white'}
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden
@@ -122,7 +122,7 @@ export default function ProductDetailPage() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600">Product not found.</p>
-          <Link href="/productpage" style={{color: THEME_COLOR}} className="font-medium mt-4 inline-block">
+          <Link href="/productpage" style={{color: "var(--theme-color)"}} className="font-medium mt-4 inline-block">
             Back to products
           </Link>
         </div>
@@ -145,7 +145,7 @@ export default function ProductDetailPage() {
         }
       `}</style>
       <main className="max-w-6xl mx-auto px-4 py-10">
-        <Link href="/productpage" style={{color: THEME_COLOR}} className="font-medium mb-6 inline-block">
+        <Link href="/productpage" style={{color: "var(--theme-color)"}} className="font-medium mb-6 inline-block">
           &larr; Back to products
         </Link>
         <div className="grid md:grid-cols-2 gap-10">
@@ -179,7 +179,7 @@ export default function ProductDetailPage() {
                 {[...Array(5)].map((_, index) => (
                   <svg
                     key={index}
-                    style={{color: index < product.rating ? THEME_COLOR : '#d1d5db'}}
+                    style={{color: index < product.rating ? "var(--theme-color)" : '#d1d5db'}}
                     className="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -190,7 +190,7 @@ export default function ProductDetailPage() {
               </div>
               <span className="text-gray-600 text-lg">({product.reviews} reviews)</span>
             </div>
-            <p style={{color: THEME_COLOR}} className="text-3xl font-bold mb-6">Rs. {product.price.toFixed(2)}</p>
+            <p style={{color: "var(--theme-color)"}} className="text-3xl font-bold mb-6">Rs. {product.price.toFixed(2)}</p>
             <p className="text-gray-700 text-base leading-relaxed mb-8">{product.description}</p>
 
             <div className="flex items-center gap-4 mb-8">
@@ -211,7 +211,7 @@ export default function ProductDetailPage() {
                   +
                 </button>
               </div>
-              <button style={{backgroundColor: THEME_COLOR}} className="flex-1 hover:bg-[#9a7f6d] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+              <button style={{backgroundColor: "var(--theme-color)"}} className="flex-1 hover:bg-[#9a7f6d] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
                 onClick={handleAddToCart}
               >
                 Add to Cart
@@ -219,7 +219,7 @@ export default function ProductDetailPage() {
             </div>
 
             <button
-              style={{backgroundColor: THEME_COLOR}}
+              style={{backgroundColor: "var(--theme-color)"}}
               className="w-full hover:bg-[#9a7f6d] text-white font-semibold py-3 rounded-lg transition-colors duration-200 mb-6"
               onClick={handleBuyNow}
             >
@@ -290,7 +290,7 @@ export default function ProductDetailPage() {
           <div className="self-start md:self-center">
             <button
               type="button"
-              style={{backgroundColor: THEME_COLOR}}
+              style={{backgroundColor: "var(--theme-color)"}}
               className="text-white px-4 py-2 rounded transition hover:bg-opacity-90"
             >
               Write a review
@@ -298,7 +298,7 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        <hr style={{borderColor: THEME_COLOR}} className="my-6 h-[1px]" />
+        <hr style={{borderColor: "var(--theme-color)"}} className="my-6 h-[1px]" />
 
         {/* Reviews List */}
         <div>
@@ -308,7 +308,7 @@ export default function ProductDetailPage() {
             {paginated?.map((r) => (
               <div
                 key={r.id}
-                style={{borderColor: THEME_COLOR}}
+                style={{borderColor: "var(--theme-color)"}}
                 className="bg-white p-4 border-b-[1px] flex flex-col md:flex-row gap-4"
               >
                 {r.image && <img
@@ -354,7 +354,7 @@ export default function ProductDetailPage() {
                 <button
                   key={num}
                   onClick={() => setPage(num)}
-                  style={page === num ? {backgroundColor: THEME_COLOR} : {}}
+                  style={page === num ? {backgroundColor: "var(--theme-color)"} : {}}
                   className={`px-3 py-1 rounded border text-sm ${page === num ? 'text-white' : 'text-gray-700'}`}
                 >
                   {num}

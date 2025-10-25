@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 const CategorySlider = () => {
   const scrollContainerRef = useRef(null);
@@ -46,7 +46,7 @@ const categories = [
                 style={{
                   color: 'rgb(107, 114, 128)',
                 }}
-                onMouseEnter={(e) => e.target.style.color = THEME_COLOR}
+                onMouseEnter={(e) => e.target.style.color = "var(--theme-color)"}
                 onMouseLeave={(e) => e.target.style.color = 'rgb(107, 114, 128)'}
               >
                 {category.name}

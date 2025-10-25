@@ -1,7 +1,7 @@
 // pages/authenticity.js
 import Head from "next/head";
 import { ShieldCheck, FlaskConical, Leaf, CheckCircle2 } from "lucide-react";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 export default function Authenticity() {
   return (
@@ -53,7 +53,7 @@ export default function Authenticity() {
             className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col items-center text-center border border-gray-100"
           >
             <div className="bg-[#F0F0F0] p-3 rounded-full mb-4">
-              <Icon style={{color: THEME_COLOR}} size={30} />
+              <Icon style={{color: "var(--theme-color)"}} size={30} />
             </div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
@@ -111,7 +111,7 @@ export default function Authenticity() {
         </p>
         <a
           href="mailto:stylishhim@gmail.com"
-          style={{backgroundColor: THEME_COLOR}}
+          style={{ backgroundColor: "var(--theme-color)"}}
           className="inline-block text-white px-6 py-3 rounded-full hover:bg-[#a56d46] transition-all duration-300"
         >
           Contact Us

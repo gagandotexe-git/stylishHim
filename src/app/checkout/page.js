@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -52,7 +52,7 @@ export default function CheckoutPage() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                style={{outlineColor: "var(--theme-color)", outlineWidth: '2px'}}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
               <input
@@ -62,7 +62,7 @@ export default function CheckoutPage() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                style={{outlineColor: "var(--theme-color)", outlineWidth: '2px'}}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
             </div>
@@ -74,7 +74,7 @@ export default function CheckoutPage() {
               value={form.address}
               onChange={handleChange}
               required
-              style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+              style={{outlineColor: "var(--theme-color)", outlineWidth: '2px'}}
               className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
             />
 
@@ -86,7 +86,7 @@ export default function CheckoutPage() {
                 value={form.city}
                 onChange={handleChange}
                 required
-                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                style={{outlineColor: "var(--theme-color)", outlineWidth: '2px'}}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
               <input
@@ -96,7 +96,7 @@ export default function CheckoutPage() {
                 value={form.zip}
                 onChange={handleChange}
                 required
-                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                style={{outlineColor: "var(--theme-color)", outlineWidth: '2px'}}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
               <input
@@ -106,7 +106,7 @@ export default function CheckoutPage() {
                 value={form.phone}
                 onChange={handleChange}
                 required
-                style={{outlineColor: THEME_COLOR, outlineWidth: '2px'}}
+                style={{outlineColor: "var(--theme-color)", outlineWidth: '2px'}}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:border-transparent outline-none transition-all"
               />
             </div>
@@ -121,7 +121,7 @@ export default function CheckoutPage() {
 
             <button
               type="submit"
-              style={{background: `linear-gradient(to right, ${THEME_COLOR}, ${THEME_COLOR}cc)`}}
+              style={{background: `linear-gradient(to right, ${"var(--theme-color)"}, ${"var(--theme-color)"}cc)`}}
               className="w-full text-white py-3 rounded-lg font-semibold mt-6 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
               Place Order
@@ -167,18 +167,18 @@ export default function CheckoutPage() {
             </div>
             <div className="flex justify-between text-base font-semibold mt-2 pt-2 border-t border-gray-200">
               <span>Total</span>
-              <span style={{color: THEME_COLOR}}>₹{(total + shippingCost).toFixed(2)}</span>
+              <span style={{color: "var(--theme-color)"}}>₹{(total + shippingCost).toFixed(2)}</span>
             </div>
           </div>
 
           {/* Free Delivery Indicator */}
           {total < freeDeliveryThreshold && total > 0 && (
-            <div style={{borderColor: THEME_COLOR}} className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-opacity-30">
+            <div style={{borderColor: "var(--theme-color)"}} className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-opacity-30">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-gray-700">
                   Add ₹{amountNeeded.toFixed(2)} more for FREE delivery!
                 </span>
-                <span style={{color: THEME_COLOR}} className="text-xs font-semibold">
+                <span style={{color: "var(--theme-color)"}} className="text-xs font-semibold">
                   {progressPercentage.toFixed(0)}%
                 </span>
               </div>
@@ -187,7 +187,7 @@ export default function CheckoutPage() {
               <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
                 <div
                   className="h-2.5 rounded-full transition-all duration-500 ease-out"
-                  style={{ width: `${progressPercentage}%`, backgroundColor: THEME_COLOR }}
+                  style={{ width: `${progressPercentage}%`, backgroundColor: "var(--theme-color)" }}
                 ></div>
               </div>
               

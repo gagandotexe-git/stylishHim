@@ -1,4 +1,4 @@
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 export default function ProductBannerPage() {
   return (
@@ -7,7 +7,7 @@ export default function ProductBannerPage() {
       <div className="px-4 sm:px-8 md:px-16 lg:px-24 py-8 md:py-12">
         <h1 
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-center leading-relaxed"
-          style={{ color: THEME_COLOR }}
+          style={{ color: "var(--theme-color)" }}
         >
           In the embrace of nature's hand, petals whisper secrets of beauty untold.
         </h1>
@@ -40,7 +40,7 @@ export default function ProductBannerPage() {
       <div className="px-4 sm:px-8 md:px-16 lg:px-24 py-8 md:py-12">
         <p 
           className="text-base sm:text-lg md:text-xl text-center font-light"
-          style={{ color: THEME_COLOR }}
+          style={{ color: "var(--theme-color)" }}
         >
           Experience the tranquil beauty where nature meets artistry.
         </p>

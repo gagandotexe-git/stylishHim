@@ -6,7 +6,7 @@ import SearchBar from "./searchbar/SearchBar";
 import { Heart } from "lucide-react";
 import WishlistDrawer from "./WishlistDrawer";
 import { useSelector } from "react-redux";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 import CartDrawer from "./CartDrawer";
 import toast from "react-hot-toast";
@@ -77,23 +77,23 @@ const AnimatedLogo = () => (
           setIsCartOpen(true);
         }}
         className="relative p-2 text-black transition-colors"
-        onMouseEnter={(e) => e.currentTarget.style.color = THEME_COLOR}
+        onMouseEnter={(e) => e.currentTarget.style.color = "var(--theme-color)"}
         onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
       >
         <ShoppingBag className="h-5 w-5" />
-        <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: THEME_COLOR}}>
+        <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: "var(--theme-color)"}}>
           {totalQuantity}
         </span>
       </button>
       <button
         onClick={() => setIsWishlistOpen(true)}
         className="relative p-2 text-black transition-colors"
-        onMouseEnter={(e) => e.currentTarget.style.color = THEME_COLOR}
+        onMouseEnter={(e) => e.currentTarget.style.color = "var(--theme-color)"}
         onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
       >
         <Heart className="h-5 w-5" />
         { (
-          <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: THEME_COLOR}}>
+          <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: "var(--theme-color)"}}>
             {wishlistCount}
           </span>
         )}
@@ -149,7 +149,7 @@ const AnimatedLogo = () => (
                   key={href}
                   href={href}
                   className="text-[14px] font-[500] text-black transition-colors [font-family:'Raleway',_'Lato',_sans-serif]"
-                  onMouseEnter={(e) => e.currentTarget.style.color = THEME_COLOR}
+                  onMouseEnter={(e) => e.currentTarget.style.color = "var(--theme-color)"}
                   onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
                 >
                   {label}

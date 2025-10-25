@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { THEME_COLOR } from '@/helpers/colorHelper';
+
 
 const CarouselBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -141,7 +141,7 @@ const CarouselBanner = () => {
       {/* Wrapper - Remove side gaps on laptop */}
       <div className={`relative w-full mx-auto ${isMobile ? '' : 'py-0'}`}>
         {!isMobile && (
-          <h2 style={{color: THEME_COLOR}} className="text-center text-4xl font-bold mb-6 tracking-[0.8px]">
+          <h2 style={{color: "var(--theme-color)"}} className="text-center text-4xl font-bold mb-6 tracking-[0.8px]">
             GET GLOWING
           </h2>
         )}
@@ -210,7 +210,7 @@ const CarouselBanner = () => {
                 <button
                   key={i}
                   onClick={() => goToSlide(i)}
-                  style={i === currentIndex ? {backgroundColor: THEME_COLOR} : {}}
+                  style={i === currentIndex ? {backgroundColor: "var(--theme-color)"} : {}}
                   className={`transition-all duration-200 rounded-full ${i === currentIndex
                       ? 'w-8 h-3'
                       : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'

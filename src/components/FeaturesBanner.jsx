@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { THEME_COLOR } from '@/helpers/colorHelper';
+
 import {
   Truck,
   RefreshCw,
@@ -58,7 +58,7 @@ export default function FeaturesBanner() {
                 key={i}
                 className="flex flex-col md:flex-row items-center md:items-start gap-3 min-w-[180px] md:min-w-[140px] flex-shrink-0 md:flex-shrink"
               >
-                <div className="rounded-full p-3 flex-shrink-0" style={{backgroundColor: THEME_COLOR}}>
+                <div className="rounded-full p-3 flex-shrink-0" style={{backgroundColor: "var(--theme-color)"}}>
                   <f.icon className="w-6 h-6 md:w-6 md:h-6 text-white stroke-[2.5]" />
                 </div>
                 <div className="text-center md:text-left">

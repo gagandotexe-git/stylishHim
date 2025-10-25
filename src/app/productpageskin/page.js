@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleFavourite } from "../redux/favouriteSlice";
 import toast from "react-hot-toast";
 import { showToast } from "@/components/ToastProvider";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 export const products = [
       {
@@ -283,7 +283,7 @@ const ProductCard = ({ product, onNavigate }) => {
             {[...Array(5)].map((_, index) => (
               <svg
                 key={index}
-                style={{color: index < product.rating ? THEME_COLOR : '#d1d5db'}}
+                style={{color: index < product.rating ? "var(--theme-color)" : '#d1d5db'}}
                 className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -292,13 +292,13 @@ const ProductCard = ({ product, onNavigate }) => {
               </svg>
             ))}
           </div>
-          <span style={{color: THEME_COLOR}} className="text-xs sm:text-sm ml-1 font-medium">
+          <span style={{color: "var(--theme-color)"}} className="text-xs sm:text-sm ml-1 font-medium">
             {product.reviews} reviews
           </span>
         </div>
 
         {/* Price */}
-        <p style={{color: THEME_COLOR}} className="text-lg sm:text-xl font-semibold">
+        <p style={{color: "var(--theme-color)"}} className="text-lg sm:text-xl font-semibold">
           Rs. {product.price.toFixed(2)}
         </p>
       </div>

@@ -1,7 +1,7 @@
 // pages/shipping-delivery.js
 import Head from "next/head";
 import { Truck, Clock, MapPin, Package, Headphones } from "lucide-react";
-import { THEME_COLOR } from "@/helpers/colorHelper";
+
 
 export default function ShippingDelivery() {
   return (
@@ -30,7 +30,7 @@ export default function ShippingDelivery() {
           {/* Order Processing */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Package style={{color: THEME_COLOR}} size={28} />
+              <Package style={{color: "var(--theme-color)"}} size={28} />
               <h2 className="text-2xl font-semibold">Order Processing</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -45,7 +45,7 @@ export default function ShippingDelivery() {
           {/* Domestic Shipping */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Truck style={{color: THEME_COLOR}} size={28} />
+              <Truck style={{color: "var(--theme-color)"}} size={28} />
               <h2 className="text-2xl font-semibold">Domestic Shipping</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -61,7 +61,7 @@ export default function ShippingDelivery() {
           {/* International Shipping */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <MapPin style={{color: THEME_COLOR}} size={28} />
+              <MapPin style={{color: "var(--theme-color)"}} size={28} />
               <h2 className="text-2xl font-semibold">International Shipping</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -80,7 +80,7 @@ export default function ShippingDelivery() {
           {/* Tracking & Updates */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Clock style={{color: THEME_COLOR}} size={28} />
+              <Clock style={{color: "var(--theme-color)"}} size={28} />
               <h2 className="text-2xl font-semibold">Tracking & Updates</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -96,7 +96,7 @@ export default function ShippingDelivery() {
         {/* Delivery Policy Section */}
         <section className="mt-10 bg-[#F0F0F0] rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Truck style={{color: THEME_COLOR}} size={36} />
+            <Truck style={{color: "var(--theme-color)"}} size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Delivery Policy</h2>
               <p className="text-gray-600 mb-2">
@@ -114,7 +114,7 @@ export default function ShippingDelivery() {
         {/* Support Section */}
         <section className="mt-10 bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Headphones style={{color: THEME_COLOR}} size={36} />
+            <Headphones style={{color: "var(--theme-color)"}} size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Customer Support</h2>
               <p className="text-gray-600 mb-2">
@@ -125,7 +125,7 @@ export default function ShippingDelivery() {
                   📧 Email:{" "}
                   <a
                     href="mailto:stylishhim@gmail.com"
-                    style={{color: THEME_COLOR}}
+                    style={{color: "var(--theme-color)"}}
                     className="underline"
                   >
                     stylishhim@gmail.com
