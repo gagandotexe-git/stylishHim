@@ -24,7 +24,7 @@ const categories = [
   { name: "Trimmers", image: "/images/categoryImage/glow.png", link: "/" },
   { name: "Shave", image: "/images/categoryImage/bathbody.png", link: "/" },
   { name: "Fragrances", image: "/images/categoryImage/glow.png", link: "/" },
-  { name: "Skin", image: "/images/categoryImage/gifting.png", link: "/" },
+  { name: "Skin", image: "/images/categoryImage/gifting.jpg", link: "/" },
   { name: "Corporate Gifting", image: "/images/categoryImage/skin.png", link: "/" },
   { name: "Blog", image: "/images/categoryImage/hair.png", link: "/" },
   { name: "Women", image: "/images/categoryImage/glow.png", link: "/" },
