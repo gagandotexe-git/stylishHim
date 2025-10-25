@@ -7,12 +7,14 @@ import ProductBannerPageTwo from "@/components/ProductBannerPageTwo";
 import ProductskinListingPage from "./productpageskin/page";
 import ProductListingPagetwo from "./productpage/page";
 import NaturalGradientProduct from "@/components/NaturalGradientProduct";
+import ImageBanner from "@/HomePageComponent/ImageBanner";
 
 export default function Home() {
   return (
     <>
      
       <CategorySlider /> 
+      <ImageBanner />
      <CarouselBanner />
      <ProductListingPage /> 
         <ProductBannerPageTwo />

@@ -4,7 +4,7 @@ import { ShieldCheck, FlaskConical, Leaf, CheckCircle2 } from "lucide-react";
 
 export default function Authenticity() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#fffdfb] to-[#f8f6f3] text-gray-800">
+    <div className="min-h-screen text-gray-800">
       <Head>
         <title>Authenticity - StylishHim</title>
         <meta
@@ -51,8 +51,8 @@ export default function Authenticity() {
             key={index}
             className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col items-center text-center border border-gray-100"
           >
-            <div className="bg-[#f4ebe5] p-3 rounded-full mb-4">
-              <Icon className="text-[#C0875A]" size={30} />
+            <div className="bg-[#d7f1fc] p-3 rounded-full mb-4">
+              <Icon className="text-[#3AA2CC]" size={30} />
             </div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
@@ -61,7 +61,7 @@ export default function Authenticity() {
       </section>
 
       {/* About Section */}
-      <section className="bg-[#f9f4ef] py-16 px-6 text-center">
+      <section className="bg-[#d7f1fc] py-16 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-4 text-[#3b3b3b]">
             Why Authenticity Matters
@@ -91,7 +91,7 @@ export default function Authenticity() {
 </section>
 
       {/* Quote/Testimonial Section */}
-      <section className="bg-gradient-to-r from-[#f6e7da] to-[#fff6f0] py-16 px-6 text-center">
+      <section className="bg-gradient-to-r from-[#d7f1fc] to-[#d7f1fc] py-16 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <p className="text-2xl md:text-3xl italic text-[#6b4a2b] font-serif mb-6">
             “True beauty begins with truth — the purity of what you apply to your skin and the integrity of the brand behind it.”
@@ -110,7 +110,7 @@ export default function Authenticity() {
         </p>
         <a
           href="mailto:stylishhim@gmail.com"
-          className="inline-block bg-[#C0875A] text-white px-6 py-3 rounded-full hover:bg-[#a56d46] transition-all duration-300"
+          className="inline-block bg-[#3AA2CC] text-white px-6 py-3 rounded-full hover:bg-[#a56d46] transition-all duration-300"
         >
           Contact Us
         </a>

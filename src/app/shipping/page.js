@@ -29,7 +29,7 @@ export default function ShippingDelivery() {
           {/* Order Processing */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Package className="text-[#c87b65]" size={28} />
+              <Package className="text-[#3AA2CC]" size={28} />
               <h2 className="text-2xl font-semibold">Order Processing</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -44,7 +44,7 @@ export default function ShippingDelivery() {
           {/* Domestic Shipping */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Truck className="text-[#c87b65]" size={28} />
+              <Truck className="text-[#3AA2CC]" size={28} />
               <h2 className="text-2xl font-semibold">Domestic Shipping</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -60,7 +60,7 @@ export default function ShippingDelivery() {
           {/* International Shipping */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <MapPin className="text-[#c87b65]" size={28} />
+              <MapPin className="text-[#3AA2CC]" size={28} />
               <h2 className="text-2xl font-semibold">International Shipping</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -79,7 +79,7 @@ export default function ShippingDelivery() {
           {/* Tracking & Updates */}
           <section className="bg-white rounded-2xl  p-6 border border-gray-100 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <Clock className="text-[#c87b65]" size={28} />
+              <Clock className="text-[#3AA2CC]" size={28} />
               <h2 className="text-2xl font-semibold">Tracking & Updates</h2>
             </div>
             <p className="text-gray-600 mb-3">
@@ -93,9 +93,9 @@ export default function ShippingDelivery() {
         </div>
 
         {/* Delivery Policy Section */}
-        <section className="mt-10 bg-gradient-to-r from-[#fff6f3] to-[#fffaf8] border border-[#f1e0d8] rounded-2xl p-8 shadow-sm">
+        <section className="mt-10 bg-[#d7f1fc] rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Truck className="text-[#c87b65]" size={36} />
+            <Truck className="text-[#3AA2CC]" size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Delivery Policy</h2>
               <p className="text-gray-600 mb-2">
@@ -113,7 +113,7 @@ export default function ShippingDelivery() {
         {/* Support Section */}
         <section className="mt-10 bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Headphones className="text-[#c87b65]" size={36} />
+            <Headphones className="text-[#3AA2CC]" size={36} />
             <div>
               <h2 className="text-2xl font-semibold mb-2">Customer Support</h2>
               <p className="text-gray-600 mb-2">
@@ -124,7 +124,7 @@ export default function ShippingDelivery() {
                   📧 Email:{" "}
                   <a
                     href="mailto:stylishhim@gmail.com"
-                    className="text-[#c87b65] underline"
+                    className="text-[#3AA2CC] underline"
                   >
                     stylishhim@gmail.com
                   </a>

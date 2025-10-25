@@ -145,7 +145,7 @@ const CarouselBanner = () => {
       {/* Wrapper - Remove side gaps on laptop */}
       <div className={`relative w-full mx-auto ${isMobile ? '' : 'py-8'}`}>
         {!isMobile && (
-          <h2 className="text-center text-4xl font-bold text-[#9e7653] mb-6 tracking-[0.8px]">
+          <h2 className="text-center text-4xl font-bold text-[#3AA2CC] mb-6 tracking-[0.8px]">
             GET GLOWING
           </h2>
         )}
