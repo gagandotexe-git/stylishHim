@@ -18,7 +18,7 @@ const CategorySlider = () => {
   }, []);
 
 const categories = [
-  { name: "Razors for Men", image: "/images/categoryImage/gifting.png", link: "/" },
+  { name: "Razors for Men", image: "/images/categoryImage/gifting.jpg", link: "/" },
   { name: "Best Sellers", image: "/images/categoryImage/skin.png", link: "/" },
   { name: "Gifts for Men", image: "/images/categoryImage/hair.png", link: "/" },
   { name: "Trimmers", image: "/images/categoryImage/glow.png", link: "/" },
@@ -68,7 +68,7 @@ const categories = [
               key={index}
               href={category.link}
               className="flex-shrink-0 snap-start"
-              style={{ width: "calc(30% - 6.4px)" }}
+              style={{ width: "calc(25% - 25.4px)" }}
             >
               <div className="flex flex-col items-center gap-2">
                 <div className="relative w-full aspect-square rounded-full overflow-hidden hover:shadow-lg transition-shadow duration-300">

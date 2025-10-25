@@ -1,7 +1,7 @@
 import React from "react";
 
 const categories = [
-  { id: 1, name: "Gifting", image: "/images/gifting.png" }, 
+  { id: 1, name: "Gifting", image: "/images/gifting.jpg" }, 
   { id: 2, name: "Makeup", image: "/images/gifting.png" },
   { id: 3, name: "Skin", image: "/images/gifting.png" },
   { id: 4, name: "Hair", image: "/images/gifting.png" },
