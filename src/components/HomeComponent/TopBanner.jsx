@@ -194,9 +194,7 @@ export default function TopBanner() {
                 </div>
 
                 {/* Badge */}
-                <div className="absolute top-2 right-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-bold">
-                  SALE
-                </div>
+               
               </div>
             ))}
           </div>

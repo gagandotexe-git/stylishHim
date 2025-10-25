@@ -6,8 +6,6 @@ import SearchBar from "./searchbar/SearchBar";
 import { Heart } from "lucide-react";
 import WishlistDrawer from "./WishlistDrawer";
 import { useSelector } from "react-redux";
-
-
 import CartDrawer from "./CartDrawer";
 import toast from "react-hot-toast";
 import { useCartDrawer } from "@/app/context/CartContext";
@@ -19,54 +17,45 @@ const NavBar = () => {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
   const navItems = [
-    // src/constants/navLinks.js 
     { href: "/productpage", label: "Products" },
     { href: "/about", label: "About" },
     { href: "/fashion", label: "StylishHim Fashion" },
     { href: "/contactus", label: "Contact Us" },
     { href: "/helpcenter", label: "Help" },
     { href: "/signin", label: "Sign In" },
-    
-   
   ];
+
   const cartItems = useSelector((state) => state.cart.items);
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const wishlistItems = useSelector((state) => state.favourite.items);
   const wishlistCount = wishlistItems.length;
-const AnimatedLogo = () => (
-  <Link href="/" className="flex items-center group">
-    <div className="relative mr-4">
-      {/* Main reflective logo text */}
-      <h1 className="text-[28px] md:text-[32px] font-bold tracking-wide [font-family:'Cormorant_Garamond',_'Playfair_Display',_serif] relative">
-        {/* Base gradient text */}
-        <span className="relative inline-block bg-gradient-to-r from-[#CAA68C] via-[#D9BBA3] to-[#D9BBA3] bg-clip-text text-transparent">
-          StylishHim
-        </span>
 
-        {/* Reflective shimmer overlay */}
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D9BBA3]/60 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%] opacity-70">
-          StylishHim
-        </span>
-      </h1>
+  const AnimatedLogo = () => (
+    <Link href="/" className="flex items-center group mr-2">
+      <div className="relative">
+        {/* Main logo text with luxurious animation */}
+        <h1 className="text-[28px] md:text-[36px] font-bold tracking-wider [font-family:'Playfair_Display',_'Cormorant_Garamond',_serif] relative">
+          {/* Base gradient text with bronze/gold tones */}
+          <span className="relative inline-block bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite]">
+            StylishHim
+          </span>
 
-      {/* Underline accent with reflection */}
-      <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#CAA68C] via-[#D9BBA3] to-[#D9BBA3] transition-all duration-500 mx-auto rounded-full"></div>
-    </div>
+          {/* Shimmer overlay effect */}
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4A574]/70 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%]">
+            StylishHim
+          </span>
 
-    <style jsx>{`
-      @keyframes shimmer {
-        0% {
-          background-position: -200% 0;
-        }
-        100% {
-          background-position: 200% 0;
-        }
-      }
-    `}</style>
-  </Link>
-);
+          {/* Glow effect on hover */}
+          <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent">
+            StylishHim
+          </span>
+        </h1>
 
-
+        {/* Elegant underline with animation */}
+        <div className="absolute -bottom-1 left-0 right-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#804003] via-[#C4762F] to-[#804003] transition-all duration-700 mx-auto rounded-full shadow-[0_0_10px_rgba(128,64,3,0.5)]"></div>
+       </div>
+    </Link>
+  );
 
   const Icons = (
     <div className="flex items-center space-x-0 md:space-x-3">
@@ -76,44 +65,34 @@ const AnimatedLogo = () => (
         onClick={() => {
           setIsCartOpen(true);
         }}
-        className="relative p-2 text-black transition-colors"
-        onMouseEnter={(e) => e.currentTarget.style.color = "var(--theme-color)"}
-        onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
+        className="relative p-2 text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 transform hover:scale-110"
       >
         <ShoppingBag className="h-5 w-5" />
-        <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: "var(--theme-color)"}}>
-          {totalQuantity}
-        </span>
+        {totalQuantity > 0 && (
+          <span className="absolute -top-1 -right-1 bg-[#804003] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-lg animate-[bounce_1s_ease-in-out_infinite]">
+            {totalQuantity}
+          </span>
+        )}
       </button>
+
       <button
         onClick={() => setIsWishlistOpen(true)}
-        className="relative p-2 text-black transition-colors"
-        onMouseEnter={(e) => e.currentTarget.style.color = "var(--theme-color)"}
-        onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
+        className="relative p-2 text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 transform hover:scale-110"
       >
         <Heart className="h-5 w-5" />
-        { (
-          <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{backgroundColor: "var(--theme-color)"}}>
+        {wishlistCount > 0 && (
+          <span className="absolute -top-1 -right-1 bg-[#804003] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-lg">
             {wishlistCount}
           </span>
         )}
       </button>
-      <button
-        className="p-2 text-black md:hidden"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-      </button>
     </div>
   );
-
-
 
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=Lato:wght@300;400;700&family=Italiana&display=swap');
-        
+       
         @keyframes shimmer {
           0% {
             background-position: -200% 0;
@@ -122,18 +101,56 @@ const AnimatedLogo = () => (
             background-position: 200% 0;
           }
         }
+
+        @keyframes gradientShift {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.5;
+            transform: scale(1.2);
+          }
+        }
+
+        @keyframes bounce {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-3px);
+          }
+        }
       `}</style>
+
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <WishlistDrawer
         isOpen={isWishlistOpen}
         onClose={() => setIsWishlistOpen(false)}
       />
 
-      <nav className="bg-[#FFFFFF]  ">
+      <nav className="bg-[#FFFFFF] ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile */}
           <div className="flex md:hidden justify-between items-center h-14">
-            <AnimatedLogo />
+            <div className="flex items-center gap-2">
+              <button
+                className="p-2 text-[#2C2C2C] hover:text-[#804003] transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+              <AnimatedLogo />
+            </div>
             {Icons}
           </div>
           <div className="flex md:hidden mb-4 w-full">
@@ -148,26 +165,27 @@ const AnimatedLogo = () => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-[14px] font-[500] text-black transition-colors [font-family:'Raleway',_'Lato',_sans-serif]"
-                  onMouseEnter={(e) => e.currentTarget.style.color = "var(--theme-color)"}
-                  onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
+                  className="text-[14px] font-[500] text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 [font-family:'Raleway',_'Lato',_sans-serif] relative group/link"
                 >
                   {label}
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#804003] transition-all duration-300 group-hover/link:w-full"></span>
                 </Link>
               ))}
             </div>
-            <div className="flex-1 max-w-md mx-8"> <SearchBar /></div>
+            <div className="flex-1 max-w-md mx-8">
+              <SearchBar />
+            </div>
             {Icons}
           </div>
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden pb-4 space-y-2">
+            <div className="md:hidden pb-4 space-y-2 animate-[slideDown_0.3s_ease-out]">
               {navItems.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-[14px] font-[500] block px-3 py-2 text-black hover:bg-gray-100 rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-colors"
+                  className="text-[14px] font-[500] block px-3 py-2 text-[#2C2C2C] hover:text-[#804003] hover:bg-[#FFF8F0] rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
@@ -177,6 +195,19 @@ const AnimatedLogo = () => (
           )}
         </div>
       </nav>
+
+      <style jsx>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </>
   );
 };
