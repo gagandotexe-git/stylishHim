@@ -8,8 +8,8 @@ const ColorPicker = () => {
 
   const [selectedColor, setSelectedColor] = useState(
     typeof window !== "undefined"
-      ? localStorage.getItem("themeColor") || "#3AA2CC"
-      : "#3AA2CC"
+      ? localStorage.getItem("themeColor") || "#924A00"
+      : "#924A00"
   );
 
   const [pendingColor, setPendingColor] = useState(selectedColor);
