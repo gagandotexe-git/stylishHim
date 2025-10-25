@@ -92,9 +92,9 @@ export default function TopBanner() {
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 py-8">
+    <div className="min-h-screen  bg-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Carousel Container */}
+ 
         <div 
           className="relative overflow-hidden rounded-2xl"
           onMouseEnter={handleMouseEnter}
