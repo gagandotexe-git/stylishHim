@@ -74,7 +74,7 @@ const categories = [
               key={index}
               href={category.link}
               className="flex-shrink-0 snap-start"
-              style={{ width: "calc(30% - 25.4px)" }}
+              style={{ width: "calc(33% - 25.4px)" }}
             >
               <div className="flex flex-col items-center gap-2">
                 <div className="relative w-full aspect-square rounded-full overflow-hidden hover:shadow-lg transition-shadow duration-300">

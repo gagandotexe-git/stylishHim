@@ -7,19 +7,19 @@ export default function TopBanner() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const slides = [
-    {
-      id: 1,
-      image: "https://images-static.nykaa.com/uploads/0b12049e-a26a-4588-8bad-369d32f057b6.gif",
-      title: "Up To 30% Off",
-      subtitle: "On Professional Hair Care Brands",
-      isGif: true
-    },
-    {
-      id: 2,
-      image: "https://images-static.nykaa.com/creatives/5f647897-ac69-4cc4-83b4-3567c8975a51/default.jpg?tr=cm-pad_resize,w-600",
-      title: "Up To 20% Off",
-      subtitle: "On Kay Bestsellers"
-    },
+    // {
+    //   id: 1,
+    //   image: "https://images-static.nykaa.com/uploads/0b12049e-a26a-4588-8bad-369d32f057b6.gif",
+    //   title: "Up To 30% Off",
+    //   subtitle: "On Professional Hair Care Brands",
+    //   isGif: true
+    // },
+    // {
+    //   id: 2,
+    //   image: "https://images-static.nykaa.com/creatives/5f647897-ac69-4cc4-83b4-3567c8975a51/default.jpg?tr=cm-pad_resize,w-600",
+    //   title: "Up To 20% Off",
+    //   subtitle: "On Kay Bestsellers"
+    // },
     {
       id: 3,
       image: "https://images-static.nykaa.com/creatives/999a2d06-5480-4ca2-a8ac-03d235f8c7c7/default.jpg?tr=cm-pad_resize,w-600",
@@ -92,112 +92,106 @@ export default function TopBanner() {
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <div className="min-h-screen  bg-white py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- 
+    <div className="min-h-screen bg-white">
+      {/* Full Width Carousel - No Container Padding */}
+      <div 
+        className="relative overflow-hidden w-full"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Slides Wrapper */}
         <div 
-          className="relative overflow-hidden rounded-2xl"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {/* Slides Wrapper */}
-          <div 
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {slides.map((slide) => (
-              <div
-                key={slide.id}
-                className="min-w-full relative"
-              >
-                {/* Image Container */}
-                <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[24/9] bg-gradient-to-br from-gray-100 to-gray-200">
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className="w-full h-full"
-                    loading="lazy"
-                  />
-                  
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  
-                </div>
+          {slides.map((slide) => (
+            <div
+              key={slide.id}
+              className="min-w-full relative"
+            >
+              {/* Image Container - Full Width with object-cover */}
+              <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] bg-gradient-to-br from-gray-100 to-gray-200">
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
-            ))}
-          </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 z-10"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 z-10"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
-          </button>
-
-          {/* Dots Navigation */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex
-                    ? 'bg-white w-8 h-2'
-                    : 'bg-white/50 w-2 h-2 hover:bg-white/75'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Products Grid Below Carousel */}
-        <div className="mt-12">
-          <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-6">
-            Featured Offers
-          </h2>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {slides.slice(0, 10).map((product) => (
-              <div
-                key={product.id}
-                className="group relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
-              >
-                {/* Image */}
-                <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full group-hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 z-10 shadow-lg"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 text-gray-800" />
+        </button>
 
-                {/* Content */}
-                <div className="p-3">
-                  <h3 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">
-                    {product.title}
-                  </h3>
-                  <p className="text-xs text-gray-600 line-clamp-2">
-                    {product.subtitle}
-                  </p>
-                </div>
+        <button
+          onClick={nextSlide}
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 z-10 shadow-lg"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-800" />
+        </button>
 
-                {/* Badge */}
-               
+        {/* Dots Navigation */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentIndex
+                  ? 'bg-white w-8 h-2'
+                  : 'bg-white/50 w-2 h-2 hover:bg-white/75'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Products Grid Below Carousel - With Container Padding */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-6">
+          Featured Offers
+        </h2>
+        
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+          {slides.slice(0, 10).map((product) => (
+            <div
+              key={product.id}
+              className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+            >
+              {/* Image */}
+              <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                />
               </div>
-            ))}
-          </div>
+
+              {/* Content */}
+              <div className="p-3">
+                <h3 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">
+                  {product.title}
+                </h3>
+                <p className="text-xs text-gray-600 line-clamp-2">
+                  {product.subtitle}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

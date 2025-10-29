@@ -1,13 +1,11 @@
 "use client";
-import { useState } from "react";
-import { User, ShoppingBag, Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ShoppingBag, Menu, X, Heart } from "lucide-react";
 import Link from "next/link";
 import SearchBar from "./searchbar/SearchBar";
-import { Heart } from "lucide-react";
 import WishlistDrawer from "./WishlistDrawer";
 import { useSelector } from "react-redux";
 import CartDrawer from "./CartDrawer";
-import toast from "react-hot-toast";
 import { useCartDrawer } from "@/app/context/CartContext";
 import ColorPicker from "./ColorPicker";
 
@@ -15,56 +13,98 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isCartOpen, setIsCartOpen } = useCartDrawer();
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const [userRole, setUserRole] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const navItems = [
+  // ✅ Read user info from localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          if (parsedUser?.role) {
+            setUserRole(parsedUser.role);
+            setIsLoggedIn(true);
+          }
+        } catch (err) {
+          console.error("Error parsing user from localStorage:", err);
+        }
+      }
+    }
+  }, []);
+
+  // ✅ Default routes (always visible)
+  const defaultNavItems = [
     { href: "/productpage", label: "Products" },
     { href: "/about", label: "About" },
     { href: "/fashion", label: "StylishHim Fashion" },
     { href: "/contactus", label: "Contact Us" },
     { href: "/helpcenter", label: "Help" },
-    { href: "/signin", label: "Sign In" },
   ];
 
+  // ✅ User-only routes (additionally visible when user logged in)
+  const userNavItems = [
+    { href: "/profile", label: "Profile" },
+    { href: "/orders", label: "Orders" },
+    // { href: "/orders", label: "Order History" },
+  ];
+
+  // ✅ Admin-only routes (replace all)
+  const adminNavItems = [
+    { href: "/admin/dashboard", label: "Dashboard" },
+    { href: "/admin/addproducts", label: "Add Products" },
+    { href: "/admin/allusers", label: "All Users" },
+    { href: "/admin/allproducts", label: "All Products" },
+      { href: "/admin/alltransation", label: "All Transation" },
+  ];
+
+  // ✅ Combine routes dynamically
+  let navItems = [];
+
+  if (isLoggedIn && userRole === "admin") {
+    // Admin sees only admin routes
+    navItems = adminNavItems;
+  } else if (isLoggedIn && userRole === "user") {
+    // User sees default + user routes (without Sign In)
+    navItems = [...defaultNavItems, ...userNavItems];
+  } else {
+    // Guest sees default + sign in
+    navItems = [...defaultNavItems, { href: "/signin", label: "Sign In" }];
+  }
+
+  // Redux selectors
   const cartItems = useSelector((state) => state.cart.items);
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const wishlistItems = useSelector((state) => state.favourite.items);
   const wishlistCount = wishlistItems.length;
 
+  // ✅ Logo animation
   const AnimatedLogo = () => (
     <Link href="/" className="flex items-center group mr-2">
       <div className="relative">
-        {/* Main logo text with luxurious animation */}
         <h1 className="text-[28px] md:text-[36px] font-bold tracking-wider [font-family:'Playfair_Display',_'Cormorant_Garamond',_serif] relative">
-          {/* Base gradient text with bronze/gold tones */}
           <span className="relative inline-block bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite]">
             StylishHim
           </span>
-
-          {/* Shimmer overlay effect */}
           <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4A574]/70 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%]">
             StylishHim
           </span>
-
-          {/* Glow effect on hover */}
           <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent">
             StylishHim
           </span>
         </h1>
-
-        {/* Elegant underline with animation */}
         <div className="absolute -bottom-1 left-0 right-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#804003] via-[#C4762F] to-[#804003] transition-all duration-700 mx-auto rounded-full shadow-[0_0_10px_rgba(128,64,3,0.5)]"></div>
-       </div>
+      </div>
     </Link>
   );
 
+  // ✅ Icons (Cart + Wishlist + ColorPicker)
   const Icons = (
     <div className="flex items-center space-x-0 md:space-x-3">
       <ColorPicker />
-      
       <button
-        onClick={() => {
-          setIsCartOpen(true);
-        }}
+        onClick={() => setIsCartOpen(true)}
         className="relative p-2 text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 transform hover:scale-110"
       >
         <ShoppingBag className="h-5 w-5" />
@@ -74,7 +114,6 @@ const NavBar = () => {
           </span>
         )}
       </button>
-
       <button
         onClick={() => setIsWishlistOpen(true)}
         className="relative p-2 text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 transform hover:scale-110"
@@ -92,7 +131,6 @@ const NavBar = () => {
   return (
     <>
       <style jsx global>{`
-       
         @keyframes shimmer {
           0% {
             background-position: -200% 0;
@@ -101,29 +139,18 @@ const NavBar = () => {
             background-position: 200% 0;
           }
         }
-
         @keyframes gradientShift {
-          0%, 100% {
+          0%,
+          100% {
             background-position: 0% 50%;
           }
           50% {
             background-position: 100% 50%;
           }
         }
-
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.5;
-            transform: scale(1.2);
-          }
-        }
-
         @keyframes bounce {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0);
           }
           50% {
@@ -138,9 +165,9 @@ const NavBar = () => {
         onClose={() => setIsWishlistOpen(false)}
       />
 
-      <nav className="bg-[#FFFFFF] ">
+      <nav className="bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Mobile */}
+          {/* ✅ Mobile Header */}
           <div className="flex md:hidden justify-between items-center h-14">
             <div className="flex items-center gap-2">
               <button
@@ -157,7 +184,7 @@ const NavBar = () => {
             <SearchBar />
           </div>
 
-          {/* Desktop */}
+          {/* ✅ Desktop Navbar */}
           <div className="hidden md:flex justify-between items-center h-16">
             <AnimatedLogo />
             <div className="flex items-center space-x-8">
@@ -178,7 +205,7 @@ const NavBar = () => {
             {Icons}
           </div>
 
-          {/* Mobile Menu */}
+          {/* ✅ Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden pb-4 space-y-2 animate-[slideDown_0.3s_ease-out]">
               {navItems.map(({ href, label }) => (

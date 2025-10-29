@@ -12,8 +12,7 @@ export default function Home() {
   return (
     <>
 
-      <CategorySlider />
-     
+      <CategorySlider /> 
       <TopBanner />
       <AddTopBanner />
        <BeautyProductsGrid />

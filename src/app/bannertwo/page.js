@@ -41,19 +41,28 @@ const BannerGridtwo = () => {
   ];
 
   return (
-    <div className="w-full bg-white">
-      <div className="w-full">
-        <div className="flex flex-col">
+    <div className="w-full bg-gradient-to-b from-pink-50 to-white py-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {banners.map((banner) => (
-            <div key={banner.id} className="w-full">
-              <div className="block w-full cursor-pointer">
-                <div className="relative w-full overflow-hidden bg-white">
+            <div 
+              key={banner.id} 
+              className="group cursor-pointer"
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white">
+                <div className="relative overflow-hidden">
                   <img
                     src={banner.image}
                     alt={`Banner ${banner.id}`}
-                    className="w-full h-auto block"
+                    className="w-full h-auto block transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-lg font-bold mb-1">{banner.calloutText}</h3>
+                  <p className="text-sm opacity-90">{banner.calloutSubtext}</p>
                 </div>
               </div>
             </div>
