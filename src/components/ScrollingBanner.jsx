@@ -65,7 +65,7 @@ export default function ScrollingBanner() {
         style={{ fontFamily: "'Marcellus', 'Work Sans', serif", backgroundColor: "var(--theme-color)" }}
       >
         {/* Desktop view */}
-        <div className="hidden md:flex whitespace-nowrap animate-marquee py-2 text-sm font-medium">
+        <div className="hidden md:flex whitespace-nowrap animate-marquee py-3 text-sm font-medium">
           {messages.concat(messages).map((msg, i) => (
             <span key={i} className="mx-8">
               {msg}
