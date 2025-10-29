@@ -364,7 +364,7 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={isSubmitting || loading}
-              style={{background: `linear-gradient(to right, ${"var(--theme-color)"}, ${"var(--theme-color)"}cc)`}}
+              style={{background: "var(--theme-color)"}}
               className="w-full text-white py-3 rounded-lg font-semibold mt-6 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting || loading ? "Processing..." : "Place Order"}

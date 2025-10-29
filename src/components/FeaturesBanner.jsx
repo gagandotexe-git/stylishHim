@@ -83,7 +83,7 @@ export default function FeaturesBanner() {
                 aria-label={s.label}
                 className={`${s.bg} rounded-full p-2.5 hover:scale-110 transition-transform duration-200 flex items-center justify-center`}
               >
-                <s.icon className={`w-5 h-5 ${s.iconColor}`} />
+                <s.icon className={`w-5 h-5 ${s.iconColor} `} />
               </a>
             ))}
           </div>

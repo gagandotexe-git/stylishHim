@@ -7,6 +7,7 @@ import NaturalGradientProduct from "@/components/NaturalGradientProduct";
 import ImageBanner from "@/HomePageComponent/ImageBanner";
 import BeautyProductsGrid from "./homepage/page";
 import BannerGridtwo from "./bannertwo/page";
+import ProductskinListingPage from "./productpageskin/page";
 
 export default function Home() {
   return (
@@ -15,9 +16,11 @@ export default function Home() {
       <CategorySlider /> 
       <TopBanner />
       <AddTopBanner />
+      <ProductskinListingPage />
        <BeautyProductsGrid />
       <ImageBanner />
       <BannerGridtwo />
+      <ProductskinListingPage />
       <NaturalGradientProduct />
     </>
   );

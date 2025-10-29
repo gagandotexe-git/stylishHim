@@ -310,7 +310,7 @@ export default function ProductskinListingPage() {
   const router = useRouter();
 
   const handleNavigate = (productId) => {
-    router.push(`/products/${productId}`);
+    router.push(`/producttwo/${productId}`);
   };
 
   return (
