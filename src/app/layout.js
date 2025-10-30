@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
           >
             <NavBar />
           </div>
-  <ToastProvider />
+          <ToastProvider />
           {/* Space for navbar and banner combined */}
           <main className="pt-[125px]">{children}</main>
 

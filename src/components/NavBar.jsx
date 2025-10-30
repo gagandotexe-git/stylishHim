@@ -239,7 +239,7 @@ const NavBar = () => {
       />
 
       <nav className="bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex md:hidden justify-between items-center h-14">
             <div className="flex items-center gap-2">
               <button

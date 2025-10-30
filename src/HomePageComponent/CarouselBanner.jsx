@@ -166,7 +166,7 @@ const CarouselBanner = () => {
                   <img
                     src={banner.src}
                     alt={banner.alt}
-                    className={`w-full h-auto ${isMobile ? '' : 'object-cover'}`}
+                    className={`w-full h-auto ${isMobile ? '' : 'object-fill'}`}
                     style={
                       isMobile
                         ? {}

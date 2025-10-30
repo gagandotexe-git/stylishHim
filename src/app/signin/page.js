@@ -25,7 +25,10 @@ export default function LoginPage() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <Input label="Email" name="email" register={register} type="email" />
         <Input label="Password" name="password" register={register} type="password" />
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Login</button>
+        <button type="submit" className="w-full  text-white py-2 rounded-lg "
+        
+    style={{backgroundColor: "var(--theme-color)"}}
+        >Login</button>
       </form>
     </div>
   );

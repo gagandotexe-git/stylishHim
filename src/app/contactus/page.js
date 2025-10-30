@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import { showToast } from "@/components/ToastProvider";
 
 export default function Contact() {
-    const firstNameRef = useRef(null);
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -29,7 +28,7 @@ export default function Contact() {
                     message: `I am interested in applying for the ${state.job} position.`,
                 }));
             }
-            firstNameRef.current?.focus();
+         
         }
     }, []);
 
@@ -131,7 +130,6 @@ export default function Contact() {
                                 <input
                                     type="text"
                                     name="firstName"
-                                    ref={firstNameRef}
                                     value={formData.firstName}
                                     onChange={handleChange}
                                     placeholder="First Name"

@@ -82,7 +82,7 @@ const categories = [
                     src={category.image}
                     alt={category.name}
                     fill
-                    className="object-cover"
+                    className="object-fill"
                     sizes="20vw"
                     priority
                   />

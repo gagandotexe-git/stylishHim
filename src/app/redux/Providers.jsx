@@ -8,7 +8,7 @@ export default function Providers({ children }) {
   return (
     <Provider store={store}>
       <CartProvider>
-        <Toaster />
+        {/* <Toaster /> */}
         {children}
       </CartProvider>
     </Provider>
