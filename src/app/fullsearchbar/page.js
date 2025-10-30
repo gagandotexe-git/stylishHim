@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Mic, MicOff, X, Search, ArrowLeft, Trash2 } from "lucide-react";
-import BeautyProductsGrid from "../homepage/page";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import CategorySlider from "@/components/CategorySlider";
+import BeautyProductsGrid from "../homepage/page";
+ 
 
-// Debounce utility to delay API calls
+// Debounce utility
 const useDebounce = (callback, delay) => {
   const timer = useRef(null);
   const debounced = useCallback(
@@ -22,24 +24,59 @@ const FullScreenSearch = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchHistory, setSearchHistory] = useState([]);
-  const [listening, setListening] = useState(false);
-  const [showDefaultContent, setShowDefaultContent] = useState(true); // 👈 new state
+  const [showRecentSearches, setShowRecentSearches] = useState(false);
 
   const inputRef = useRef(null);
-  const historyRef = useRef(["lipstick", "trimmer"]);
 
-  // Auto-focus input when page loads
+  // Speech Recognition Hook
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition();
+
+  // Load recent searches on mount and focus input
   useEffect(() => {
-    const timer = setTimeout(() => inputRef.current?.focus(), 200);
-    return () => clearTimeout(timer);
+    try {
+      const stored = JSON.parse(localStorage.getItem("recentSearches")) || [];
+      setSearchHistory(stored);
+      if (stored.length > 0) {
+        setShowRecentSearches(true);
+      }
+    } catch (err) {
+      console.error("Failed to load recent searches", err);
+    }
+    
+    // Auto-focus input on mount
+    inputRef.current?.focus();
   }, []);
 
-  // Load recent searches on mount
+  // Update query when transcript changes
   useEffect(() => {
-    setSearchHistory(historyRef.current);
-  }, []);
+    if (transcript) {
+      setQuery(transcript);
+      if (transcript.length > 0) {
+        setShowRecentSearches(false);
+        debouncedSearch(transcript);
+      }
+    }
+  }, [transcript]);
 
-  // Debounced search function
+  // Handle input focus
+  const handleFocus = () => {
+    try {
+      const stored = JSON.parse(localStorage.getItem("recentSearches")) || [];
+      setSearchHistory(stored);
+      if (stored.length > 0 && query.trim() === "") {
+        setShowRecentSearches(true);
+      }
+    } catch (err) {
+      console.error("Failed to load recent searches", err);
+    }
+  };
+
+  // Fetch API (debounced)
   const fetchResults = useCallback(async (searchText) => {
     if (!searchText.trim()) {
       setResults([]);
@@ -66,50 +103,98 @@ const FullScreenSearch = () => {
 
   const debouncedSearch = useDebounce(fetchResults, 500);
 
-  // 👇 handle typing
+  // Handle typing
   const handleChange = (e) => {
     const value = e.target.value;
     setQuery(value);
-
-    // if user starts typing first character, hide default components
+    
     if (value.length > 0) {
-      setShowDefaultContent(false);
+      setShowRecentSearches(false);
       debouncedSearch(value);
     } else {
-      // when input cleared manually
-      setShowDefaultContent(true);
       setResults([]);
+      if (searchHistory.length > 0) {
+        setShowRecentSearches(true);
+      }
     }
   };
 
-  const handleSelect = (item) => {
-    const updated = [item.name, ...historyRef.current.filter((h) => h !== item.name)].slice(0, 5);
-    historyRef.current = updated;
-    setSearchHistory(updated);
-
-    // Navigate to product page
-    window.location.href = `/product/${item.slug}`;
+  // Save clicked item in localStorage (limit 4)
+  const saveToLocalStorage = (item) => {
+    try {
+      const stored = JSON.parse(localStorage.getItem("recentSearches")) || [];
+      const existing = stored.filter((p) => p._id !== item._id);
+      const updated = [item, ...existing].slice(0, 4);
+      localStorage.setItem("recentSearches", JSON.stringify(updated));
+      setSearchHistory(updated);
+    } catch (err) {
+      console.error("Error saving search history", err);
+    }
   };
 
-  // 👇 clear input and restore defaults
+  // Handle selecting an item
+  const handleSelect = (item) => {
+    saveToLocalStorage(item);
+
+    const trimmedQuery = query.trim().toLowerCase();
+    const matchesName = item?.name?.trim().toLowerCase() === trimmedQuery;
+    const matchesCategory = item?.category?.trim().toLowerCase() === trimmedQuery;
+
+    if (matchesName) {
+      window.location.href = `/products/${item._id}`;
+      return;
+    }
+
+    if (matchesCategory) {
+      window.location.href = `/categoryproducts?categoryName=${item.category}`;
+      return;
+    }
+
+    // Default fallback
+    window.location.href = `/categoryproducts?categoryName=${item.category}`;
+  };
+
+  // Clear input
   const clearQuery = () => {
     setQuery("");
     setResults([]);
-    setShowDefaultContent(true); // show the grid + slider again
-    inputRef.current?.blur(); // remove focus
+    resetTranscript();
+    if (searchHistory.length > 0) {
+      setShowRecentSearches(true);
+    } else {
+      setShowRecentSearches(false);
+    }
+    inputRef.current?.focus();
   };
 
+  // Clear localStorage history
   const clearHistory = () => {
-    historyRef.current = [];
+    localStorage.removeItem("recentSearches");
     setSearchHistory([]);
+    setShowRecentSearches(false);
   };
 
+  // Toggle mic with speech recognition
   const toggleMic = () => {
-    setListening(!listening);
-    if (!listening) {
-      alert("Voice search would start here (requires setup)");
+    if (!browserSupportsSpeechRecognition) {
+      alert("Your browser doesn't support speech recognition. Please use Chrome, Edge, or Safari.");
+      return;
+    }
+
+    if (listening) {
+      SpeechRecognition.stopListening();
+    } else {
+      resetTranscript();
+      setQuery("");
+      setResults([]);
+      setShowRecentSearches(false);
+      SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
     }
   };
+
+  // Determine what to show
+  const showDefaultContent = !showRecentSearches && query.trim() === "" && results.length === 0;
+  const showSearchResults = query.trim() !== "" && !showRecentSearches;
 
   return (
     <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
@@ -133,13 +218,14 @@ const FullScreenSearch = () => {
             ref={inputRef}
             value={query}
             onChange={handleChange}
+            onFocus={handleFocus}
             placeholder="Search for brands, products, or categories"
-            className="flex-1 outline-none text-gray-800 placeholder-gray-400 bg-transparent"
+            className="flex-1 outline-none text-gray-800 placeholder-gray-400 bg-transparent text-sm sm:text-base"
           />
           {query && (
-            <button
-              onClick={clearQuery}
-              className="text-gray-400 hover:text-gray-600 mr-2"
+            <button 
+              onClick={clearQuery} 
+              className="text-gray-400 hover:text-gray-600 mr-2" 
               aria-label="Clear search"
             >
               <X size={18} />
@@ -147,53 +233,69 @@ const FullScreenSearch = () => {
           )}
           <button
             onClick={toggleMic}
-            className={`transition ${listening ? "text-pink-500" : "text-gray-500"}`}
+            className={`transition ${listening ? "text-pink-500 animate-pulse" : "text-gray-500"}`}
+            aria-label={listening ? "Stop listening" : "Start voice search"}
           >
             {listening ? <MicOff size={20} /> : <Mic size={20} />}
           </button>
         </div>
-      </div>
 
-      {/* 👇 Show these only when no typing */}
-      {showDefaultContent && (
-        <>
-          <CategorySlider />
-          <BeautyProductsGrid />
-        </>
-      )}
+        {/* Voice Recognition Status */}
+        {listening && (
+          <div className="mt-2 text-xs text-pink-500 flex items-center gap-2">
+            <span className="inline-block w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
+            Listening...
+          </div>
+        )}
+      </div>
 
       {/* Body */}
       <div className="flex-1 overflow-y-auto">
-        {query.trim() === "" ? (
-          // Default content: Recent searches
-          <div className="px-4 py-4">
-            {searchHistory.length > 0 && (
-              <>
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-sm font-bold text-gray-800">Recent Searches</h2>
-                  <button onClick={clearHistory} className="text-gray-400 hover:text-gray-600">
-                    <Trash2 size={18} />
-                  </button>
-                </div>
-                {searchHistory.map((item, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setQuery(item);
-                      fetchResults(item);
-                      setShowDefaultContent(false);
-                    }}
-                    className="flex items-center gap-3 py-2 cursor-pointer hover:bg-gray-50 transition"
-                  >
-                    <Search size={16} className="text-gray-400" />
-                    <span className="text-sm text-gray-800">{item}</span>
+        {/* Recent Searches - Show when input is focused/empty and has history */}
+        {showRecentSearches && searchHistory.length > 0 && (
+          <div className="px-4 py-4 bg-white">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm font-semibold text-gray-800">Recent Searches</h2>
+              <button 
+                onClick={clearHistory} 
+                className="text-gray-400 hover:text-gray-600"
+                aria-label="Clear history"
+              >
+                <Trash2 size={18} />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-4 gap-3 sm:gap-4">
+              {searchHistory.map((item, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => handleSelect(item)}
+                  className="flex flex-col items-center text-center cursor-pointer group"
+                >
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden bg-gray-100 group-hover:ring-2 group-hover:ring-pink-300 transition">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                ))}
-              </>
-            )}
+                  <p className="text-xs text-gray-700 mt-2 truncate w-full px-1">
+                    {item.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Show CategorySlider and BeautyProductsGrid below recent searches */}
+            <div className="mt-6">
+              <CategorySlider />
+              <BeautyProductsGrid />
+            </div>
           </div>
-        ) : (
-          // Search Results
+        )}
+
+        {/* Search Results */}
+        {showSearchResults && (
           <div className="px-2 py-3">
             {loading ? (
               <div className="text-center py-8 text-gray-500">Searching...</div>
@@ -204,8 +306,7 @@ const FullScreenSearch = () => {
                   onClick={() => handleSelect(item)}
                   className="flex items-center gap-3 p-3 border-b border-gray-100 cursor-pointer hover:bg-gray-50 transition"
                 >
-                  {/* Product Image */}
-                  <div className="w-12 h-12 rounded-md overflow-hidden flex-shrink-0 bg-gray-100">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md overflow-hidden flex-shrink-0 bg-gray-100">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -213,8 +314,6 @@ const FullScreenSearch = () => {
                       loading="lazy"
                     />
                   </div>
-
-                  {/* Product Info */}
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-gray-800 truncate">{item.name}</p>
                     <p className="text-xs text-gray-500">{item.category}</p>
@@ -225,6 +324,14 @@ const FullScreenSearch = () => {
               <div className="text-center py-8 text-gray-500">No results found</div>
             )}
           </div>
+        )}
+
+        {/* Default Content - Show when no search and no recent searches */}
+        {showDefaultContent && (
+          <>
+            <CategorySlider />
+            <BeautyProductsGrid />
+          </>
         )}
       </div>
     </div>

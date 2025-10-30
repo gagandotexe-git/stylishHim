@@ -15,8 +15,8 @@ export default function Home() {
     <>
 
       <CategorySlider /> 
-      {/* <BeautyBoxAdvanced /> */}
-      <TopBanner />
+      <BeautyBoxAdvanced />
+      {/* <TopBanner /> */}
       <AddTopBanner />
       
       <ProductskinListingPage />
