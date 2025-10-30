@@ -1,13 +1,7 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
-import FeaturesBanner from "@/components/FeaturesBanner";
-import FooterBanner from "@/components/FooterBanner";
-import ScrollingBanner from "@/components/ScrollingBanner";
 import Providers from "./redux/Providers";
-import ToastProvider from "@/components/ToastProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,24 +24,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          {/* Banner above Navbar */}
-          <ScrollingBanner />
-
-          {/* Fixed Navbar just below banner */}
-          <div
-            id="navbar-wrapper"
-            className="fixed z-[100] w-full transition-all duration-500"
-          >
-            <NavBar />
-          </div>
-          <ToastProvider />
-          {/* Space for navbar and banner combined */}
-          <main className="pt-[125px]">{children}</main>
-
-          <FeaturesBanner />
-          <Footer />
-          <FooterBanner /></Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
