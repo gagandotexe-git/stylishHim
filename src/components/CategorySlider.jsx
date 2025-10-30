@@ -18,18 +18,16 @@ const CategorySlider = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-const categories = [
-  { name: "Skin", image: "/images/categoryImage/gifting.jpg", link: "/productpage" },
-  { name: "Best Sellers", image: "/images/categoryImage/skin.png", link: "/productpage" },
-  { name: "Gifts for Men", image: "/images/categoryImage/hair.png", link: "/productpage" },
-     { name: "Razors for Men", image: "/images/categoryImage/menrazors.png", link: "/productpage" },
-   { name: "Best Sellers", image: "/images/categoryImage/bestseller.png", link: "/productpage" },
-  { name: "Trimmers", image: "/images/categoryImage/fragrances.png", link: "/productpage" },
-  { name: "Shave", image: "/images/categoryImage/bathbody.png", link: "/productpage" },
-  { name: "Fragrances", image: "/images/categoryImage/glow.png", link: "/productpage" },
- 
- 
-];
+  const categories = [
+    { name: "Skin", image: "/images/categoryImage/gifting.jpg" },
+    { name: "Best Sellers", image: "/images/categoryImage/skin.png" },
+    { name: "Gifts for Men", image: "/images/categoryImage/hair.png" },
+    { name: "Razors for Men", image: "/images/categoryImage/menrazors.png" },
+    { name: "Best Sellers", image: "/images/categoryImage/bestseller.png" },
+    { name: "Trimmers", image: "/images/categoryImage/fragrances.png" },
+    { name: "Shave", image: "/images/categoryImage/bathbody.png" },
+    { name: "Fragrances", image: "/images/categoryImage/glow.png" },
+  ];
 
 
   return (
@@ -41,13 +39,13 @@ const categories = [
             {categories.map((category, index) => (
               <Link
                 key={index}
-                href={category.link}
+                href={{ pathname: "/categoryproducts", query: { categoryName: category.name } }}
                 className="text-gray-700 transition-colors duration-200 text-sm font-medium whitespace-nowrap"
                 style={{
-                  color: 'rgb(107, 114, 128)',
+                  color: "rgb(107, 114, 128)",
                 }}
-                onMouseEnter={(e) => e.target.style.color = "var(--theme-color)"}
-                onMouseLeave={(e) => e.target.style.color = 'rgb(107, 114, 128)'}
+                onMouseEnter={(e) => (e.target.style.color = "var(--theme-color)")}
+                onMouseLeave={(e) => (e.target.style.color = "rgb(107, 114, 128)")}
               >
                 {category.name}
               </Link>
@@ -72,7 +70,7 @@ const categories = [
           {categories.map((category, index) => (
             <Link
               key={index}
-              href={category.link}
+              href={{ pathname: "/categoryproducts", query: { categoryName: category.name } }}
               className="flex-shrink-0 snap-start"
               style={{ width: "calc(33% - 25.4px)" }}
             >

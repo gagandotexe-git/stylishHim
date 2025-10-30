@@ -3,6 +3,19 @@ import React, { useState } from "react";
 import axios from "axios";
 import { XCircle } from "lucide-react";
 
+const CATEGORY_OPTIONS = [
+  "Skin",
+  "Glow",
+  "Hair",
+  "Gifts",
+  "Best Seller",
+  "Razors",
+  "Fragrances",
+  "Shave",
+  "Trimmers",
+  "Some Men",
+];
+
 export default function AddProductPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +25,7 @@ export default function AddProductPage() {
     price: "",
     volume: "",
     initialRating: "",
+    category: "",
     keyBenefits: [""],
     howToUse: [""],
     ingredients: [""],
@@ -62,6 +76,7 @@ export default function AddProductPage() {
     const data = new FormData();
     data.append("name", formData.name);
     data.append("description", formData.description);
+    data.append("category", formData.category);
     data.append("skuNumber", formData.skuNumber);
     data.append("coins", formData.coins);
     data.append("price", formData.price);
@@ -98,6 +113,7 @@ export default function AddProductPage() {
         price: "",
         volume: "",
         initialRating: "",
+        category: "",
         keyBenefits: [""],
         howToUse: [""],
         ingredients: [""],
@@ -196,6 +212,20 @@ export default function AddProductPage() {
             onChange={handleChange}
             className="border rounded-lg p-2 focus:ring focus:ring-pink-300 outline-none"
           />
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="border rounded-lg p-2 focus:ring focus:ring-pink-300 outline-none"
+            required
+          >
+            <option value="">Select Category</option>
+            {CATEGORY_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Dynamic Fields */}
