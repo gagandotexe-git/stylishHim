@@ -209,7 +209,7 @@ const routineSteps = [
         mobileBoxPosition: { x: 0, y: -100 }
     },
     {
-           image: "/images/facewashh.png",
+           image: "/images/moistuizer.png",
         title: "Step 2: Hydrate",
         instruction: "Apply Moisturizer",
         description: "Lock in moisture for all-day hydration",
@@ -217,7 +217,7 @@ const routineSteps = [
         mobileBoxPosition: { x: -80, y: 90 }
     },
     {
-       image: "/images/facewashh.png",
+       image: "/images/serumc.png",
         title: "Step 3: Style",
         instruction: "Use Styling Serum",
         description: "Perfect your look with premium serum",
