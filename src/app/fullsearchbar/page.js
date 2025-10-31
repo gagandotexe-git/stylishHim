@@ -85,7 +85,7 @@ const FullScreenSearch = () => {
 
     try {
       setLoading(true);
-      const res = await fetch(`http://localhost:5000/api/search?query=${encodeURIComponent(searchText)}`);
+      const res = await fetch(`http://api.stylishhim.com/api/search?query=${encodeURIComponent(searchText)}`);
       const data = await res.json();
 
       if (data?.success && data?.results?.length > 0) {
