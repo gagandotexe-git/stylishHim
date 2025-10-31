@@ -8,24 +8,30 @@ import ImageBanner from "@/HomePageComponent/ImageBanner";
 import BeautyProductsGrid from "./homepage/page";
 import BannerGridtwo from "./bannertwo/page";
 import ProductskinListingPage from "./productpageskin/page";
-import BeautyBoxAdvanced from "@/HomePageComponent/BeautyBoxAdvanced";
+import FullWidthVideo from "@/HomePageComponent/FullWidthVideo";
+import ResponsiveVideoCarousel from "@/HomePageComponent/ResponsiveVideoCarousel";
+import BeautyBoxVisibleDescriptions from "@/HomePageComponent/BeautyBoxVisibleDescriptions";
 
 export default function Home() {
   return (
     <>
 
       <CategorySlider /> 
-      <BeautyBoxAdvanced />
+      <BeautyBoxVisibleDescriptions />
+     
       {/* <TopBanner /> */}
       {/* <AddTopBanner /> */}
       
       <ProductskinListingPage />
        <BeautyProductsGrid />
+        
       <ImageBanner />
       <BannerGridtwo />
+       <FullWidthVideo />
       <ProductskinListingPage />
+      <ResponsiveVideoCarousel />
       <NaturalGradientProduct />
-      
+     
     </>
   );
 }
