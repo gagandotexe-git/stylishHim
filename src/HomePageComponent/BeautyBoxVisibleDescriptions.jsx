@@ -195,10 +195,10 @@
 //     );
 // } 
 
-
-"use client";
+ "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { motion, AnimatePresence } from "framer-motion";
 
 const routineSteps = [
     {
@@ -206,47 +206,42 @@ const routineSteps = [
         title: "Step 1: Cleanse",
         instruction: "Use Face Wash",
         description: "Start your day with a deep cleanse",
-        boxPosition: { x: -150, y: -120 },
-        mobileBoxPosition: { x: -100, y: -80 }
+        boxPosition: { x: 0, y: -180 },
+        mobileBoxPosition: { x: 0, y: -120 }
     },
     {
-        image: "/images/facewashh.png",
+       image: "/images/facewashh.png",
         title: "Step 2: Hydrate",
         instruction: "Apply Moisturizer",
         description: "Lock in moisture for all-day hydration",
-        boxPosition: { x: 150, y: -120 },
-        mobileBoxPosition: { x: 100, y: -80 }
+        boxPosition: { x: -120, y: 140 },
+        mobileBoxPosition: { x: -80, y: 100 }
     },
     {
-        image: "/images/facewashh.png",
+      image: "/images/facewashh.png",
         title: "Step 3: Style",
         instruction: "Use Styling Serum",
         description: "Perfect your look with premium serum",
-        boxPosition: { x: -150, y: 120 },
-        mobileBoxPosition: { x: -100, y: 80 }
+        boxPosition: { x: 0, y: 140 },
+        mobileBoxPosition: { x: 0, y: 100 }
     },
     {
-        image: "/images/facewashh.png",
+      image: "/images/facewashh.png",
         title: "Step 4: Glow",
         instruction: "Apply Face Glow Serum",
         description: "Achieve that natural, radiant glow",
-        boxPosition: { x: 150, y: 120 },
-        mobileBoxPosition: { x: 100, y: 80 }
+        boxPosition: { x: 120, y: 140 },
+        mobileBoxPosition: { x: 80, y: 100 }
     }
 ];
 
 export default function BeautyRoutineAnimation() {
-    const [phase, setPhase] = useState('box-closed'); // box-closed, box-opening, all-products, step-by-step, returning
+    const [phase, setPhase] = useState('box-closed');
     const [currentStep, setCurrentStep] = useState(0);
     const containerRef = useRef(null);
     const boxClosedRef = useRef(null);
     const boxOpenRef = useRef(null);
     const productRefs = useRef(routineSteps.map(() => React.createRef()));
-    const textRefs = useRef({
-        title: React.createRef(),
-        instruction: React.createRef(),
-        description: React.createRef()
-    });
     const particlesRef = useRef([]);
 
     // Create particles
@@ -258,7 +253,7 @@ export default function BeautyRoutineAnimation() {
                 position: absolute;
                 width: ${Math.random() * 8 + 4}px;
                 height: ${Math.random() * 8 + 4}px;
-                background: linear-gradient(135deg, #667eea, #764ba2);
+                background: #000;
                 border-radius: 50%;
                 opacity: 0;
                 pointer-events: none;
@@ -286,7 +281,7 @@ export default function BeautyRoutineAnimation() {
                 gsap.set(ref.current, { scale: 0, opacity: 0, x: 0, y: 0 });
             });
 
-            // Box entrance animation
+            // Box entrance
             tl.to(boxClosedRef.current, {
                 scale: 1,
                 opacity: 1,
@@ -333,7 +328,7 @@ export default function BeautyRoutineAnimation() {
                         {
                             x: Math.cos(angle) * distance,
                             y: Math.sin(angle) * distance,
-                            opacity: 1,
+                            opacity: 0.6,
                             scale: 1.5,
                             duration: 0.9,
                             ease: "power2.out",
@@ -345,13 +340,13 @@ export default function BeautyRoutineAnimation() {
                 });
             }, null, "+=0.2");
 
-            // Products fly out to positions around box
+            // Products fly out - 1 above, 3 below
             routineSteps.forEach((step, i) => {
                 const pos = isMobile ? step.mobileBoxPosition : step.boxPosition;
                 tl.to(productRefs.current[i].current, {
                     x: pos.x,
                     y: pos.y,
-                    scale: isMobile ? 0.8 : 1,
+                    scale: isMobile ? 0.7 : 0.9,
                     opacity: 1,
                     rotation: Math.random() * 360,
                     duration: 1,
@@ -363,7 +358,7 @@ export default function BeautyRoutineAnimation() {
             tl.call(() => setPhase('all-products'), null, "+=1.5");
 
         } else if (phase === 'all-products') {
-            // All products visible - add floating animation
+            // All products visible - floating animation
             productRefs.current.forEach((ref, i) => {
                 gsap.to(ref.current, {
                     y: `+=${10 + i * 5}`,
@@ -374,7 +369,7 @@ export default function BeautyRoutineAnimation() {
                 });
             });
 
-            // Start step-by-step after displaying all
+            // Start step-by-step
             tl.call(() => {
                 setPhase('step-by-step');
                 setCurrentStep(0);
@@ -406,8 +401,8 @@ export default function BeautyRoutineAnimation() {
             // Bring current product to center
             tl.to(productRefs.current[currentStep].current, {
                 x: 0,
-                y: isMobile ? -120 : -150,
-                scale: isMobile ? 1.3 : 1.8,
+                y: isMobile ? -80 : -120,
+                scale: isMobile ? 1.2 : 1.6,
                 rotation: 0,
                 opacity: 1,
                 duration: 1,
@@ -416,53 +411,25 @@ export default function BeautyRoutineAnimation() {
 
             // Float animation
             tl.to(productRefs.current[currentStep].current, {
-                y: isMobile ? -135 : -165,
+                y: isMobile ? -95 : -135,
                 duration: 1.5,
                 repeat: -1,
                 yoyo: true,
                 ease: "sine.inOut"
             });
 
-            // Text animations
-            gsap.set(textRefs.current.title.current, { y: -30, opacity: 0, scale: 0.7 });
-            gsap.set(textRefs.current.instruction.current, { x: -80, opacity: 0, rotationY: -45 });
-            gsap.set(textRefs.current.description.current, { y: 30, opacity: 0 });
-
-            tl.to(textRefs.current.title.current, {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 0.7,
-                ease: "back.out(2)"
-            }, 0.6);
-
-            tl.to(textRefs.current.instruction.current, {
-                x: 0,
-                opacity: 1,
-                rotationY: 0,
-                duration: 0.8,
-                ease: "power3.out"
-            }, 0.8);
-
-            tl.to(textRefs.current.description.current, {
-                y: 0,
-                opacity: 1,
-                duration: 0.6,
-                ease: "power2.out"
-            }, 1);
-
             // Particle effect
             tl.call(() => {
                 particlesRef.current.slice(0, 20).forEach((particle, i) => {
                     const angle = (Math.PI * 2 * i) / 20;
                     const distance = 100 + Math.random() * 80;
-                    const yOffset = isMobile ? -120 : -150;
+                    const yOffset = isMobile ? -80 : -120;
                     gsap.fromTo(particle,
                         { x: 0, y: yOffset, opacity: 0, scale: 0 },
                         {
                             x: Math.cos(angle) * distance,
                             y: yOffset + Math.sin(angle) * distance,
-                            opacity: 0.8,
+                            opacity: 0.5,
                             scale: 1.2,
                             duration: 0.7,
                             ease: "power2.out",
@@ -484,18 +451,6 @@ export default function BeautyRoutineAnimation() {
             }, null, "+=3");
 
         } else if (phase === 'returning') {
-            // Hide text
-            if (textRefs.current.title.current) {
-                tl.to([
-                    textRefs.current.title.current,
-                    textRefs.current.instruction.current,
-                    textRefs.current.description.current
-                ], {
-                    opacity: 0,
-                    duration: 0.5
-                });
-            }
-
             // Show all products again around box
             tl.to(boxOpenRef.current, {
                 scale: 1.2,
@@ -509,7 +464,7 @@ export default function BeautyRoutineAnimation() {
                 tl.to(productRefs.current[i].current, {
                     x: pos.x,
                     y: pos.y,
-                    scale: isMobile ? 0.8 : 1,
+                    scale: isMobile ? 0.7 : 0.9,
                     opacity: 1,
                     duration: 0.8,
                     ease: "back.out(1.5)"
@@ -556,129 +511,176 @@ export default function BeautyRoutineAnimation() {
     const step = isStepByStep ? routineSteps[currentStep] : null;
 
     return (
-        <div
-            ref={containerRef}
-            className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100"
-            style={{
-                perspective: '1500px',
-                perspectiveOrigin: '50% 50%'
-            }}
-        >
-            {/* Progress dots */}
-            {isStepByStep && (
-                <div className="absolute top-8 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-50">
-                    {routineSteps.map((_, i) => (
-                        <div
-                            key={i}
-                            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-500 ${
-                                i === currentStep 
-                                    ? 'bg-purple-600 scale-125 shadow-lg shadow-purple-600/50' 
-                                    : i < currentStep 
-                                    ? 'bg-purple-400' 
-                                    : 'bg-gray-300'
-                            }`}
-                        />
-                    ))}
-                </div>
-            )}
+        <div className="relative w-full min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-white py-4 md:py-0">
+            <div
+                ref={containerRef}
+                className="relative w-full h-[70vh] md:h-[90vh] flex items-center justify-center"
+                style={{
+                    perspective: '1500px',
+                    perspectiveOrigin: '50% 50%'
+                }}
+            >
+                {/* Progress dots */}
+                {isStepByStep && (
+                    <div className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-50">
+                        {routineSteps.map((_, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: i * 0.1 }}
+                                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-500 ${
+                                    i === currentStep 
+                                        ? 'bg-black scale-125 shadow-lg' 
+                                        : i < currentStep 
+                                        ? 'bg-gray-600' 
+                                        : 'bg-gray-300'
+                                }`}
+                            />
+                        ))}
+                    </div>
+                )}
 
-            {/* Boxes */}
-            <img
-                ref={boxClosedRef}
-                src="/images/ClosedBox.png"
-                alt="Closed Box"
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-                style={{ 
-                    width: "12rem", 
-                    height: "12rem",
-                    filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.2))",
-                    willChange: "transform"
-                }}
-                onError={(e) => {
-                    e.target.style.display = 'none';
-                }}
-            />
-            <img
-                ref={boxOpenRef}
-                src="/images/OpenBox.png"
-                alt="Open Box"
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-15"
-                style={{ 
-                    width: "12rem", 
-                    height: "12rem",
-                    filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.2))",
-                    willChange: "transform"
-                }}
-                onError={(e) => {
-                    e.target.style.display = 'none';
-                }}
-            />
-
-            {/* Products */}
-            {routineSteps.map((step, i) => (
+                {/* Boxes */}
                 <img
-                    key={i}
-                    ref={productRefs.current[i]}
-                    src={step.image}
-                    alt={step.instruction}
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
+                    ref={boxClosedRef}
+                    src="/images/ClosedBox.png"
+                    alt="Closed Box"
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
                     style={{ 
                         width: "10rem", 
                         height: "10rem",
-                        objectFit: "contain",
                         filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.15))",
                         willChange: "transform"
                     }}
                     onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/200x200/667eea/ffffff?text=Product';
+                        e.target.style.display = 'none';
                     }}
                 />
-            ))}
+                <img
+                    ref={boxOpenRef}
+                    src="/images/OpenBox.png"
+                    alt="Open Box"
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-15"
+                    style={{ 
+                        width: "10rem", 
+                        height: "10rem",
+                        filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.15))",
+                        willChange: "transform"
+                    }}
+                    onError={(e) => {
+                        e.target.style.display = 'none';
+                    }}
+                />
 
-            {/* Text Display */}
-            {isStepByStep && step && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-[60%] flex flex-col items-center justify-center px-4 md:px-8 max-w-4xl z-40">
-                    {/* Step indicator */}
-                    <div ref={textRefs.current.title} className="mb-4 md:mb-6">
-                        <div className="  px-6 py-2 md:px-8 md:py-3 rounded-full">
-                            <span className="text-black font-bold text-base md:text-xl tracking-wider">
-                                {step.title}
-                            </span>
-                        </div>
+                {/* Products */}
+                {routineSteps.map((step, i) => (
+                    <img
+                        key={i}
+                        ref={productRefs.current[i]}
+                        src={step.image}
+                        alt={step.instruction}
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
+                        style={{ 
+                            width: "8rem", 
+                            height: "8rem",
+                            objectFit: "contain",
+                            filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.1))",
+                            willChange: "transform"
+                        }}
+                        onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/200x200/ffffff/000000?text=Product';
+                        }}
+                    />
+                ))}
+
+                {/* Text Display with Framer Motion */}
+                <AnimatePresence mode="wait">
+                    {isStepByStep && step && (
+                        <motion.div
+                            key={currentStep}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute left-1/2 -translate-x-1/2 bottom-8 md:top-[65%] flex flex-col items-center justify-center px-4 md:px-8 max-w-4xl z-40 w-full"
+                        >
+                            {/* Step indicator */}
+                            <motion.div
+                                initial={{ y: -30, opacity: 0, scale: 0.5 }}
+                                animate={{ y: 0, opacity: 1, scale: 1 }}
+                                transition={{ 
+                                    type: "spring",
+                                    stiffness: 200,
+                                    damping: 15,
+                                    delay: 0.2
+                                }}
+                                className="mb-3 md:mb-5"
+                            >
+                                <div className="px-5 py-1.5 md:px-7 md:py-2.5 rounded-full bg-black/5">
+                                    <span className="text-black font-bold text-sm md:text-lg tracking-wider">
+                                        {step.title}
+                                    </span>
+                                </div>
+                            </motion.div>
+
+                            {/* Instruction */}
+                            <motion.div
+                                initial={{ x: -100, opacity: 0, rotateY: -45 }}
+                                animate={{ x: 0, opacity: 1, rotateY: 0 }}
+                                transition={{ 
+                                    type: "spring",
+                                    stiffness: 150,
+                                    damping: 20,
+                                    delay: 0.4
+                                }}
+                                className="mb-2 md:mb-3"
+                            >
+                                <h2 className="text-2xl md:text-5xl lg:text-6xl font-black text-black text-center leading-none tracking-tight">
+                                    {step.instruction}
+                                </h2>
+                            </motion.div>
+
+                            {/* Description */}
+                            <motion.div
+                                initial={{ y: 30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ 
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 15,
+                                    delay: 0.6
+                                }}
+                                className="text-center"
+                            >
+                                <p className="text-sm md:text-lg lg:text-xl text-gray-700 font-medium tracking-wide">
+                                    {step.description}
+                                </p>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Status indicator */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 z-40"
+                >
+                    <div className="flex items-center gap-2 text-gray-600 text-xs md:text-sm">
+                        <motion.div 
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ repeat: Infinity, duration: 1.5 }}
+                            className="w-2 h-2 bg-black rounded-full"
+                        />
+                        <span className="font-medium">
+                            {phase === 'box-closed' && 'Opening box...'}
+                            {phase === 'box-opening' && 'Revealing products...'}
+                            {phase === 'all-products' && 'All products displayed'}
+                            {phase === 'step-by-step' && 'Routine guide'}
+                            {phase === 'returning' && 'Completing routine...'}
+                        </span>
                     </div>
-
-                    {/* Instruction */}
-                    <div
-                        ref={textRefs.current.instruction}
-                        className="mb-3 md:mb-4"
-                        style={{ transformStyle: 'preserve-3d' }}
-                    >
-                        <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-gray-900 text-center leading-none tracking-tight">
-                            {step.instruction}
-                        </h2>
-                    </div>
-
-                    {/* Description */}
-                    <div ref={textRefs.current.description} className="text-center">
-                        <p className="text-base md:text-xl lg:text-2xl text-gray-600 font-medium tracking-wide">
-                            {step.description}
-                        </p>
-                    </div>
-                </div>
-            )}
-
-            {/* Status indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40">
-                <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
-                    <div className="w-2 h-2 bg-purple-600 rounded-full animate-pulse" />
-                    <span className="font-medium">
-                        {phase === 'box-closed' && 'Opening box...'}
-                        {phase === 'box-opening' && 'Revealing products...'}
-                        {phase === 'all-products' && 'All products displayed'}
-                        {phase === 'step-by-step' && 'Routine guide'}
-                        {phase === 'returning' && 'Completing routine...'}
-                    </span>
-                </div>
+                </motion.div>
             </div>
         </div>
     );
