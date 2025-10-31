@@ -7,7 +7,7 @@ const NaturalGradientProduct = () => {
     <div className=" ">
       {/* Desktop Layout */}
       <div className="hidden md:block">
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 pb-20 pt-10">
           <div className="grid grid-cols-2 gap-16 items-center">
             {/* Left Side - Single Image */}
             <div className="relative">
