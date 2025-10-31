@@ -193,8 +193,8 @@
 //             ))}
 //         </div>
 //     );
-// } 
-"use client";
+// } "use client";
+"use client"
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { motion, AnimatePresence } from "framer-motion";
@@ -206,31 +206,31 @@ const routineSteps = [
         instruction: "Use Face Wash",
         description: "Start your day with a deep cleanse",
         boxPosition: { x: 0, y: -180 },
-        mobileBoxPosition: { x: 0, y: -120 }
+        mobileBoxPosition: { x: 0, y: -100 }
     },
     {
-        image: "/images/facewashh.png",
+           image: "/images/facewashh.png",
         title: "Step 2: Hydrate",
         instruction: "Apply Moisturizer",
         description: "Lock in moisture for all-day hydration",
         boxPosition: { x: -120, y: 140 },
-        mobileBoxPosition: { x: -80, y: 100 }
+        mobileBoxPosition: { x: -80, y: 90 }
     },
     {
-        image: "/images/facewashh.png",
+       image: "/images/facewashh.png",
         title: "Step 3: Style",
         instruction: "Use Styling Serum",
         description: "Perfect your look with premium serum",
         boxPosition: { x: 0, y: 140 },
-        mobileBoxPosition: { x: 0, y: 100 }
+        mobileBoxPosition: { x: 0, y: 90 }
     },
     {
-       image: "/images/facewashh.png",
+         image: "/images/facewashh.png",
         title: "Step 4: Glow",
         instruction: "Apply Face Glow Serum",
         description: "Achieve that natural, radiant glow",
         boxPosition: { x: 120, y: 140 },
-        mobileBoxPosition: { x: 80, y: 100 }
+        mobileBoxPosition: { x: 80, y: 90 }
     }
 ];
 
@@ -403,31 +403,31 @@ export default function BeautyRoutineAnimation() {
             // Bring current product to center with entrance animation
             tl.to(productRefs.current[currentStep].current, {
                 x: 0,
-                y: isMobile ? -100 : -140,
-                scale: isMobile ? 0.9 : 1.2,
+                y: isMobile ? -70 : -100,
+                scale: isMobile ? 1.0 : 1.3,
                 rotation: 0,
                 opacity: 1,
                 duration: 0.8,
                 ease: "power2.out"
             }, 0.4);
 
-            // Product size increase animation (zoom in effect)
+            // Product size increase animation (20% larger)
             tl.to(productRefs.current[currentStep].current, {
-                scale: isMobile ? 1.4 : 1.9,
+                scale: isMobile ? 2.0 : 2.8,
                 duration: 0.8,
                 ease: "back.out(1.5)"
             }, "+=0.2");
 
-            // Settle to final size
+            // Settle to final size (20% increase from base)
             tl.to(productRefs.current[currentStep].current, {
-                scale: isMobile ? 1.3 : 1.7,
+                scale: isMobile ? 1.9 : 2.6,
                 duration: 0.4,
                 ease: "power2.inOut"
             });
 
             // Enhanced floating animation
             tl.to(productRefs.current[currentStep].current, {
-                y: isMobile ? -115 : -155,
+                y: isMobile ? -80 : -110,
                 duration: 2,
                 repeat: -1,
                 yoyo: true,
@@ -439,7 +439,7 @@ export default function BeautyRoutineAnimation() {
                 particlesRef.current.slice(0, 25).forEach((particle, i) => {
                     const angle = (Math.PI * 2 * i) / 25;
                     const distance = 120 + Math.random() * 100;
-                    const yOffset = isMobile ? -100 : -140;
+                    const yOffset = isMobile ? -70 : -100;
                     gsap.fromTo(particle,
                         { x: 0, y: yOffset, opacity: 0, scale: 0 },
                         {
@@ -533,55 +533,15 @@ export default function BeautyRoutineAnimation() {
     const step = isStepByStep ? routineSteps[currentStep] : null;
 
     return (
-        <div className="relative w-full min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-white py-4 md:py-0">
+        <div className="relative w-full min-h-[60vh] md:min-h-screen flex items-start md:items-center justify-center overflow-hidden bg-white pt-2 md:pt-0">
             <div
                 ref={containerRef}
-                className="relative w-full h-[70vh] md:h-[90vh] flex items-center justify-center"
+                className="relative w-full h-[60vh] md:h-[90vh] flex items-center justify-center"
                 style={{
                     perspective: '1500px',
                     perspectiveOrigin: '50% 50%'
                 }}
             >
-                {/* Progress dots */}
-                {isStepByStep && (
-                    <div className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-50">
-                        {routineSteps.map((_, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ scale: 0, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ 
-                                    delay: i * 0.1,
-                                    type: "spring",
-                                    stiffness: 300,
-                                    damping: 20
-                                }}
-                                className="relative"
-                            >
-                                <div className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-500 ${
-                                    i === currentStep 
-                                        ? 'bg-black scale-125 shadow-lg shadow-black/30' 
-                                        : i < currentStep 
-                                        ? 'bg-gray-600' 
-                                        : 'bg-gray-300'
-                                }`} />
-                                {i === currentStep && (
-                                    <motion.div
-                                        className="absolute inset-0 rounded-full bg-black"
-                                        initial={{ scale: 1, opacity: 0.5 }}
-                                        animate={{ scale: 2, opacity: 0 }}
-                                        transition={{ 
-                                            repeat: Infinity,
-                                            duration: 1.5,
-                                            ease: "easeOut"
-                                        }}
-                                    />
-                                )}
-                            </motion.div>
-                        ))}
-                    </div>
-                )}
-
                 {/* Boxes */}
                 <img
                     ref={boxClosedRef}
@@ -623,8 +583,8 @@ export default function BeautyRoutineAnimation() {
                         alt={step.instruction}
                         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
                         style={{ 
-                            width: "8rem", 
-                            height: "8rem",
+                            width: "10rem", 
+                            height: "10rem",
                             objectFit: "contain",
                             filter: "drop-shadow(0 10px 25px rgba(0,0,0,0.15))",
                             willChange: "transform"
@@ -644,7 +604,7 @@ export default function BeautyRoutineAnimation() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="absolute left-1/2 -translate-x-1/2 bottom-8 md:top-[65%] flex flex-col items-center justify-center px-4 md:px-8 max-w-4xl z-40 w-full"
+                            className="absolute left-1/2 -translate-x-1/2 bottom-4 md:top-[62%] flex flex-col items-center justify-center px-4 md:px-8 max-w-4xl z-40 w-full"
                         >
                             {/* Step indicator */}
                             <motion.div
@@ -656,10 +616,10 @@ export default function BeautyRoutineAnimation() {
                                     damping: 18,
                                     delay: 0.3
                                 }}
-                                className="mb-3 md:mb-5"
+                                className="mb-2 md:mb-4"
                             >
-                                <div className="px-5 py-1.5 md:px-7 md:py-2.5 rounded-full bg-black/5 backdrop-blur-sm">
-                                    <span className="text-black font-bold text-sm md:text-lg tracking-wider">
+                                <div className="px-4 py-1 md:px-6 md:py-2 rounded-full bg-black/5 backdrop-blur-sm">
+                                    <span className="text-black font-bold text-xs md:text-base tracking-wider">
                                         {step.title}
                                     </span>
                                 </div>
@@ -675,9 +635,9 @@ export default function BeautyRoutineAnimation() {
                                     damping: 22,
                                     delay: 0.5
                                 }}
-                                className="mb-2 md:mb-3"
+                                className="mb-1.5 md:mb-2"
                             >
-                                <h2 className="text-2xl md:text-5xl lg:text-6xl font-black text-black text-center leading-none tracking-tight">
+                                <h2 className="text-xl md:text-4xl lg:text-5xl font-black text-black text-center leading-none tracking-tight">
                                     {step.instruction}
                                 </h2>
                             </motion.div>
@@ -694,7 +654,7 @@ export default function BeautyRoutineAnimation() {
                                 }}
                                 className="text-center"
                             >
-                                <p className="text-sm md:text-lg lg:text-xl text-gray-700 font-medium tracking-wide">
+                                <p className="text-xs md:text-base lg:text-lg text-gray-700 font-medium tracking-wide">
                                     {step.description}
                                 </p>
                             </motion.div>
@@ -707,9 +667,9 @@ export default function BeautyRoutineAnimation() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="absolute bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 z-40"
+                    className="absolute bottom-1 md:bottom-4 left-1/2 -translate-x-1/2 z-40"
                 >
-                    <div className="flex items-center gap-2 text-gray-600 text-xs md:text-sm bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                    <div className="flex items-center gap-2 text-gray-600 text-[10px] md:text-xs bg-white/80 backdrop-blur-sm px-2 py-1 md:px-3 md:py-1.5 rounded-full">
                         <motion.div 
                             animate={{ 
                                 scale: [1, 1.3, 1],
@@ -720,7 +680,7 @@ export default function BeautyRoutineAnimation() {
                                 duration: 2,
                                 ease: "easeInOut"
                             }}
-                            className="w-2 h-2 bg-black rounded-full"
+                            className="w-1.5 h-1.5 md:w-2 md:h-2 bg-black rounded-full"
                         />
                         <span className="font-medium">
                             {phase === 'box-closed' && 'Opening box...'}
