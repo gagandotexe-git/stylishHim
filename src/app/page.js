@@ -10,24 +10,28 @@ import BannerGridtwo from "./bannertwo/page";
 import ProductskinListingPage from "./productpageskin/page";
 import FullWidthVideo from "@/HomePageComponent/FullWidthVideo";
 import ResponsiveVideoCarousel from "@/HomePageComponent/ResponsiveVideoCarousel";
+import BeautyBoxVisibleDescriptions from "@/HomePageComponent/BeautyBoxVisibleDescriptions";
 
 export default function Home() {
   return (
     <>
 
       <CategorySlider /> 
-      <FullWidthVideo />
+      <BeautyBoxVisibleDescriptions />
+     
       {/* <TopBanner /> */}
       {/* <AddTopBanner /> */}
       
       <ProductskinListingPage />
        <BeautyProductsGrid />
+        
       <ImageBanner />
       <BannerGridtwo />
+       <FullWidthVideo />
       <ProductskinListingPage />
       <ResponsiveVideoCarousel />
       <NaturalGradientProduct />
-      
+     
     </>
   );
 }
