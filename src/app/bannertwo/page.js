@@ -10,7 +10,7 @@ const BannerGridtwo = () => {
     },
     {
       id: 2,
-      image: "https://images-static.nykaa.com/creatives/2af6bcd4-fa32-4b2e-a582-8b1e5bdf4e57/default.jpg?tr=cm-pad_resize,w-600",
+      image: "https://res.cloudinary.com/dkornixrz/image/upload/v1761926953/banners/nkc1skois0k8thux3ny8.jpg",
       calloutText: "Your gift Elixir",
       calloutSubtext: "On all orders"
     },

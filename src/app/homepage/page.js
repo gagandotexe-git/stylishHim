@@ -61,11 +61,11 @@ export default function BeautyProductsGrid() {
               </div>
 
               {/* Category Label */}
-              <div className="absolute bottom-3 left-3 bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
+              {/* <div className="absolute bottom-3 left-3 bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
                 <span className="text-xs font-semibold text-gray-700">
                   {item.category}
                 </span>
-              </div>
+              </div> */}
 
               {/* OFFER Badge */}
               <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
