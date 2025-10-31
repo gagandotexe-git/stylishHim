@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Heart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,13 +8,30 @@ import { toggleFavourite } from "../redux/favouriteSlice";
 import { showToast } from "@/components/ToastProvider";
 import api from "../lib/api";
 
-export default function CategoryProductsPage() {
+export default function CategoryProductsPageWrapper() {
+  // ✅ Wrap the inner page in Suspense
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center py-20">
+          <p className="text-gray-500 text-lg">Loading category...</p>
+        </div>
+      }
+    >
+      <CategoryProductsPage />
+    </Suspense>
+  );
+}
+
+function CategoryProductsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const categoryName = searchParams.get("categoryName") || "";
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const favourites = useSelector((state) => state.favourite.items);
 
@@ -57,7 +75,9 @@ export default function CategoryProductsPage() {
     if (!categoryName) {
       return (
         <div className="flex justify-center items-center py-20">
-          <p className="text-gray-500 text-lg">Select a category to view products.</p>
+          <p className="text-gray-500 text-lg">
+            Select a category to view products.
+          </p>
         </div>
       );
     }
@@ -81,7 +101,9 @@ export default function CategoryProductsPage() {
     if (!products.length) {
       return (
         <div className="flex justify-center items-center py-20">
-          <p className="text-gray-500 text-lg">No products found for this category.</p>
+          <p className="text-gray-500 text-lg">
+            No products found for this category.
+          </p>
         </div>
       );
     }
@@ -120,7 +142,9 @@ export default function CategoryProductsPage() {
 
       <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-10">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-xl sm:text-2xl font-semibold text-gray-800">{pageTitle}</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-800">
+            {pageTitle}
+          </h1>
         </div>
         {renderContent()}
       </main>
@@ -178,7 +202,8 @@ const ProductCard = ({ product, onNavigate, favourites, dispatch }) => {
               <svg
                 key={index}
                 style={{
-                  color: index < Math.round(rating) ? "var(--theme-color)" : "#d1d5db",
+                  color:
+                    index < Math.round(rating) ? "var(--theme-color)" : "#d1d5db",
                 }}
                 className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                 fill="currentColor"
