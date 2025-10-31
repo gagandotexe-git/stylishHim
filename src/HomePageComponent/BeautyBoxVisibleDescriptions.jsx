@@ -63,7 +63,7 @@ export default function BeautyBoxVisibleDescriptions() {
                 opacity: 0,
                 rotationX: 0,
                 rotationY: 0,
-                boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
+                //  boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
                 transformOrigin: "center center",
             });
         });
@@ -178,7 +178,7 @@ export default function BeautyBoxVisibleDescriptions() {
                         ref={imgRefs.current[i]}
                         src={item.src}
                         alt={item.alt}
-                        className="absolute w-36 h-24 md:w-56 md:h-36 rounded-xl shadow-lg border-2 border-white object-cover z-20"
+                        className="absolute w-36 h-24 md:w-56 md:h-36 rounded-xl shadow-lg      object-cover z-20"
                         style={{ willChange: "transform, box-shadow" }}
                     />
                     <div
