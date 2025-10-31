@@ -194,8 +194,7 @@
 //         </div>
 //     );
 // } 
-
- "use client";
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { motion, AnimatePresence } from "framer-motion";
@@ -210,7 +209,7 @@ const routineSteps = [
         mobileBoxPosition: { x: 0, y: -120 }
     },
     {
-       image: "/images/facewashh.png",
+        image: "/images/facewashh.png",
         title: "Step 2: Hydrate",
         instruction: "Apply Moisturizer",
         description: "Lock in moisture for all-day hydration",
@@ -218,7 +217,7 @@ const routineSteps = [
         mobileBoxPosition: { x: -80, y: 100 }
     },
     {
-      image: "/images/facewashh.png",
+        image: "/images/facewashh.png",
         title: "Step 3: Style",
         instruction: "Use Styling Serum",
         description: "Perfect your look with premium serum",
@@ -226,7 +225,7 @@ const routineSteps = [
         mobileBoxPosition: { x: 0, y: 100 }
     },
     {
-      image: "/images/facewashh.png",
+       image: "/images/facewashh.png",
         title: "Step 4: Glow",
         instruction: "Apply Face Glow Serum",
         description: "Achieve that natural, radiant glow",
@@ -281,23 +280,23 @@ export default function BeautyRoutineAnimation() {
                 gsap.set(ref.current, { scale: 0, opacity: 0, x: 0, y: 0 });
             });
 
-            // Box entrance
+            // Box entrance with loading animation
             tl.to(boxClosedRef.current, {
                 scale: 1,
                 opacity: 1,
                 rotation: 0,
-                duration: 1,
-                ease: "back.out(1.7)"
+                duration: 1.2,
+                ease: "elastic.out(1, 0.6)"
             });
 
             // Box shake
             tl.to(boxClosedRef.current, {
                 rotation: 8,
                 duration: 0.08,
-                repeat: 7,
+                repeat: 9,
                 yoyo: true,
                 ease: "power1.inOut"
-            }, "+=0.5");
+            }, "+=0.4");
 
             // Trigger opening
             tl.call(() => setPhase('box-opening'), null, "+=0.3");
@@ -305,42 +304,43 @@ export default function BeautyRoutineAnimation() {
         } else if (phase === 'box-opening') {
             // Box opens
             tl.to(boxClosedRef.current, {
-                scale: 1.1,
+                scale: 1.2,
                 opacity: 0,
-                duration: 0.5,
+                rotation: 15,
+                duration: 0.6,
                 ease: "power2.in"
             });
 
             tl.to(boxOpenRef.current, {
-                scale: 1.2,
+                scale: 1.3,
                 opacity: 1,
-                duration: 0.6,
-                ease: "back.out(1.5)"
+                duration: 0.7,
+                ease: "elastic.out(1, 0.5)"
             }, "<");
 
             // Particle explosion
             tl.call(() => {
                 particlesRef.current.forEach((particle, i) => {
                     const angle = (Math.PI * 2 * i) / particlesRef.current.length;
-                    const distance = 180 + Math.random() * 120;
+                    const distance = 200 + Math.random() * 150;
                     gsap.fromTo(particle,
                         { x: 0, y: 0, opacity: 0, scale: 0 },
                         {
                             x: Math.cos(angle) * distance,
                             y: Math.sin(angle) * distance,
-                            opacity: 0.6,
-                            scale: 1.5,
-                            duration: 0.9,
+                            opacity: 0.7,
+                            scale: 2,
+                            duration: 1,
                             ease: "power2.out",
                             onComplete: () => {
-                                gsap.to(particle, { opacity: 0, scale: 0, duration: 0.4 });
+                                gsap.to(particle, { opacity: 0, scale: 0, duration: 0.5 });
                             }
                         }
                     );
                 });
             }, null, "+=0.2");
 
-            // Products fly out - 1 above, 3 below
+            // Products fly out - 1 above, 3 below with stagger
             routineSteps.forEach((step, i) => {
                 const pos = isMobile ? step.mobileBoxPosition : step.boxPosition;
                 tl.to(productRefs.current[i].current, {
@@ -348,21 +348,22 @@ export default function BeautyRoutineAnimation() {
                     y: pos.y,
                     scale: isMobile ? 0.7 : 0.9,
                     opacity: 1,
-                    rotation: Math.random() * 360,
-                    duration: 1,
-                    ease: "elastic.out(1, 0.6)"
-                }, "-=0.7");
+                    rotation: 360 + Math.random() * 180,
+                    duration: 1.2,
+                    ease: "elastic.out(1, 0.5)"
+                }, `-=${0.8 - i * 0.15}`);
             });
 
             // Trigger next phase
             tl.call(() => setPhase('all-products'), null, "+=1.5");
 
         } else if (phase === 'all-products') {
-            // All products visible - floating animation
+            // All products visible - enhanced floating animation
             productRefs.current.forEach((ref, i) => {
                 gsap.to(ref.current, {
-                    y: `+=${10 + i * 5}`,
-                    duration: 1.5 + i * 0.2,
+                    y: `+=${15 + i * 8}`,
+                    rotation: `+=${10 - i * 5}`,
+                    duration: 2 + i * 0.3,
                     repeat: 2,
                     yoyo: true,
                     ease: "sine.inOut"
@@ -373,18 +374,19 @@ export default function BeautyRoutineAnimation() {
             tl.call(() => {
                 setPhase('step-by-step');
                 setCurrentStep(0);
-            }, null, "+=3");
+            }, null, "+=3.5");
 
         } else if (phase === 'step-by-step') {
             const step = routineSteps[currentStep];
             
-            // Hide all other products
+            // Hide all other products with fade and scale
             productRefs.current.forEach((ref, i) => {
                 if (i !== currentStep) {
                     tl.to(ref.current, {
                         scale: 0,
                         opacity: 0,
-                        duration: 0.5,
+                        rotation: -180,
+                        duration: 0.6,
                         ease: "power2.in"
                     }, 0);
                 }
@@ -392,71 +394,85 @@ export default function BeautyRoutineAnimation() {
 
             // Hide box
             tl.to(boxOpenRef.current, {
-                scale: 0.8,
+                scale: 0.5,
                 opacity: 0,
-                duration: 0.5,
+                duration: 0.6,
                 ease: "power2.in"
             }, 0);
 
-            // Bring current product to center
+            // Bring current product to center with entrance animation
             tl.to(productRefs.current[currentStep].current, {
                 x: 0,
-                y: isMobile ? -80 : -120,
-                scale: isMobile ? 1.2 : 1.6,
+                y: isMobile ? -100 : -140,
+                scale: isMobile ? 0.9 : 1.2,
                 rotation: 0,
                 opacity: 1,
-                duration: 1,
-                ease: "power3.out"
-            }, 0.3);
+                duration: 0.8,
+                ease: "power2.out"
+            }, 0.4);
 
-            // Float animation
+            // Product size increase animation (zoom in effect)
             tl.to(productRefs.current[currentStep].current, {
-                y: isMobile ? -95 : -135,
-                duration: 1.5,
+                scale: isMobile ? 1.4 : 1.9,
+                duration: 0.8,
+                ease: "back.out(1.5)"
+            }, "+=0.2");
+
+            // Settle to final size
+            tl.to(productRefs.current[currentStep].current, {
+                scale: isMobile ? 1.3 : 1.7,
+                duration: 0.4,
+                ease: "power2.inOut"
+            });
+
+            // Enhanced floating animation
+            tl.to(productRefs.current[currentStep].current, {
+                y: isMobile ? -115 : -155,
+                duration: 2,
                 repeat: -1,
                 yoyo: true,
                 ease: "sine.inOut"
             });
 
-            // Particle effect
+            // Particle effect with more impact
             tl.call(() => {
-                particlesRef.current.slice(0, 20).forEach((particle, i) => {
-                    const angle = (Math.PI * 2 * i) / 20;
-                    const distance = 100 + Math.random() * 80;
-                    const yOffset = isMobile ? -80 : -120;
+                particlesRef.current.slice(0, 25).forEach((particle, i) => {
+                    const angle = (Math.PI * 2 * i) / 25;
+                    const distance = 120 + Math.random() * 100;
+                    const yOffset = isMobile ? -100 : -140;
                     gsap.fromTo(particle,
                         { x: 0, y: yOffset, opacity: 0, scale: 0 },
                         {
                             x: Math.cos(angle) * distance,
                             y: yOffset + Math.sin(angle) * distance,
-                            opacity: 0.5,
-                            scale: 1.2,
-                            duration: 0.7,
+                            opacity: 0.6,
+                            scale: 1.5,
+                            duration: 0.9,
                             ease: "power2.out",
                             onComplete: () => {
-                                gsap.to(particle, { opacity: 0, duration: 0.3 });
+                                gsap.to(particle, { opacity: 0, duration: 0.4 });
                             }
                         }
                     );
                 });
-            }, null, 0.5);
+            }, null, 0.6);
 
-            // Auto advance
+            // Auto advance with smooth transition
             tl.call(() => {
                 if (currentStep < routineSteps.length - 1) {
                     setCurrentStep(currentStep + 1);
                 } else {
                     setPhase('returning');
                 }
-            }, null, "+=3");
+            }, null, "+=3.5");
 
         } else if (phase === 'returning') {
             // Show all products again around box
             tl.to(boxOpenRef.current, {
-                scale: 1.2,
+                scale: 1.3,
                 opacity: 1,
-                duration: 0.6,
-                ease: "back.out(1.5)"
+                duration: 0.7,
+                ease: "elastic.out(1, 0.5)"
             }, 0.5);
 
             routineSteps.forEach((step, i) => {
@@ -466,42 +482,48 @@ export default function BeautyRoutineAnimation() {
                     y: pos.y,
                     scale: isMobile ? 0.7 : 0.9,
                     opacity: 1,
-                    duration: 0.8,
+                    rotation: 360,
+                    duration: 1,
                     ease: "back.out(1.5)"
-                }, 0.7 + i * 0.1);
+                }, 0.7 + i * 0.15);
             });
 
-            // Products return to box
+            // Brief display of all products
+            tl.to({}, { duration: 1.5 });
+
+            // Products return to box with smooth animation
             tl.to(productRefs.current.map(ref => ref.current), {
                 x: 0,
                 y: 0,
                 scale: 0,
                 opacity: 0,
-                duration: 0.8,
-                stagger: 0.1,
+                rotation: -180,
+                duration: 1,
+                stagger: 0.12,
                 ease: "power2.in"
-            }, "+=1");
+            });
 
             // Box closes
             tl.to(boxOpenRef.current, {
-                scale: 1.1,
+                scale: 1.2,
                 opacity: 0,
-                duration: 0.5,
+                duration: 0.6,
                 ease: "power2.in"
-            }, "-=0.4");
+            }, "-=0.5");
 
             tl.to(boxClosedRef.current, {
                 scale: 1,
                 opacity: 1,
-                duration: 0.6,
-                ease: "back.out(1.5)"
+                rotation: 0,
+                duration: 0.8,
+                ease: "elastic.out(1, 0.6)"
             }, "<");
 
             // Restart
             tl.call(() => {
                 setPhase('box-closed');
                 setCurrentStep(0);
-            }, null, "+=1");
+            }, null, "+=1.2");
         }
 
         return () => tl.kill();
@@ -526,17 +548,36 @@ export default function BeautyRoutineAnimation() {
                         {routineSteps.map((_, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
-                                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-500 ${
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ 
+                                    delay: i * 0.1,
+                                    type: "spring",
+                                    stiffness: 300,
+                                    damping: 20
+                                }}
+                                className="relative"
+                            >
+                                <div className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-500 ${
                                     i === currentStep 
-                                        ? 'bg-black scale-125 shadow-lg' 
+                                        ? 'bg-black scale-125 shadow-lg shadow-black/30' 
                                         : i < currentStep 
                                         ? 'bg-gray-600' 
                                         : 'bg-gray-300'
-                                }`}
-                            />
+                                }`} />
+                                {i === currentStep && (
+                                    <motion.div
+                                        className="absolute inset-0 rounded-full bg-black"
+                                        initial={{ scale: 1, opacity: 0.5 }}
+                                        animate={{ scale: 2, opacity: 0 }}
+                                        transition={{ 
+                                            repeat: Infinity,
+                                            duration: 1.5,
+                                            ease: "easeOut"
+                                        }}
+                                    />
+                                )}
+                            </motion.div>
                         ))}
                     </div>
                 )}
@@ -550,7 +591,7 @@ export default function BeautyRoutineAnimation() {
                     style={{ 
                         width: "10rem", 
                         height: "10rem",
-                        filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.15))",
+                        filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.2))",
                         willChange: "transform"
                     }}
                     onError={(e) => {
@@ -565,7 +606,7 @@ export default function BeautyRoutineAnimation() {
                     style={{ 
                         width: "10rem", 
                         height: "10rem",
-                        filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.15))",
+                        filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.2))",
                         willChange: "transform"
                     }}
                     onError={(e) => {
@@ -585,7 +626,7 @@ export default function BeautyRoutineAnimation() {
                             width: "8rem", 
                             height: "8rem",
                             objectFit: "contain",
-                            filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.1))",
+                            filter: "drop-shadow(0 10px 25px rgba(0,0,0,0.15))",
                             willChange: "transform"
                         }}
                         onError={(e) => {
@@ -594,7 +635,7 @@ export default function BeautyRoutineAnimation() {
                     />
                 ))}
 
-                {/* Text Display with Framer Motion */}
+                {/* Text Display with Enhanced Framer Motion */}
                 <AnimatePresence mode="wait">
                     {isStepByStep && step && (
                         <motion.div
@@ -602,21 +643,22 @@ export default function BeautyRoutineAnimation() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
                             className="absolute left-1/2 -translate-x-1/2 bottom-8 md:top-[65%] flex flex-col items-center justify-center px-4 md:px-8 max-w-4xl z-40 w-full"
                         >
                             {/* Step indicator */}
                             <motion.div
-                                initial={{ y: -30, opacity: 0, scale: 0.5 }}
+                                initial={{ y: -40, opacity: 0, scale: 0.3 }}
                                 animate={{ y: 0, opacity: 1, scale: 1 }}
                                 transition={{ 
                                     type: "spring",
-                                    stiffness: 200,
-                                    damping: 15,
-                                    delay: 0.2
+                                    stiffness: 250,
+                                    damping: 18,
+                                    delay: 0.3
                                 }}
                                 className="mb-3 md:mb-5"
                             >
-                                <div className="px-5 py-1.5 md:px-7 md:py-2.5 rounded-full bg-black/5">
+                                <div className="px-5 py-1.5 md:px-7 md:py-2.5 rounded-full bg-black/5 backdrop-blur-sm">
                                     <span className="text-black font-bold text-sm md:text-lg tracking-wider">
                                         {step.title}
                                     </span>
@@ -625,13 +667,13 @@ export default function BeautyRoutineAnimation() {
 
                             {/* Instruction */}
                             <motion.div
-                                initial={{ x: -100, opacity: 0, rotateY: -45 }}
-                                animate={{ x: 0, opacity: 1, rotateY: 0 }}
+                                initial={{ x: -120, opacity: 0, rotateY: -60, scale: 0.8 }}
+                                animate={{ x: 0, opacity: 1, rotateY: 0, scale: 1 }}
                                 transition={{ 
                                     type: "spring",
-                                    stiffness: 150,
-                                    damping: 20,
-                                    delay: 0.4
+                                    stiffness: 180,
+                                    damping: 22,
+                                    delay: 0.5
                                 }}
                                 className="mb-2 md:mb-3"
                             >
@@ -642,13 +684,13 @@ export default function BeautyRoutineAnimation() {
 
                             {/* Description */}
                             <motion.div
-                                initial={{ y: 30, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
+                                initial={{ y: 40, opacity: 0, scale: 0.9 }}
+                                animate={{ y: 0, opacity: 1, scale: 1 }}
                                 transition={{ 
                                     type: "spring",
-                                    stiffness: 100,
-                                    damping: 15,
-                                    delay: 0.6
+                                    stiffness: 120,
+                                    damping: 18,
+                                    delay: 0.7
                                 }}
                                 className="text-center"
                             >
@@ -660,16 +702,24 @@ export default function BeautyRoutineAnimation() {
                     )}
                 </AnimatePresence>
 
-                {/* Status indicator */}
+                {/* Enhanced Status indicator */}
                 <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
                     className="absolute bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 z-40"
                 >
-                    <div className="flex items-center gap-2 text-gray-600 text-xs md:text-sm">
+                    <div className="flex items-center gap-2 text-gray-600 text-xs md:text-sm bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
                         <motion.div 
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ repeat: Infinity, duration: 1.5 }}
+                            animate={{ 
+                                scale: [1, 1.3, 1],
+                                opacity: [1, 0.6, 1]
+                            }}
+                            transition={{ 
+                                repeat: Infinity, 
+                                duration: 2,
+                                ease: "easeInOut"
+                            }}
                             className="w-2 h-2 bg-black rounded-full"
                         />
                         <span className="font-medium">
