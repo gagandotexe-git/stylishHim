@@ -4,7 +4,7 @@ const BannerGridtwo = () => {
   const banners = [
     {
       id: 1,
-      image: "https://images-static.nykaa.com/creatives/d72c53e6-0951-4bd4-82c6-874c09a98c1c/default.jpg?tr=cm-pad_resize,w-600",
+      image: "https://res.cloudinary.com/dkornixrz/image/upload/v1761924429/banners/qizmalua6oekqbfgapt3.jpg",
       calloutText: "Upto 55% Off",
       calloutSubtext: "10% off On ₹699*"
     },
@@ -16,13 +16,13 @@ const BannerGridtwo = () => {
     },
     {
       id: 3,
-      image: "https://images-static.nykaa.com/creatives/26cc63cc-b864-41a6-af04-032fa7009f90/default.jpg?tr=cm-pad_resize,w-600",
+      image: "https://res.cloudinary.com/dkornixrz/image/upload/v1761924573/banners/ukvbzy2jo1gc2fazcn4z.jpg",
       calloutText: "Upto 35% Off",
       calloutSubtext: "Clinically Proven"
     },
     {
       id: 4,
-      image: "https://images-static.nykaa.com/creatives/c936362a-6bdd-4112-9530-068716b54e8e/default.jpg?tr=cm-pad_resize,w-600",
+      image: "https://res.cloudinary.com/dkornixrz/image/upload/v1761925726/banners/gkchfrzlwbdnf4oaflsw.jpg",
       calloutText: "Up To 25% Off",
       calloutSubtext: "Exciting Gifts on ₹2500+"
     },
