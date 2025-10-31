@@ -23,7 +23,7 @@ export default function ProductDetailPage() {
   useEffect(() => {
     async function fetchProduct() {
       try {
-        const res = await fetch(`http://api.stylishhim.com/api/products`);
+        const res = await fetch(`https://api.stylishhim.com/api/products`);
         const data = await res.json();
 
         const found = data.find((item) => String(item._id) === String(id));

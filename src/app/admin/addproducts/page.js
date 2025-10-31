@@ -98,7 +98,7 @@ export default function AddProductPage() {
 
     try {
       const token = localStorage.getItem("token"); // replace as needed
-      const res = await axios.post("http://api.stylishhim.com/api/products", data, {
+      const res = await axios.post("https://api.stylishhim.com/api/products", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

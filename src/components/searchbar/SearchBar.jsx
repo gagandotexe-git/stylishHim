@@ -64,7 +64,7 @@ const SearchBar = () => {
 
     try {
       setLoading(true);
-      const res = await fetch(`http://api.stylishhim.com/api/search?query=${encodeURIComponent(searchText)}`);
+      const res = await fetch(`https://api.stylishhim.com/api/search?query=${encodeURIComponent(searchText)}`);
       const data = await res.json();
 
       if (data?.success && Array.isArray(data.results)) {
