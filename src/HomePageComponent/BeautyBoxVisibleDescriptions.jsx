@@ -662,35 +662,7 @@ export default function BeautyRoutineAnimation() {
                     )}
                 </AnimatePresence>
 
-                {/* Enhanced Status indicator */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="absolute bottom-1 md:bottom-4 left-1/2 -translate-x-1/2 z-40"
-                >
-                    <div className="flex items-center gap-2 text-gray-600 text-[10px] md:text-xs bg-white/80 backdrop-blur-sm px-2 py-1 md:px-3 md:py-1.5 rounded-full">
-                        <motion.div 
-                            animate={{ 
-                                scale: [1, 1.3, 1],
-                                opacity: [1, 0.6, 1]
-                            }}
-                            transition={{ 
-                                repeat: Infinity, 
-                                duration: 2,
-                                ease: "easeInOut"
-                            }}
-                            className="w-1.5 h-1.5 md:w-2 md:h-2 bg-black rounded-full"
-                        />
-                        <span className="font-medium">
-                            {phase === 'box-closed' && 'Opening box...'}
-                            {phase === 'box-opening' && 'Revealing products...'}
-                            {phase === 'all-products' && 'All products displayed'}
-                            {phase === 'step-by-step' && 'Routine guide'}
-                            {phase === 'returning' && 'Completing routine...'}
-                        </span>
-                    </div>
-                </motion.div>
+           
             </div>
         </div>
     );
