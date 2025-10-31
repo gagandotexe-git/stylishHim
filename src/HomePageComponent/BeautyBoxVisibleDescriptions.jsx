@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 
 const items = [
     {
-        "src": "https://nypost.com/wp-content/uploads/sites/2/2021/03/mens-best-skin-care.jpg?quality=75&strip=all&w=744",
+        "src": "https://res.cloudinary.com/dkornixrz/image/upload/v1761937298/products/laxabeftsjg9qbpo2toq.png",
         "alt": "Charcoal Face Wash",
         "title": "Redefine Your Grooming",
         "desc": "Men's care redefined",
@@ -13,7 +13,7 @@ const items = [
         "descPosition": "top-10 left-1/2 -translate-x-1/2 text-center md:top-12"
     },
     {
-        "src": "https://img.freepik.com/free-vector/composition-shower-gel-moisturizing-lotion-men_1268-15478.jpg",
+        "src": "https://res.cloudinary.com/dkornixrz/image/upload/v1761937298/products/laxabeftsjg9qbpo2toq.png",
         "alt": "Hydrating Beard Oil",
         "title": "Stay Effortlessly Stylish",
         "desc": "For the stylish man",
@@ -22,8 +22,8 @@ const items = [
         "descPosition": "top-1/2 right-3 -translate-y-1/2 text-right md:right-12"
     },
     {
-        "src": "https://akns-images.eonline.com/eol_images/Entire_Site/20211123/rs_1024x759-211223141713-1024-bro.jpg?fit=around%7C1024:759&output-quality=90&crop=1024:759;center,top",
-        "alt": "SPF 50 Moisturizer",
+       "src": "https://res.cloudinary.com/dkornixrz/image/upload/v1761937298/products/laxabeftsjg9qbpo2toq.png",
+         "alt": "SPF 50 Moisturizer",
         "title": "Routine Elevated",
         "desc": "Elevate your routine",
         "position": { "x": "-38vw", "y": "28vh" },
@@ -31,8 +31,8 @@ const items = [
         "descPosition": "top-1/2 left-3 -translate-y-1/2 text-left md:left-12"
     },
     {
-        "src": "https://hips.hearstapps.com/hmg-prod/images/grooming-awards-2023-65087665050b3.jpg?crop=0.883xw:1.00xh;0.0593xw,0&resize=640:*",
-        "alt": "Matte Hair Clay",
+       "src": "https://res.cloudinary.com/dkornixrz/image/upload/v1761937298/products/laxabeftsjg9qbpo2toq.png",
+         "alt": "Matte Hair Clay",
         "title": "Built for Bold Confidence",
         "desc": "Confidence for men",
         "position": { "x": "38vw", "y": "28vh" },
