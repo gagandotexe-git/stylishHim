@@ -25,10 +25,13 @@ export default function Footer() {
     },
     {
       title: "We are into",
-      items: [
-        { label: "We are into", href: "https://stylishhim.com" },
-        { label: "For investors", href: "/new-launches" },
-      ]
+      href: "https://stylishhim.com",
+      items: []
+    },
+     {
+      title: "For Investor",
+      href: "",
+      items: []
     },
     {
       title: "Top Categories",
@@ -120,43 +123,70 @@ export default function Footer() {
 
           {/* Desktop View */}
           <div className="hidden md:grid grid-cols-4 gap-8 mb-[16px]">
-            {menuItems.map(({ title, items }) => (
+            {menuItems.map(({ title, items = [], href }) => (
               <div key={title}>
-                <h3 className="text-[#1C252E] font-[600] text-[14px] pt-[10px] pb-[10px]">
-                  {title}
-                </h3>
-                <ul>{items.map(renderMenuItem)}</ul>
+                {href ? (
+                  <Link
+                    href={href}
+                    className="text-[#1C252E] font-[600] text-[14px] pt-[10px] pb-[10px] block"
+                  >
+                    {title}
+                  </Link>
+                ) : (
+                  <h3 className="text-[#1C252E] font-[600] text-[14px] pt-[10px] pb-[10px]">
+                    {title}
+                  </h3>
+                )}
+                {items.length > 0 && <ul>{items.map(renderMenuItem)}</ul>}
               </div>
             ))}
           </div>
 
           {/* Mobile Accordion View */}
           <div className="md:hidden space-y-4">
-            {menuItems.map(({ title, items }, index) => (
-              <div key={title} className="border-b border-gray-200 pb-2">
-                <button
-                  onClick={() =>
-                    setOpenIndex(openIndex === index ? null : index)
-                  }
-                  className="flex justify-between items-center w-full text-left"
-                >
-                  <span className="text-[#1C252E] font-[600] text-[15px]">
-                    {title}
-                  </span>
-                  {openIndex === index ? (
-                    <ChevronUp size={18} />
-                  ) : (
-                    <ChevronDown size={18} />
-                  )}
-                </button>
+            {menuItems.map(({ title, items = [], href }, index) => {
+              const hasItems = items.length > 0;
+              return (
+                <div key={title} className="border-b border-gray-200 pb-2">
+                  {hasItems ? (
+                    <>
+                      <button
+                        onClick={() =>
+                          setOpenIndex(openIndex === index ? null : index)
+                        }
+                        className="flex justify-between items-center w-full text-left"
+                      >
+                        <span className="text-[#1C252E] font-[600] text-[15px]">
+                          {title}
+                        </span>
+                        {openIndex === index ? (
+                          <ChevronUp size={18} />
+                        ) : (
+                          <ChevronDown size={18} />
+                        )}
+                      </button>
 
-                {openIndex === index && (
-                  <ul className="mt-2 pl-2 animate-fadeIn">
-                    {items.map(renderMenuItem)}
-                  </ul>
-                )}
-              </div>
-            ))}
+                      {openIndex === index && (
+                        <ul className="mt-2 pl-2 animate-fadeIn">
+                          {items.map(renderMenuItem)}
+                        </ul>
+                      )}
+                    </>
+                  ) : href ? (
+                    <Link
+                      href={href}
+                      className="text-[#1C252E] font-[600] text-[15px] block py-2"
+                    >
+                      {title}
+                    </Link>
+                  ) : (
+                    <span className="text-[#1C252E] font-[600] text-[15px] block py-2">
+                      {title}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </footer>
