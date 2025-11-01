@@ -199,7 +199,7 @@ const FullScreenSearch = () => {
   return (
     <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-1 py-1">
+      <div className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="flex items-center gap-3 mb-3">
           <button
             onClick={() => window.history.back()}
@@ -253,7 +253,7 @@ const FullScreenSearch = () => {
       <div className="flex-1 overflow-y-auto">
         {/* Recent Searches - Show when input is focused/empty and has history */}
         {showRecentSearches && searchHistory.length > 0 && (
-          <div className="px-4 py-4 bg-white">
+          <div className="px-2 py-4 bg-white">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-semibold text-gray-800">Recent Searches</h2>
               <button 
