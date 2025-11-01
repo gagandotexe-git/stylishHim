@@ -61,24 +61,7 @@ export default function ResponsiveVideoCarousel() {
           ))}
         </div>
       </div>
-
-      {/* Navigation Buttons */}
-      <button
-        onClick={prev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 px-3 py-1 rounded-full text-white shadow"
-        aria-label="Previous"
-        style={{ background: "var(--theme-color)" }}
-      >
-        &#8592;
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 rounded-full text-white shadow"
-        aria-label="Next"
-        style={{ background: "var(--theme-color)" }}
-      >
-        &#8594;
-      </button>
+ 
 
       {/* Dots */}
       <div className="flex justify-center gap-2 mt-3">

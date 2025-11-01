@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-
 const CategorySlider = () => {
   const scrollContainerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -19,19 +18,18 @@ const CategorySlider = () => {
   }, []);
 
   const categories = [
-    { name: "Skin", image: "/images/categoryImage/gifting.jpg" },
-    { name: "Best Sellers", image: "/images/categoryImage/skin.png" },
-    { name: "Gifts for Men", image: "/images/categoryImage/hair.png" },
-    { name: "Razors for Men", image: "/images/categoryImage/menrazors.png" },
-    { name: "Best Sellers", image: "/images/categoryImage/bestseller.png" },
+    { name: "Skin", image: "/images/categoryImage/skin.png" },
+    { name: "Best Seller", image: "/images/categoryImage/bestseller.png" },
+    { name: "Gifts", image: "/images/categoryImage/gifting.jpg" },
+    { name: "Hair", image: "/images/categoryImage/hair.png" },
+    { name: "Men Razors", image: "/images/categoryImage/menrazors.png" },
     { name: "Trimmers", image: "/images/categoryImage/fragrances.png" },
     { name: "Shave", image: "/images/categoryImage/bathbody.png" },
     { name: "Fragrances", image: "/images/categoryImage/glow.png" },
   ];
 
-
   return (
-    <div className="w-full bg-white mt-0 sm:mt-4 md:mt-3 lg:mt-0 ">
+    <div className="w-full bg-white mt-0 sm:mt-4 md:mt-3 lg:mt-0">
       {/* Desktop View - Text Navigation */}
       <div className="hidden lg:block mb-[15px]">
         <div className="container mx-auto px-4">
@@ -39,13 +37,16 @@ const CategorySlider = () => {
             {categories.map((category, index) => (
               <Link
                 key={index}
-                href={{ pathname: "/categoryproducts", query: { categoryName: category.name } }}
+                href={`/categoryproducts?categoryName=${encodeURIComponent(
+                  category.name
+                )}`}
                 className="text-gray-700 transition-colors duration-200 text-sm font-medium whitespace-nowrap"
-                style={{
-                  color: "rgb(107, 114, 128)",
-                }}
-                onMouseEnter={(e) => (e.target.style.color = "var(--theme-color)")}
-                onMouseLeave={(e) => (e.target.style.color = "rgb(107, 114, 128)")}
+                onMouseEnter={(e) =>
+                  (e.target.style.color = "var(--theme-color)")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.color = "rgb(107, 114, 128)")
+                }
               >
                 {category.name}
               </Link>
@@ -70,7 +71,9 @@ const CategorySlider = () => {
           {categories.map((category, index) => (
             <Link
               key={index}
-              href={{ pathname: "/categoryproducts", query: { categoryName: category.name } }}
+              href={`/categoryproducts?categoryName=${encodeURIComponent(
+                category.name
+              )}`}
               className="flex-shrink-0 snap-start"
               style={{ width: "calc(33% - 25.4px)" }}
             >
@@ -85,6 +88,7 @@ const CategorySlider = () => {
                     priority
                   />
                 </div>
+               
               </div>
             </Link>
           ))}

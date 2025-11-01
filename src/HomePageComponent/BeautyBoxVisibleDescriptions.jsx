@@ -533,8 +533,8 @@ export default function BeautyRoutineAnimation() {
     const step = isStepByStep ? routineSteps[currentStep] : null;
 
     return (
-        <div className="relative w-full min-h-[60vh] md:min-h-screen flex items-start md:items-center justify-center overflow-hidden bg-white pt-2 md:pt-0">
-            <div
+      <div className="relative w-full min-h-[60vh] md:min-h-screen flex items-start md:items-center justify-center overflow-hidden bg-gradient-to-b from-white via-[#fff6ee] to-[#fdeedc] pt-2 md:pt-0">
+      <div
                 ref={containerRef}
                 className="relative w-full h-[60vh] md:h-[90vh] flex items-center justify-center"
                 style={{

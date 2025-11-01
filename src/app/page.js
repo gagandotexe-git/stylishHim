@@ -22,8 +22,8 @@ export default function Home() {
       {/* <TopBanner /> */}
       {/* <AddTopBanner /> */}
       
-      <ProductskinListingPage />
        <BeautyProductsGrid />
+      <ProductskinListingPage />
         
       <ImageBanner />
       <BannerGridtwo /> 

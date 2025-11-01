@@ -199,7 +199,7 @@ const FullScreenSearch = () => {
   return (
     <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-4 py-3">
+      <div className="bg-white border-b border-gray-200 px-1 py-1">
         <div className="flex items-center gap-3 mb-3">
           <button
             onClick={() => window.history.back()}
