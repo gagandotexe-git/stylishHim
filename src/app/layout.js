@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "StylishHim A men&rsquo;s ecosystem brand",
-  description: "India&rsquo;s First Exclusive Men&rsquo;s Lifestyle Brand. Everything A Man Needs, In One Place.",
+  title: "StylishHim A mens ecosystem brand",
+  description: "India First Exclusive Mens Lifestyle Brand. Everything A Man Needs, In One Place.",
 };
 
 export default function RootLayout({ children }) {
