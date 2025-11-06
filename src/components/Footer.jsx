@@ -25,7 +25,7 @@ export default function Footer() {
     },
     {
       title: "We are into",
-      href: "https://stylishhim.com",
+      href: "https://stylishhim.vercel.app",
       items: []
     },
      {
