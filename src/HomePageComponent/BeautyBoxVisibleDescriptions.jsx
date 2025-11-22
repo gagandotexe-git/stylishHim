@@ -194,10 +194,11 @@
 //         </div>
 //     );
 // } "use client";
-"use client"
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/app/context/ThemeContext";
 
 const routineSteps = [
     {
@@ -235,6 +236,7 @@ const routineSteps = [
 ];
 
 export default function BeautyRoutineAnimation() {
+    const { bannerFolder } = useTheme();
     const [phase, setPhase] = useState('box-closed');
     const [currentStep, setCurrentStep] = useState(0);
     const containerRef = useRef(null);
@@ -242,6 +244,18 @@ export default function BeautyRoutineAnimation() {
     const boxOpenRef = useRef(null);
     const productRefs = useRef(routineSteps.map(() => React.createRef()));
     const particlesRef = useRef([]);
+
+    const getImagePath = (imageName) => `/${bannerFolder}/${imageName}`;
+    const getRoutineSteps = () => {
+        const images = bannerFolder === 'herImages' 
+            ? ['Gemini_Generated_Image_53ycww53ycww53yc.png', 'Gemini_Generated_Image_fufytpfufytpfufy.png', 'Gemini_Generated_Image_kdir4vkdir4vkdir.png', 'Gemini_Generated_Image_n3zasln3zasln3za.png']
+            : ['stylishhimbanner10.png', 'stylishhimbanner11.png', 'stylishhimbanner12.png', 'stylishhimbanner13.png'];
+        
+        return routineSteps.map((step, i) => ({
+            ...step,
+            image: getImagePath(images[i] || images[0])
+        }));
+    };
 
     // Create particles
     useEffect(() => {

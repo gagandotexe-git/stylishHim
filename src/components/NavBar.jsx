@@ -10,8 +10,10 @@ import { useCartDrawer } from "@/app/context/CartContext";
 import ColorPicker from "./ColorPicker";
 import { useRouter } from "next/navigation";
 import api from "../app/lib/api";
+import { useTheme } from "@/app/context/ThemeContext";
 
 const NavBar = () => {
+  const { primary, logo, light } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isCartOpen, setIsCartOpen } = useCartDrawer();
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
@@ -103,17 +105,38 @@ const NavBar = () => {
     <Link href="/" className="flex items-center group mr-2">
       <div className="relative">
         <h1 className="text-[28px] md:text-[36px] font-bold tracking-wider [font-family:'Playfair_Display',_'Cormorant_Garamond',_serif] relative">
-          <span className="relative inline-block bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite]">
-            StylishHim
+          <span 
+            className="relative inline-block bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite]"
+            style={{
+              backgroundImage: `linear-gradient(to right, ${primary}, ${primary}cc, ${primary})`
+            }}
+          >
+            {logo}
           </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4A574]/70 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%]">
-            StylishHim
+          <span 
+            className="absolute inset-0 bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%]"
+            style={{
+              backgroundImage: `linear-gradient(to right, transparent, ${primary}70, transparent)`
+            }}
+          >
+            {logo}
           </span>
-          <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent">
-            StylishHim
+          <span 
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm bg-clip-text text-transparent"
+            style={{
+              backgroundImage: `linear-gradient(to right, ${primary}, ${primary}cc, ${primary})`
+            }}
+          >
+            {logo}
           </span>
         </h1>
-        <div className="absolute -bottom-1 left-0 right-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#804003] via-[#C4762F] to-[#804003] transition-all duration-700 mx-auto rounded-full shadow-[0_0_10px_rgba(128,64,3,0.5)]"></div>
+        <div 
+          className="absolute -bottom-1 left-0 right-0 h-[2px] w-0 group-hover:w-full transition-all duration-700 mx-auto rounded-full shadow-lg"
+          style={{
+            background: `linear-gradient(to right, ${primary}, ${primary}cc, ${primary})`,
+            boxShadow: `0 0 10px ${primary}40`
+          }}
+        />
       </div>
     </Link>
   );
@@ -123,22 +146,34 @@ const NavBar = () => {
       <ColorPicker />
       <button
         onClick={() => setIsCartOpen(true)}
-        className="relative p-2 text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 transform hover:scale-110"
+        className="relative p-2 text-[#2C2C2C] transition-all duration-300 transform hover:scale-110"
+        style={{ color: "#2C2C2C" }}
+        onMouseEnter={(e) => e.currentTarget.style.color = primary}
+        onMouseLeave={(e) => e.currentTarget.style.color = "#2C2C2C"}
       >
         <ShoppingBag className="h-5 w-5" />
         {totalQuantity > 0 && (
-          <span className="absolute -top-1 -right-1 bg-[#804003] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-lg animate-[bounce_1s_ease-in-out_infinite]">
+          <span 
+            className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-lg animate-[bounce_1s_ease-in-out_infinite]"
+            style={{ backgroundColor: primary }}
+          >
             {totalQuantity}
           </span>
         )}
       </button>
       <button
         onClick={() => setIsWishlistOpen(true)}
-        className="relative p-2 text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 transform hover:scale-110"
+        className="relative p-2 text-[#2C2C2C] transition-all duration-300 transform hover:scale-110"
+        style={{ color: "#2C2C2C" }}
+        onMouseEnter={(e) => e.currentTarget.style.color = primary}
+        onMouseLeave={(e) => e.currentTarget.style.color = "#2C2C2C"}
       >
         <Heart className="h-5 w-5" />
         {wishlistCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-[#804003] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-lg">
+          <span 
+            className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-lg"
+            style={{ backgroundColor: primary }}
+          >
             {wishlistCount}
           </span>
         )}
@@ -155,10 +190,16 @@ const NavBar = () => {
             await onClick();
             setIsMenuOpen(false);
           }}
-          className="text-[14px] font-[500] text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 [font-family:'Raleway',_'Lato',_sans-serif] relative group/link"
+          className="text-[14px] font-[500] text-[#2C2C2C] transition-all duration-300 [font-family:'Raleway',_'Lato',_sans-serif] relative group/link"
+          style={{ color: "#2C2C2C" }}
+          onMouseEnter={(e) => e.currentTarget.style.color = primary}
+          onMouseLeave={(e) => e.currentTarget.style.color = "#2C2C2C"}
         >
           {label}
-          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#804003] transition-all duration-300 group-hover/link:w-full"></span>
+          <span 
+            className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover/link:w-full"
+            style={{ backgroundColor: primary }}
+          />
         </button>
       );
     }
@@ -166,10 +207,16 @@ const NavBar = () => {
       <Link
         key={label}
         href={href}
-        className="text-[14px] font-[500] text-[#2C2C2C] hover:text-[#804003] transition-all duration-300 [font-family:'Raleway',_'Lato',_sans-serif] relative group/link"
+        className="text-[14px] font-[500] text-[#2C2C2C] transition-all duration-300 [font-family:'Raleway',_'Lato',_sans-serif] relative group/link"
+        style={{ color: "#2C2C2C" }}
+        onMouseEnter={(e) => e.currentTarget.style.color = primary}
+        onMouseLeave={(e) => e.currentTarget.style.color = "#2C2C2C"}
       >
         {label}
-        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#804003] transition-all duration-300 group-hover/link:w-full"></span>
+        <span 
+          className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover/link:w-full"
+          style={{ backgroundColor: primary }}
+        />
       </Link>
     );
   };
@@ -183,7 +230,18 @@ const NavBar = () => {
             await onClick();
             setIsMenuOpen(false);
           }}
-          className="text-[14px] font-[500] block px-3 py-2 text-[#2C2C2C] hover:text-[#804003] hover:bg-[#FFF8F0] rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-all duration-300 text-left"
+          className="text-[14px] font-[500] block px-3 py-2 text-[#2C2C2C] rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-all duration-300 text-left"
+          style={{ 
+            color: "#2C2C2C",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = primary;
+            e.currentTarget.style.backgroundColor = light;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "#2C2C2C";
+            e.currentTarget.style.backgroundColor = "transparent";
+          }}
         >
           {label}
         </button>
@@ -193,7 +251,18 @@ const NavBar = () => {
       <Link
         key={label}
         href={href}
-        className="text-[14px] font-[500] block px-3 py-2 text-[#2C2C2C] hover:text-[#804003] hover:bg-[#FFF8F0] rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-all duration-300"
+        className="text-[14px] font-[500] block px-3 py-2 text-[#2C2C2C] rounded [font-family:'Raleway',_'Lato',_sans-serif] transition-all duration-300"
+        style={{ 
+          color: "#2C2C2C",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = primary;
+          e.currentTarget.style.backgroundColor = light;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = "#2C2C2C";
+          e.currentTarget.style.backgroundColor = "transparent";
+        }}
         onClick={() => setIsMenuOpen(false)}
       >
         {label}
@@ -243,7 +312,10 @@ const NavBar = () => {
           <div className="flex md:hidden justify-between items-center h-14">
             <div className="flex items-center gap-2">
               <button
-                className="p-2 text-[#2C2C2C] hover:text-[#804003] transition-colors"
+                className="p-2 text-[#2C2C2C] transition-colors"
+                style={{ color: "#2C2C2C" }}
+                onMouseEnter={(e) => e.currentTarget.style.color = primary}
+                onMouseLeave={(e) => e.currentTarget.style.color = "#2C2C2C"}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

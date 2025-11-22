@@ -2,6 +2,7 @@
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { CartProvider } from "@/app/context/CartContext";
+import { ThemeProvider } from "@/app/context/ThemeContext";
 import { usePathname } from "next/navigation";
 import ScrollingBanner from "@/components/ScrollingBanner";
 import NavBar from "@/components/NavBar";
@@ -16,33 +17,35 @@ export default function Providers({ children }) {
 
   return (
     <Provider store={store}>
-      <CartProvider>
-        {!isFullScreenSearch && (
-          <>
-            <ScrollingBanner />
-            <div
-              id="navbar-wrapper"
-              className="fixed z-[100] w-full transition-all duration-500"
-            >
-              <NavBar />
-            </div>
-          </>
-        )}
+      <ThemeProvider>
+        <CartProvider>
+          {!isFullScreenSearch && (
+            <>
+              <ScrollingBanner />
+              <div
+                id="navbar-wrapper"
+                className="fixed z-[100] w-full transition-all duration-500"
+              >
+                <NavBar />
+              </div>
+            </>
+          )}
 
-        <ToastProvider />
+          <ToastProvider />
 
-        <main className={isFullScreenSearch ? "" : "pt-[125px]"}>
-          {children}
-        </main>
+          <main className={isFullScreenSearch ? "" : "pt-[125px]"}>
+            {children}
+          </main>
 
-        {!isFullScreenSearch && (
-          <>
-            <FeaturesBanner />
-            <Footer />
-            <FooterBanner />
-          </>
-        )}
-      </CartProvider>
+          {!isFullScreenSearch && (
+            <>
+              <FeaturesBanner />
+              <Footer />
+              <FooterBanner />
+            </>
+          )}
+        </CartProvider>
+      </ThemeProvider>
     </Provider>
   );
 }

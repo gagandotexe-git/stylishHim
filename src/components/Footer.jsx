@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export default function Footer() {
+  const { primary, logo, light } = useTheme();
   const [openIndex, setOpenIndex] = useState(null);
 
   const menuItems = [
@@ -51,8 +53,9 @@ export default function Footer() {
       key={item.href}
       href={item.href}
       className="text-[#5C6268] text-[14px] font-[400] transition-colors block py-1"
-      onMouseEnter={(e) => e.target.style.color = "var(--theme-color)"}
-      onMouseLeave={(e) => e.target.style.color = '#5C6268'}
+      style={{ color: "#5C6268" }}
+      onMouseEnter={(e) => e.currentTarget.style.color = primary}
+      onMouseLeave={(e) => e.currentTarget.style.color = '#5C6268'}
     >
       {item.label}
     </Link>
@@ -97,27 +100,42 @@ export default function Footer() {
           <div className="flex justify-start mb-[10px]">
             <Link href="/" className="flex items-center group">
               <div className="relative">
-                {/* Main logo text with luxurious animation */}
                 <h1 className="text-[24px] md:text-[32px] font-bold tracking-wider [font-family:'Playfair_Display',_'Cormorant_Garamond',_serif] relative">
-                  {/* Base gradient text with bronze/gold tones */}
-                  <span className="relative inline-block bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite]">
-                    StylishHim
+                  <span 
+                    className="relative inline-block bg-clip-text text-transparent animate-[gradientShift_4s_ease-in-out_infinite]"
+                    style={{
+                      backgroundImage: `linear-gradient(to right, ${primary}, ${primary}cc, ${primary})`
+                    }}
+                  >
+                    {logo}
                   </span>
 
-                  {/* Shimmer overlay effect */}
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4A574]/70 to-transparent bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%]">
-                    StylishHim
+                  <span 
+                    className="absolute inset-0 bg-clip-text text-transparent animate-[shimmer_3s_ease-in-out_infinite] bg-[length:200%_100%]"
+                    style={{
+                      backgroundImage: `linear-gradient(to right, transparent, ${primary}70, transparent)`
+                    }}
+                  >
+                    {logo}
                   </span>
 
-                  {/* Glow effect on hover */}
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm bg-gradient-to-r from-[#804003] via-[#A0531F] to-[#C4762F] bg-clip-text text-transparent">
-                    StylishHim
+                  <span 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage: `linear-gradient(to right, ${primary}, ${primary}cc, ${primary})`
+                    }}
+                  >
+                    {logo}
                   </span>
                 </h1>
 
-                {/* Elegant underline with animation */}
-                <div className="absolute -bottom-1 left-0 right-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#804003] via-[#C4762F] to-[#804003] transition-all duration-700 mx-auto rounded-full  "></div>
-     </div>
+                <div 
+                  className="absolute -bottom-1 left-0 right-0 h-[2px] w-0 group-hover:w-full transition-all duration-700 mx-auto rounded-full"
+                  style={{
+                    background: `linear-gradient(to right, ${primary}, ${primary}cc, ${primary})`
+                  }}
+                />
+              </div>
             </Link>
           </div>
 
