@@ -27,12 +27,12 @@ export default function Footer() {
     },
     {
       title: "We are into",
-      href: "https://stylishhim-sooty.vercel.app/",
+      href: "/we-are-into",
       items: []
     },
      {
       title: "For Investor",
-      href: "https://stylishhim-sooty.vercel.app/",
+      href: "/we-are-into",
       items: []
     },
     {

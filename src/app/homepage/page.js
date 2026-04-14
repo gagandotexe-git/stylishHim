@@ -15,7 +15,7 @@ export default function BeautyProductsGrid() {
       setBanners(data);
     } catch (err) {
       console.error(err);
-      toast.error('Failed to load banners');
+      // toast.error('Failed to load banners');
     } finally {
       setLoading(false);
     }

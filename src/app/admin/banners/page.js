@@ -31,7 +31,7 @@ export default function BannerPage() {
       setBanners(data);
     } catch (err) {
       console.error(err);
-      toast.error('Failed to fetch banners');
+      // toast.error('Failed to fetch banners');
     }
   };
 
@@ -75,7 +75,7 @@ export default function BannerPage() {
       fetchBanners();
     } catch (err) {
       console.error(err);
-      toast.error(err.response?.data?.message || 'Something went wrong');
+      // toast.error(err.response?.data?.message || 'Something went wrong');
     } finally {
       setLoading(false);
     }
