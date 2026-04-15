@@ -13,7 +13,7 @@ import FooterBanner from "@/components/FooterBanner";
 
 export default function Providers({ children }) {
   const pathname = usePathname();
-  const isFullScreenSearch = pathname?.startsWith("/fullsearchbar");
+  const isFullScreenSearch = pathname?.startsWith("/fullsearchbar") || pathname?.startsWith("/we-are-into");
 
   return (
     <Provider store={store}>

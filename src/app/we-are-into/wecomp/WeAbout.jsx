@@ -2,7 +2,7 @@
  
 import React from 'react';
 import WeFooter from './WeFooter';
-import WeNavbar from './WeNavbar';
+// import WeNavbar from './WeNavbar';
 
 const WeAbout = () => {
   const products = [
@@ -173,7 +173,7 @@ const WeAbout = () => {
   return (
 
  <>
- <WeNavbar />
+ {/* <WeNavbar /> */}
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-20 lg:py-32">
