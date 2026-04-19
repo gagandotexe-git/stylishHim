@@ -27,8 +27,9 @@ export default function Footer() {
     },
     {
       title: "We are into",
-      href: "/we-are-into",
-      items: []
+      items: [
+        { label: "Import & Export", href: "/import-export" }
+      ]
     },
      {
       title: "For Investor",
