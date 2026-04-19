@@ -26,7 +26,7 @@ export default function Footer() {
       ]
     },
     {
-      title: "We are into",
+      title: "We are into Import Export",
       href: "/we-are-into",
       items: []
     },
