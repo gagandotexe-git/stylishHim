@@ -28,7 +28,7 @@ export default function Footer() {
     {
       title: "We are into",
       items: [
-        { label: "Import & Export", href: "/import-export" }
+        { label: "Import & Export", href: "/we-are-into" }
       ]
     },
      {
